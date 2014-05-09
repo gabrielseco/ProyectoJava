@@ -1,0 +1,77 @@
+/*GENERAL*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Quitar barra de los numeros */
+}
+input[type='number'] {
+	text-align:right;
+}
+.derechaInput{
+	text-align:right;
+}
+.rojo{
+	margin-left:100px;
+	color:red;
+	font-size:1.2em;
+}
+.border{
+	border-color:red;
+}
+a:hover, a:focus{
+	text-decoration:none;
+}
+a{
+	display:inline;
+}
+/*LOGIN*/
+/*ESPACIO ENTRE BOTONES Y COLOCO LOS GLYPHICONS A LA IZQUIERDA*/
+.btn{
+		margin:5px;
+	}
+.left-inner-addon {
+   		 position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+.botonLeft{
+	margin-left:58%;
+}
+/*ADMIN*/
+ul{
+	margin-top:1.5em;
+	font-size:1.6em;
+}
+/*LISTADO DE ALUMNOS*/
+
+
+/*INSERTAR ALUMNOS*/
+
+
+
+/*MODIFICAR ALUMNOS*/
+
+
+/*LISTADO DE CURSOS*/
+
+/*INSERTAR CURSOS*/
+
+/*MODIFICAR CURSOS*/
+
+/*LISTADO DE PRODUCTOS*/
+
+/*INSERTAR PRODUCTOS*/
+
+/*MODIFICAR PRODUCTOS*/
+
+@media (max-width: 480px){
+
+}
+@media (max-width: 768px){
+}

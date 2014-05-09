@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=500, initial-scale=1">
+<link rel='stylesheet' type='text/css' href='../../bootstrap3/css/bootstrap.css' />
+<link rel="stylesheet" type="text/css" href="../../css/admin.css">
+<title>Registro de cursos</title>
+</head>
+<body>
+<div class="container">
+<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar()'>
+<fieldset>
+<legend>Formulario Cursos</legend>
+	<a id="principio"></a>
+	<div class='form-group'>
+		<label class='col-sm-2 control-label' for='nombreCurso'>Nombre Curso:</label>
+			<div class='col-sm-3'>
+				<input type="text" class='form-control' id='nombreCurso' name="nombreCurso" required="required" placeholder="inserta el nuevo curso">		
+			</div>
+	</div>
+	<div class="form-group">
+		<label class='col-sm-2 control-label' for='fechaInicio'>Fecha Inicio:</label>
+		<div class='col-sm-3'>
+			<input type="date" class='form-control' id='fechaInicio' name="fechaInicio"required="required" placeholder="Inserte su fecha de inicio"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class='col-sm-2 control-label' for='fechaFinal'>Fecha Final:</label>
+		<div class='col-sm-3'>
+			<input type="date" class='form-control' id='fechaFinal' name="fechaFinal"required="required" placeholder="Inserte su fecha final"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class='col-sm-2 control-label' for='horario'>Horario:</label>
+		<div class='col-sm-3'>
+			<input type="text" class='form-control' id='horario' name="horario"required="required" placeholder="inserte un horario"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class='col-sm-2 control-label' for='precio'>Precio:</label>
+		<div class='col-sm-2'>
+			<input type="text" class='form-control' id='precio' name="precio"required="required" placeholder="inserte el precio"/>
+		</div>
+		<label class='col-sm-1 control-label' for='duracion'>Duracion:</label>
+		<div class='col-sm-1'>
+			<input type="text"  class='form-control derechaInput' id='duracion' name="duracion" required="required"/>
+		</div>
+		<label class='col-sm-1 control-label' for='plazas'>Plazas:</label>
+		<div class='col-sm-1'>
+			<input type="number" class='form-control' id='plazas' name="plazas"required="required"/>
+		</div>
+		<label for="inscritos" class="col-sm-1 control-label">Inscritos:</label>
+		<div class='col-sm-1'>
+			<input type="number" class='form-control' id='inscritos' name="inscritos"required="required" disabled/>
+		</div>
+	</div>
+</fieldset>
+<input type="hidden" value="55" name="oculto"/>
+<div class='pull-right'>
+	<input type="submit" name="submit" class="btn btn-primary" value="Enviar Registro Cursos"/>
+	<input type="button" value="Cancelar" class="btn btn-primary " onclick="self.location.href='listadoCursos.jsp'"/>
+</div>
+
+</form>
+	</div>
+<script src="../../scripts/jquery.js" type="text/javascript"></script>
+<script src="../../bootstrap3/js/bootstrap.js"></script>
+<script src='../../scripts/cursos.js'></script>
+</body>
+</html>
