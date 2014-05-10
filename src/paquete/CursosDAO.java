@@ -77,20 +77,19 @@ public class CursosDAO {
 		// TODO Auto-generated method stub
 		Cursos c;
 		ArrayList<Cursos>cursos=new ArrayList<Cursos>();
-		String inscritos="";
 		String codigoCurso=request.getParameter("codigo");
+		String inscritos="";
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("listarCursos"));
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
-				c=new Cursos(resultados.getString(1),resultados.getString(2),resultados.getDate(3),resultados.getDate(4),resultados.getString(5),resultados.getDouble(6),resultados.getDouble(7),resultados.getString(8),"0");
+				c=new Cursos(resultados.getString(1),resultados.getString(2),resultados.getDate(3),resultados.getDate(4),resultados.getString(5),resultados.getDouble(6),resultados.getDouble(7),resultados.getString(8),resultados.getString(9));
 				cursos.add(c);
 				codigoCurso=resultados.getString(1);
 			}
 		} catch (SQLException e) {
 			System.out.println("Error al consultar cursos "+e.getMessage());
 		}
-		
 		//INSCRITOS A PARTIR DEL NUMERO  EXISTENTES EN LA TABLA CURSOSALUMNOS DE ESE CURSO
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnos"));
@@ -98,6 +97,10 @@ public class CursosDAO {
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
 				inscritos=resultados.getString(1);
+				sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarInscritos"));
+				sentencia.setString(1, inscritos);
+				sentencia.setString(2, codigoCurso);
+				sentencia.executeUpdate();
 			}
 		} catch (SQLException e) {
 			System.out.println("ERROR AL CONTAR LOS REGISTROS DE LOS ALUMNOS : "+e.getMessage()+e.getErrorCode());

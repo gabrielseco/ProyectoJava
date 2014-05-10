@@ -28,7 +28,7 @@ $(function(){
 	});
 	
 	$("#insertar").on('click',function(){
-		if(inscritos>plazas){
+		if(inscritos>=plazas){
 			$("#dangerAlert").remove();
 			var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><h4>Errores:</h4></div>";
 			$("#principio").append(html);

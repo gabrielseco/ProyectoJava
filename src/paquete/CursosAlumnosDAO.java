@@ -37,6 +37,7 @@ public class CursosAlumnosDAO {
 		GregorianCalendar fechaHoy=new GregorianCalendar();
 		String nombre;
 		ResultSet resultadosAlumnos;
+		String inscritos="";
 		//SACAMOS DE LA TABLA LOS ID'S DE CADA TABLA EL IMPORTE Y LA FECHA
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("consultarTablaCursosAlumnos"));
@@ -78,10 +79,12 @@ public class CursosAlumnosDAO {
 			System.out.println("ERROR AL PINTAR EL ALUMNO EN CURSOS");
 		}
 		
+		
 		sesion.setAttribute("cursos", cursos);
 		sesion.setAttribute("codigoCurso", codigoCurso);
 		sesion.setAttribute("fechaActual", fechaHoy.getTime());
 		sesion.setAttribute("cursosAlumnos", cursosAlumnos);
+		sesion.setAttribute("inscritos", inscritos);
 	}
 	
 	

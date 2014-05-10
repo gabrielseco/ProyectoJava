@@ -178,11 +178,13 @@ public class Servlet extends HttpServlet {
 			break;
 		case "CursosAlumnos":
 			cursosAlumnos.consultar(sesion,comandos,request);
+			cursos.consultar(sesion, comandos, request);
 			response.sendRedirect("protegido/admin/cursosAlumnos.jsp");
 			break;
 		case "Insertar Alumnos"://insertamos y actualizamos los alumnos de un curso
 			cursosAlumnos.insertar(sesion,comandos,request);
 			cursosAlumnos.consultar(sesion,comandos,request);
+			cursos.consultar(sesion, comandos, request);
 			response.sendRedirect("protegido/admin/cursosAlumnos.jsp");
 			break;
 		case "Modificar Alumnos":
@@ -193,7 +195,12 @@ public class Servlet extends HttpServlet {
 		case "Eliminar Alumnos":
 			cursosAlumnos.eliminar(sesion,comandos,request);
 			cursosAlumnos.consultar(sesion, comandos, request);
+			cursos.consultar(sesion, comandos, request);
 			response.sendRedirect("protegido/admin/cursosAlumnos.jsp");
+			break;
+		case "VolverCursosAlumnos":
+			cursos.consultar(sesion,comandos,request);
+			response.sendRedirect("protegido/admin/listadoCursos.jsp");
 			break;
 		case "Salir":
 			sesion.invalidate();

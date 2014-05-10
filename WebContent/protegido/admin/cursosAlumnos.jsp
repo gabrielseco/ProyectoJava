@@ -64,7 +64,7 @@
 								<td>${listadoCurAl.getImporte()}</td>
 								<td>
 									<a title='Modificar Alumno'  id='actualizar'><span class='glyphicon glyphicon-pencil'></span></a>
-									<a title='' onclick='return confirmar();' href="../../Servlet?submit=Eliminar Alumnos&codigoAlumnoEliminar=${listadoCurAl.getSecCurso()}&codigo=${codigoCurso}" ><span class='glyphicon glyphicon-remove'></span></a>
+									<a title='Eliminar Alumno' onclick='return confirmar();' href="../../Servlet?submit=Eliminar Alumnos&codigoAlumnoEliminar=${listadoCurAl.getSecCurso()}&codigo=${codigoCurso}" ><span class='glyphicon glyphicon-remove'></span></a>
 								</td>
 							</tr>
 					</c:forEach>
@@ -89,7 +89,7 @@
 		</table>
 	</form>
 	<hr>
-	<a href="listadoCursos.jsp" class="btn btn-primary col-sm-12">Volver a Cursos</a>
+	<a  class="btn btn-primary col-sm-12" onclick="self.location.href='../../Servlet?submit=VolverCursosAlumnos'">Volver a Cursos</a>
 </div>
 </body>
 </html>
