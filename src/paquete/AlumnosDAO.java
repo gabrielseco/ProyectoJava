@@ -94,8 +94,18 @@ public class AlumnosDAO {
 
 
 	public void eliminar(Properties comandos, HttpServletRequest request) {
+		System.out.println("entro en eliminar con modal");
 		String codigoAlumno=request.getParameter("codigo");
 		String nombreAlumno=request.getParameter("nombre");
+		System.out.println("hola"+codigoAlumno+" "+nombreAlumno);
+		
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarDetalle"));
+				sentencia.setString(1, codigoAlumno);
+				sentencia.executeUpdate();
+			} catch (SQLException e1) {
+				System.out.println("Error al borrar los alumnos de cursos alumnos "+e1.getMessage()+e1.getErrorCode());
+			}
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarAlumnos"));
 			sentencia.setString(1, codigoAlumno);
@@ -111,6 +121,7 @@ public class AlumnosDAO {
 		} catch (SQLException e) {
 			System.out.println("Error al eliminar en la tabla users_roles "+e.getMessage());
 		}
+			
 		
 	}
 

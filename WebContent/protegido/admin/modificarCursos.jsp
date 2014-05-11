@@ -53,7 +53,7 @@
 		</div>
 		<label class='col-sm-1 control-label' for='plazas'>Plazas:</label>
 		<div class='col-sm-1'>
-			<input type="number" class='form-control' id='plazas' name="plazas"required="required" value="${sessionScope.modificarCursos.plazas}"/>
+			<input type="number" class='form-control derechaInput' id='plazas' name="plazas"required="required" value="${sessionScope.modificarCursos.plazas}"/>
 		</div>
 		<label for="inscritos" class="col-sm-1 control-label">Inscritos:</label>
 		<div class='col-sm-1'>

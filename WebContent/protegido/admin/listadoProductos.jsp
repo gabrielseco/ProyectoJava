@@ -12,11 +12,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/admin.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/jquery.dataTables.css">
-<script src="../../scripts/confirmarEliminar.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../scripts/jquery.js"></script>
-<script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
-
 <title>Listado de Productos</title>
 </head>
 <body>
@@ -44,7 +39,24 @@
 		</td>
 		<td>
 			<a title="Modificar Productos"  href='../../Servlet?submit=ModificarProductos&codigo=${listadoP.getSecProducto()}'><span class="glyphicon glyphicon-pencil"></span></a>
-			<a title="Eliminar Productos"  onclick='return confirmar()' href='../../Servlet?submit=EliminarProductos&codigo=${listadoP.getSecProducto()}'><span class='glyphicon glyphicon-remove'></span></a>
+			<a title="Eliminar Productos"   data-toggle='modal' data-target='#eliminarProducto'><span class='glyphicon glyphicon-remove'></span></a>
+			<div class="modal fade" id="eliminarProducto" tabindex="-1" >
+								    <div class="modal-dialog">
+								        <div class="modal-content">
+								            <div class="modal-header">
+								            <button class='close' data-dismiss='modal'>&times;</button>
+								            <h4 class="modal-title text-center" id="myModalLabel">Eliminar Producto</h4>
+								            </div>
+								            <div class="modal-body">
+								                <h3>¿Estás seguro de eliminar el producto y los alumnos asociados a él?</h3>
+								            </div>
+								            <div class="modal-footer">
+								                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								                <a href="../../Servlet?submit=EliminarProductos&codigo=${listadoP.getSecProducto()}" class="btn btn-danger">Eliminar</a>
+								        </div>
+								    </div>
+								  </div>
+								</div>
 		</td>
 		</tr>
 	</c:forEach>
@@ -55,5 +67,9 @@
 <input type="submit" name="submit" value="Insertar" class="btn btn-primary col-md-5 pull-left " onclick="self.location.href='../../Servlet?submit=RegistroProductos'"> 
 <input type="button" name="volver" value="Volver al Inicio" class="btn btn-primary col-md-5 pull-right" onclick="self.location.href='admin.html'">
 	</div>
+<script type="text/javascript" src="../../scripts/jquery.js"></script>
+<script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
+<script type='text/javascript' src='../../bootstrap3/js/bootstrap.js'></script>
 </body>
 </html>

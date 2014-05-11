@@ -14,10 +14,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/admin.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/jquery.dataTables.css">
-<script src="../../scripts/confirmarEliminarCursos.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../scripts/jquery.js"></script>
-<script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -47,13 +43,30 @@
 							<td><c:out value="${listadoC.getDuracion()}"></c:out></td>
 							<td><c:out value="${listadoC.getPrecio()}"></c:out></td>
 							<td><c:out value="${listadoC.getPlazas()}"></c:out></td>
-							<td><c:out value="${listadoC.getInscritos()}"></c:out></td>
+							<td><c:out value="${sessionScope.inscritos}"></c:out></td>
 							<td>
-								<a title="Añadir Alumnos" href="../../Servlet?submit=CursosAlumnos&codigo=${listadoC.getSecCurso()}"><span  class='glyphicon glyphicon-plus'></span></a>
+								<a title="Añadir Alumnos" href="../../Servlet?submit=CursosAlumnos&codigo=${listadoC.getSecCurso()}"><span  class='glyphicon glyphicon-user'></span></a>
 								<a title="Modificar Cursos"
-								href='../../Servlet?submit=ModificarCursos&codigo=${listadoC.getSecCurso() }'><span class='glyphicon glyphicon-pencil'></span></a>
-								<a title="Eliminar Cursos" onclick='return confirmar()'
-								href='../../Servlet?submit=EliminarCursos&codigo=${listadoC.getSecCurso()}'><span class='glyphicon glyphicon-remove'></span></a>
+								href='../../Servlet?submit=ModificarCursos&codigo=${listadoC.getSecCurso()}'><span class='glyphicon glyphicon-pencil'></span></a>
+								<a title="Eliminar Cursos" 
+								 data-toggle='modal' data-target='#eliminarCursos'><span class='glyphicon glyphicon-remove'></span></a>
+								<div class="modal fade" id="eliminarCursos" tabindex="-1" >
+								    <div class="modal-dialog">
+								        <div class="modal-content">
+								            <div class="modal-header">
+								            <button class='close' data-dismiss='modal'>&times;</button>
+								            <h4 class="modal-title text-center" id="myModalLabel">Eliminar Curso</h4>
+								            </div>
+								            <div class="modal-body">
+								                <h3>¿Estás seguro de eliminar el curso y sus alumnos asociados?</h3>
+								            </div>
+								            <div class="modal-footer">
+								                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								                <a href="../../Servlet?submit=EliminarCursos&codigo=${listadoC.getSecCurso()}" class="btn btn-danger">Eliminar</a>
+								        </div>
+								    </div>
+								  </div>
+								</div>
 							</td>
 					</c:forEach>
 				</tbody>
@@ -67,5 +80,9 @@
 				class="btn btn-primary col-md-5 pull-right"
 				onclick="self.location.href='admin.html'">
 		</div>
+<script type="text/javascript" src="../../scripts/jquery.js"></script>
+<script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
+<script type="text/javascript" src="../../bootstrap3/js/bootstrap.js"></script>
 </body>
 </html>

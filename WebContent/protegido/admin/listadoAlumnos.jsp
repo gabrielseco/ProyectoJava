@@ -14,9 +14,6 @@
 <link rel="stylesheet" type="text/css"
 	href="../../css/jquery.dataTables.css">
 <script src="../../scripts/confirmarEliminar.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../scripts/jquery.js"></script>
-<script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -49,8 +46,25 @@
 							<td>
 								<a title="Modificar Alumnos"
 								href='../../Servlet?submit=ModificarAlumnos&codigo=${listadoA.getSecAlumno()}'><span class="glyphicon glyphicon-pencil"></span></a>
-								<a title="Eliminar Alumnos" class="" onclick='return confirmar()'
-								href='../../Servlet?submit=EliminarAlumnos&codigo=${ listadoA.getSecAlumno()}&nombre=${listadoA.getNombre()}'><span class='glyphicon glyphicon-remove'></span></a>
+								<a title="Eliminar Alumnos" data-toggle='modal' data-target='#eliminarAlumno'
+								><span class='glyphicon glyphicon-remove'></span></a>
+								<div class="modal fade" id="eliminarAlumno" tabindex="-1" >
+								    <div class="modal-dialog">
+								        <div class="modal-content">
+								            <div class="modal-header">
+								            <button class='close' data-dismiss='modal'>&times;</button>
+								            <h4 class="modal-title text-center" id="myModalLabel">Eliminar Alumno</h4>
+								            </div>
+								            <div class="modal-body">
+								                <h3>¿Estás seguro de eliminar el alumno y los alumnos asociados a cursos o a productos?</h3>
+								            </div>
+								            <div class="modal-footer">
+								                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								                <a href="../../Servlet?submit=EliminarAlumnos&codigo=${listadoA.getSecAlumno()}&nombre=${listadoA.getNombre()}" class="btn btn-danger">Eliminar</a>
+								        </div>
+								    </div>
+								  </div>
+								</div>
 							</td>
 						</tr>
 					</c:forEach>
@@ -66,5 +80,9 @@
 				onclick="self.location.href='admin.html'">
 		</div>
 	</div>
+	<script type="text/javascript" src="../../scripts/jquery.js"></script>
+	<script type='text/javascript' src='../../bootstrap3/js/bootstrap.js'></script>
+	<script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
 </body>
 </html>
