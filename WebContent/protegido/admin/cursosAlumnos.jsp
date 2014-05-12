@@ -24,7 +24,7 @@
 		<c:set var="plazas" value="${listadoC.getPlazas()}"></c:set>
 		<c:set var="inscritos" value="${sessionScope.inscritos}"></c:set>
 	</c:forEach>
-	<h1 class='text-center'>Curso de ${nombreCurso}</h1>
+	<h1 class='text-center subrayar'>Curso de ${nombreCurso}</h1>
 	<a id="principio"></a>
 	 <form action="../../Servlet" method="post" onsubmit='return enviar();'>
 	 <input type='hidden' name='importe' id="importe" value="${importe}"/>
@@ -102,11 +102,11 @@
 	</form>
 	<hr>
 	<a  class="btn btn-primary col-sm-12" onclick="self.location.href='../../Servlet?submit=VolverCursosAlumnos'">Volver a Cursos</a>
+</div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>
 <script type='text/javascript' src='../../bootstrap3/js/bootstrap.js'></script>
 <script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
 <script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
 <script type="text/javascript" src="../../scripts/cursosAlumnos.js"></script>
-</div>
 </body>
 </html>

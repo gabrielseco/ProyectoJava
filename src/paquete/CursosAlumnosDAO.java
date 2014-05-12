@@ -200,4 +200,42 @@ public class CursosAlumnosDAO {
 		}
 	}
 	
+	//CONSULTAMOS LOS CURSOS A LOS CUALES ESTÁ APUNTADO EL ALUMNO
+	public void consultarAlumnosApuntadosCurso(HttpSession sesion,
+			Properties comandos, HttpServletRequest request) {
+		String codigo=request.getParameter("codigo");
+		ArrayList<CursosAlumnos>cursos=new ArrayList<CursosAlumnos>();
+		String nombre="";
+		CursosAlumnos c=new CursosAlumnos();
+		ResultSet nombreCurso;
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("listarCursosAlumno"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			while(resultados.next()){
+				sentencia=miConexion.prepareStatement(comandos.getProperty("nombreCurso"));
+				sentencia.setString(1, resultados.getString(1));
+				nombreCurso=sentencia.executeQuery();
+				nombreCurso.next();
+				nombre=nombreCurso.getString(1);
+				c=new CursosAlumnos(resultados.getString(1),resultados.getString(2),resultados.getDate(3),resultados.getDouble(4),nombre);
+				cursos.add(c);
+			}
+		} catch (SQLException e) {
+			System.out.println("Error al listar los cursos de un alumno "+e.getMessage()+e.getErrorCode());
+		}
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("nombreAlumno"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			nombre=resultados.getString(1);
+			nombre=nombre.toUpperCase();
+		} catch (SQLException e) {
+			System.out.println("ERROR AL SACAR EL NOMBRE DEL ALUMNO "+e.getErrorCode()+e.getMessage());
+		}
+		sesion.setAttribute("alumnosApuntados", cursos);
+		sesion.setAttribute("nombre", nombre);
+	}
+	
 }

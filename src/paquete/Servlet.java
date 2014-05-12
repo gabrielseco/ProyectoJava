@@ -202,6 +202,10 @@ public class Servlet extends HttpServlet {
 			cursos.consultar(sesion,comandos,request);
 			response.sendRedirect("protegido/admin/listadoCursos.jsp");
 			break;
+		case "VerCursosDeAlumnos":
+			cursosAlumnos.consultarAlumnosApuntadosCurso(sesion,comandos,request);
+			response.sendRedirect("protegido/admin/alumnosCursos.jsp");
+			break;
 		case "Salir":
 			sesion.invalidate();
 			response.sendRedirect("protegido/admin/admin.html");

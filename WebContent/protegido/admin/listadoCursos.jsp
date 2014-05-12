@@ -43,7 +43,7 @@
 							<td><c:out value="${listadoC.getDuracion()}"></c:out></td>
 							<td><c:out value="${listadoC.getPrecio()}"></c:out></td>
 							<td><c:out value="${listadoC.getPlazas()}"></c:out></td>
-							<td><c:out value="${sessionScope.inscritos}"></c:out></td>
+							<td><c:out value="${listadoC.getInscritos()}"></c:out></td>
 							<td>
 								<a title="Añadir Alumnos" href="../../Servlet?submit=CursosAlumnos&codigo=${listadoC.getSecCurso()}"><span  class='glyphicon glyphicon-user'></span></a>
 								<a title="Modificar Cursos"

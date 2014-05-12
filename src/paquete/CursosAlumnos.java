@@ -106,6 +106,14 @@ public class CursosAlumnos {
 		super();
 		this.secAlumno=secAlumno;
 	}
+	public CursosAlumnos(String secAlumno, String secCurso, java.sql.Date fechaInscripcion,
+			double importe) {
+		// TODO Auto-generated constructor stub
+		this.secAlumno=secAlumno;
+		this.secCurso=secCurso;
+		this.fechaInscripcion=fechaInscripcion;
+		this.importe=importe;
+	}
 	
 	
 }
