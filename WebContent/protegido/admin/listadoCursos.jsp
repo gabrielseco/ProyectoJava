@@ -32,7 +32,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${listadoCursos}" var="listadoC">
+					<c:forEach items="${listadoCursos}" var="listadoC" varStatus='count'>
 						<tr>
 							<td><c:out value="${listadoC.getNombreCurso()}"></c:out></td>
 							<td><fmt:formatDate value="${listadoC.getFechaInicio()}"
@@ -49,8 +49,8 @@
 								<a title="Modificar Cursos"
 								href='../../Servlet?submit=ModificarCursos&codigo=${listadoC.getSecCurso()}'><span class='glyphicon glyphicon-pencil'></span></a>
 								<a title="Eliminar Cursos" 
-								 data-toggle='modal' data-target='#eliminarCursos'><span class='glyphicon glyphicon-remove'></span></a>
-								<div class="modal fade" id="eliminarCursos" tabindex="-1" >
+								 data-toggle='modal' data-target='#eliminarCursos${count.count}'><span class='glyphicon glyphicon-remove'></span></a>
+								<div class="modal fade" id="eliminarCursos${count.count}">
 								    <div class="modal-dialog">
 								        <div class="modal-content">
 								            <div class="modal-header">

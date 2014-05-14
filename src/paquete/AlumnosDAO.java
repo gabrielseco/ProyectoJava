@@ -94,35 +94,40 @@ public class AlumnosDAO {
 
 
 	public void eliminar(Properties comandos, HttpServletRequest request) {
-		System.out.println("entro en eliminar con modal");
 		String codigoAlumno=request.getParameter("codigo");
 		String nombreAlumno=request.getParameter("nombre");
-		System.out.println("hola"+codigoAlumno+" "+nombreAlumno);
-		
 			try {
-				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarDetalle"));
+				sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnos"));
+				sentencia.setString(1, codigoAlumno);
+				resultados=sentencia.executeQuery();
+				resultados.next();
+				if(resultados.getString(1)!="0"){
+					try {
+						sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarDetalle"));
+						sentencia.setString(1, codigoAlumno);
+						sentencia.executeUpdate();
+					} catch (SQLException e1) {
+						System.out.println("Error al borrar los alumnos de cursos alumnos "+e1.getMessage()+e1.getErrorCode());
+					}
+				}
+			} catch (SQLException e2) {
+				System.out.println("ERROR AL CONTAR LOS ALUMNOS "+e2.getMessage()+e2.getErrorCode());
+			}
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarUsuariosR"));
+				sentencia.setString(1, nombreAlumno);
+				sentencia.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("Error al eliminar en la tabla users_roles "+e.getMessage());
+			}
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarAlumnos"));
 				sentencia.setString(1, codigoAlumno);
 				sentencia.executeUpdate();
-			} catch (SQLException e1) {
-				System.out.println("Error al borrar los alumnos de cursos alumnos "+e1.getMessage()+e1.getErrorCode());
-			}
-		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarAlumnos"));
-			sentencia.setString(1, codigoAlumno);
-			sentencia.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Error al eliminar en la tabla alumnos "+e.getMessage());
-		}
-		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarUsuariosR"));
-			sentencia.setString(1, nombreAlumno);
-			sentencia.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("Error al eliminar en la tabla users_roles "+e.getMessage());
-		}
-			
-		
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Error al eliminar en la tabla alumnos "+e.getMessage());
+			}		
 	}
 
 

@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/admin.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/jquery.dataTables.css">
-<script src="../../scripts/confirmarEliminar.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="container">
@@ -34,7 +33,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${listadoAlumnos}" var="listadoA">
+					<c:forEach items="${listadoAlumnos}" var="listadoA" varStatus='count'>
 						<tr>
 							<td><c:out value="${listadoA.getNombre()}"></c:out></td>
 							<td><c:out value="${listadoA.getApellidos()}"></c:out></td>
@@ -47,9 +46,9 @@
 								<a title='Ver Cursos' href='../../Servlet?submit=VerCursosDeAlumnos&codigo=${listadoA.getSecAlumno()}'><span class='glyphicon glyphicon-info-sign'></span></a>
 								<a title="Modificar Alumnos"
 								href='../../Servlet?submit=ModificarAlumnos&codigo=${listadoA.getSecAlumno()}'><span class="glyphicon glyphicon-pencil"></span></a>
-								<a title="Eliminar Alumnos" data-toggle='modal' data-target='#eliminarAlumno'
+								<a title="Eliminar Alumnos" data-toggle='modal' data-target='#eliminarAlumno${count.count}'
 								><span class='glyphicon glyphicon-remove'></span></a>
-								<div class="modal fade" id="eliminarAlumno" tabindex="-1" >
+								<div class="modal fade" id="eliminarAlumno${count.count}">
 								    <div class="modal-dialog">
 								        <div class="modal-content">
 								            <div class="modal-header">

@@ -26,7 +26,7 @@
 </tr>
 </thead>
 <tbody>
-	<c:forEach items="${listadoProductos}" var="listadoP">
+	<c:forEach items="${listadoProductos}" var="listadoP" varStatus='count'>
 		<tr>
 		<td>
 			<c:out value="${listadoP.getCodigo()}"></c:out>
@@ -39,8 +39,8 @@
 		</td>
 		<td>
 			<a title="Modificar Productos"  href='../../Servlet?submit=ModificarProductos&codigo=${listadoP.getSecProducto()}'><span class="glyphicon glyphicon-pencil"></span></a>
-			<a title="Eliminar Productos"   data-toggle='modal' data-target='#eliminarProducto'><span class='glyphicon glyphicon-remove'></span></a>
-			<div class="modal fade" id="eliminarProducto" tabindex="-1" >
+			<a title="Eliminar Productos"   data-toggle='modal' data-target='#eliminarProducto${count.count}'><span class='glyphicon glyphicon-remove'></span></a>
+			<div class="modal fade" id="eliminarProducto${count.count}" tabindex="-1" >
 								    <div class="modal-dialog">
 								        <div class="modal-content">
 								            <div class="modal-header">

@@ -26,29 +26,32 @@
 						<th>Nombre Curso</th>
 						<th>Fecha Inscripcion</th>
 						<th>Importe</th>
+						<th>Acción</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${alumnosApuntados}" var='listado'>
 						<tr>
 							
-							<td>${listado.getNombre()}</td>
-							<td>${listado.getFechaInscripcion()}</td>
+							<td class='nombre'>${listado.getNombre()}
+							</td>
+							<td><fmt:formatDate value="${listado.getFechaInscripcion()}"
+										type="date" dateStyle="full"/></td>
 							<td>${listado.getImporte()}</td>
-							
+							<td><a title='Añadir Alumnos' href='../../Servlet?submit=CursosAlumnos&codigo=${listado.getSecAlumno()}'><span class='glyphicon glyphicon-plus'></span></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<hr>
-		<a  class="btn btn-primary col-sm-12" onclick="self.location.href='listadoAlumnos.jsp'">Volver a Alumnos</a>
+		<a  class="btn btn-primary col-sm-5" onclick="self.location.href='listadoAlumnos.jsp'">Volver a Alumnos</a>
+		<a  class="btn btn-primary col-sm-5 pull-right" onclick="self.location.href='listadoCursos.jsp'">Ir a Cursos</a>
 		
 </div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>
 <script type='text/javascript' src='../../bootstrap3/js/bootstrap.js'></script>
 <script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>
 <script type="text/javascript" src="../../scripts/ordenarTabla.js"></script>
-<script type="text/javascript" src="../../scripts/cursosAlumnos.js"></script>
 </body>
 </html>
