@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class Servlet
  */
 @WebServlet("/Servlet")
+@MultipartConfig
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection miConexion;

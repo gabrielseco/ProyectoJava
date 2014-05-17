@@ -13,25 +13,37 @@
 </head>
 <body>
 <div class="container">
-	<form action="../../Servlet" method="post" class='form-inline' onsubmit='return enviar();'>
+	<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar();'>
 		<fieldset>
 		<legend>Insertar Productos</legend>
 		<a  id="principio"></a>
-			<div class='form-group'>
-				<label for='codigo'>Codigo:</label>
-				<input type="number" class='form-control derechaInput' id='codigo' name="codigo" required="required" placeholder="Introduce código" value="${sessionScope.modificarProductos.codigo}" />
+		<div class='form-group'>
+				<label  class="col-sm-2 control-label" for='codigo'>Codigo:</label>
+				<div class="col-sm-1">
+					<input type="number" class='form-control derechaInput' id='codigo' name="codigo" required="required" value="${sessionScope.modificarProductos.codigo}" />
+				</div>
+				<label class="col-sm-2 control-label"  for="numUnidades">Unidades:</label>
+				<div class="col-sm-1">
+					<input type="number" class='form-control derechaInput' id='numUnidades' name="numUnidades" required="required" value="${sessionScope.modificarProductos.numUnidades}"/>
+				</div>
+				<label class="col-sm-2 control-label" for="precio">Precio:</label>
+				<div class="col-sm-1">
+					<input type="text"  class='form-control derechaInput' id='precio' name="precio" required="required" value="${sessionScope.modificarProductos.precio}"/>
+				</div>
 			</div>
 			<div class='form-group'>
-				<label for="numUnidades">Unidades:</label>
-				<input type="number" class='form-control derechaInput' id='numUnidades' name="numUnidades" required="required" placeholder="Introduce unidades" value="${sessionScope.modificarProductos.numUnidades}"/>
-			</div>
-			<div class='form-group'>
-				<label for="precio">Precio:</label>
-				<input type="text"  class='form-control derechaInput' id='precio' name="precio" required="required" placeholder="Introduce precio" value="${sessionScope.modificarProductos.precio}"/>
+				<label class="col-sm-2 control-label" for='descripcion'>Descripcion:</label>
+				<div class="col-sm-3">
+					<textarea name='descripcion' id='descripcion' rows="4" cols="50" required='required' placeholder='Introduce una descripción' class='form-control' >${sessionScope.modificarProductos.descripcion}</textarea>
+				</div>
+				<label class="col-sm-3 control-label" for='imagen'>Imagen:</label>
+				<div class="col-sm-4">
+					<input type='file' class='form-control' name='imagen' id='imagen' required='required' value="${sessionScope.modificarProductos.imagen}"/>
+				</div>
 			</div>
 			<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>
-			<input type="submit" name="submit" class="btn btn-primary" value="Actualizar Productos"/>
-			<input type="button" value="Cancelar" class="btn btn-primary" onclick="self.location.href='listadoProductos.jsp'"/>
+			<input type="button" value="Cancelar" class="btn btn-primary pull-right" onclick="self.location.href='listadoProductos.jsp'"/>
+			<input type="submit" name="submit" class="btn btn-primary pull-right" value="Actualizar Productos"/>
 		</fieldset>
 	</form>
 </div>

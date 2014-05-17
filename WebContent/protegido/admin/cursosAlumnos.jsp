@@ -41,7 +41,7 @@
 						</tr>
 					</thead>
 				   <tbody>
-				   <c:forEach items="${cursosAlumnos}" var="listadoCurAl">
+				   <c:forEach items="${cursosAlumnos}" var="listadoCurAl" varStatus="count">
 				   <input type="hidden" name="codigoAlumnoEliminar" value="${listadoCurAl.getSecCurso()}"/>
 							<tr>
 								<td>
@@ -59,8 +59,8 @@
 								<td>${listadoCurAl.getImporte()}</td>
 								<td>
 									<a title='Modificar Alumno'  id='actualizar'><span class='glyphicon glyphicon-pencil'></span></a>
-									<a title='Eliminar Alumno' data-toggle='modal' data-target='#eliminarAlumno'><span class='glyphicon glyphicon-remove'></span></a>
-									<div class="modal fade" id="eliminarAlumno" tabindex="-1" >
+									<a title='Eliminar Alumno' data-toggle='modal' data-target='#eliminarAlumno${count.count}'><span class='glyphicon glyphicon-remove'></span></a>
+									<div class="modal fade" id="eliminarAlumno${count.count}" tabindex="-1" >
 								    <div class="modal-dialog">
 								        <div class="modal-content">
 								            <div class="modal-header">

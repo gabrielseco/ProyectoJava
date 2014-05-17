@@ -22,6 +22,7 @@
 	<th>Codigo</th>
 	<th>Unidades</th>
 	<th>Precio</th>
+	<th>Descripcion</th>
 	<th>Accion</th>
 </tr>
 </thead>
@@ -37,6 +38,10 @@
 		<td>
 			<c:out value="${listadoP.getPrecio()}"></c:out>
 		</td>
+		<td>
+			<c:out value="${listadoP.getDescripcion()}"></c:out>
+		</td>
+		
 		<td>
 			<a title="Modificar Productos"  href='../../Servlet?submit=ModificarProductos&codigo=${listadoP.getSecProducto()}'><span class="glyphicon glyphicon-pencil"></span></a>
 			<a title="Eliminar Productos"   data-toggle='modal' data-target='#eliminarProducto${count.count}'><span class='glyphicon glyphicon-remove'></span></a>

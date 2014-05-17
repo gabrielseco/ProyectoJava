@@ -18,7 +18,7 @@
 		  	<label for='nombre' class="col-sm-2 control-label">Usuario:</label>
 		  	<div class="col-sm-10 left-inner-addon">
 		  		<i class='glyphicon glyphicon-user'></i>
-				<input id='nombre' type="text" class="form-control" name="j_username" placeholder='Usuario'/>
+				<input id='nombre' type="text" class="form-control" name="j_username" placeholder='Usuario' autofocus/>
 			</div>
 		  </div>
 		  <div class='form-group'>

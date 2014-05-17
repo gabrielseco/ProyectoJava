@@ -1,5 +1,9 @@
 package paquete;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.mysql.jdbc.Blob;
+@MultipartConfig(maxFileSize = 16177215) // upload file up to 16MB  
 public class ProductosDAO {
 
 	Connection miConexion;
@@ -26,11 +33,24 @@ public class ProductosDAO {
 		int numUnidades=Integer.parseInt(numUnidades1);
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
+		String descripcion=request.getParameter("descripcion");
+		String imagenDirectorio=request.getParameter("imagen");
+		System.out.println("el directorio es: "+imagenDirectorio);
+		File subirImagen=new File("calculadora.PNG");
+		FileInputStream inputStream=null;
+		try {
+			 inputStream=new FileInputStream(subirImagen);
+		} catch (FileNotFoundException e1) {
+			System.out.println("Fichero no encontrado en registrar "+e1.getMessage());
+		}
+		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarProductos"));
 			sentencia.setString(1,codigoProducto);
 			sentencia.setInt(2, numUnidades);
 			sentencia.setDouble(3,precio);
+			sentencia.setString(4, descripcion);
+			sentencia.setBinaryStream(5, (InputStream)inputStream,(int) subirImagen.length());
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al insertar "+e.getMessage());
@@ -48,7 +68,7 @@ public class ProductosDAO {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("listarProductos"));
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
-				p=new Productos(resultados.getString(1),resultados.getString(2),resultados.getInt(3),resultados.getDouble(4));
+				p=new Productos(resultados.getString(1),resultados.getString(2),resultados.getInt(3),resultados.getDouble(4),resultados.getString(5));
 				productos.add(p);
 			}
 		} catch (SQLException e) {
@@ -81,7 +101,9 @@ public class ProductosDAO {
 			p.setSecProducto(resultados.getString(1));
 			p.setCodigo(resultados.getString(2));
 			p.setNumUnidades(resultados.getInt(3));
-			p.setPrecio(resultados.getDouble(4));			
+			p.setPrecio(resultados.getDouble(4));
+			p.setDescripcion(resultados.getString(5));
+			p.setImagen((Blob) resultados.getBlob(6));
 		} catch (SQLException e) {
 			System.out.println("Error al modificar productos "+e.getMessage()+","+e.getErrorCode());
 		}
@@ -97,13 +119,25 @@ public class ProductosDAO {
 		int numUnidades=Integer.parseInt(numUnidades1);
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
+		String descripcion=request.getParameter("descripcion");
+		String imagenDirectorio=request.getParameter("imagen");
+		System.out.println("el directorio es: "+imagenDirectorio);
+		File subirImagen=new File(imagenDirectorio);
+		FileInputStream inputStream=null;
+		try {
+			 inputStream=new FileInputStream(subirImagen);
+		} catch (FileNotFoundException e1) {
+			System.out.println("Fichero no encontrado en registrar "+e1.getMessage());
+		}
 		
 		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("actulizarProductos"));
+			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductos"));
 			sentencia.setString(1, codigoProducto);
 			sentencia.setInt(2, numUnidades);
 			sentencia.setDouble(3, precio);
-			sentencia.setInt(4, codigo);
+			sentencia.setString(4, descripcion);
+			sentencia.setBinaryStream(5, (InputStream)inputStream,(int) subirImagen.length());
+			sentencia.setInt(6, codigo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar "+e.getMessage());

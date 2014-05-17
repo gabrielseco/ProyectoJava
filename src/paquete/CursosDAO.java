@@ -112,7 +112,7 @@ public class CursosDAO {
 	public void eliminar(Properties comandos, HttpServletRequest request){
 		String codigoCurso=request.getParameter("codigo");
 		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnos"));
+			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnosDetalle"));
 			sentencia.setString(1, codigoCurso);
 			resultados=sentencia.executeQuery();
 			resultados.next();
