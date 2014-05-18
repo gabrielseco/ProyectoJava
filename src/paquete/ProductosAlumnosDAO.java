@@ -37,7 +37,7 @@ public class ProductosAlumnosDAO {
 		ArrayList<ProductosAlumnos>productosAlumnos=new ArrayList<ProductosAlumnos>();
 		//SACAMOS DE LA TABLA LOS ID'S DE CADA TABLA EL IMPORTE Y LA FECHA
 				try {
-					sentencia=miConexion.prepareStatement(comandos.getProperty("consultarTablaCursosAlumnos"));
+					sentencia=miConexion.prepareStatement(comandos.getProperty("consultarTablaProductosAlumnos"));
 					sentencia.setString(1, codigoProducto);
 					resultados=sentencia.executeQuery();
 					while(resultados.next()){
@@ -181,6 +181,44 @@ public class ProductosAlumnosDAO {
 			System.out.println("Error al actualizar los alumnos en insertarAlumnosEnCursos "+e.getMessage()+e.getErrorCode());
 		}
 		
+		
+	}
+	public void consultarProductosCompradosPorCurso(HttpSession sesion,
+			Properties comandos, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		String codigo=request.getParameter("codigo");
+		ArrayList<ProductosAlumnos>productos=new ArrayList<ProductosAlumnos>();
+		String nombre="";
+		ProductosAlumnos p=new ProductosAlumnos();
+		ResultSet nombreCurso;
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("listarProductosAlumno"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			while(resultados.next()){
+				sentencia=miConexion.prepareStatement(comandos.getProperty("nombreProducto"));
+				sentencia.setString(1, resultados.getString(1));
+				nombreCurso=sentencia.executeQuery();
+				nombreCurso.next();
+				nombre=nombreCurso.getString(1);
+				p=new ProductosAlumnos(resultados.getString(1),resultados.getString(2),resultados.getDate(3),resultados.getDouble(4),nombre);
+				productos.add(p);
+			}
+		} catch (SQLException e) {
+			System.out.println("Error al listar los cursos de un alumno "+e.getMessage()+e.getErrorCode());
+		}
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("nombreAlumno"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			nombre=resultados.getString(1);
+			nombre=nombre.toUpperCase();
+		} catch (SQLException e) {
+			System.out.println("ERROR AL SACAR EL NOMBRE DEL ALUMNO "+e.getErrorCode()+e.getMessage());
+		}
+		sesion.setAttribute("alumnosApuntados", productos);
+		sesion.setAttribute("nombre", nombre);
 		
 	}
 }

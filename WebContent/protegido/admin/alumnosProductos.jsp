@@ -23,7 +23,7 @@
 				class="table-striped  table-condensed table-responsive ">
 				<thead>
 					<tr>
-						<th>Nombre Curso</th>
+						<th>Nombre Producto</th>
 						<th>Fecha Inscripcion</th>
 						<th>Importe</th>
 						<th>Acción</th>
@@ -32,12 +32,11 @@
 				<tbody>
 					<c:forEach items="${alumnosApuntados}" var='listado'>
 						<tr>
-							
 							<td>${listado.getNombre()}</td>
 							<td><fmt:formatDate value="${listado.getFechaInscripcion()}"
 										type="date" dateStyle="full"/></td>
 							<td>${listado.getImporte()}</td>
-							<td><a title='Añadir Alumnos' href='../../Servlet?submit=CursosAlumnos&codigo=${listado.getSecAlumno()}'><span class='glyphicon glyphicon-plus'></span></a></td>
+							<td><a title='Añadir Productos' href='../../Servlet?submit=ProductosAlumnos&codigoProducto=${listado.getSecProducto()}'><span class='glyphicon glyphicon-plus'></span></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -45,7 +44,7 @@
 		</div>
 		<hr>
 		<a  class="btn btn-primary col-sm-5" onclick="self.location.href='listadoAlumnos.jsp'">Volver a Alumnos</a>
-		<a  class="btn btn-primary col-sm-5 pull-right" onclick="self.location.href='../../Servlet?submit=ListadoAlumnos'">Ir a Cursos</a>
+		<a  class="btn btn-primary col-sm-5 pull-right" onclick="self.location.href='../../Servlet?submit=ListadoProductos'">Ir a Productos</a>
 		
 </div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>

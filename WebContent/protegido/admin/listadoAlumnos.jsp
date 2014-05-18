@@ -44,6 +44,7 @@
 							<td><c:out value="${listadoA.getContrasenya()}"></c:out></td>
 							<td>
 								<a title='Ver Cursos' href='../../Servlet?submit=VerCursosDeAlumnos&codigo=${listadoA.getSecAlumno()}'><span class='glyphicon glyphicon-info-sign'></span></a>
+								<a title='Ver Productos' href="../../Servlet?submit=VerProductosDeAlumnos&codigo=${listadoA.getSecAlumno()}"><span class="glyphicon glyphicon-glass"></span></a>
 								<a title="Modificar Alumnos"
 								href='../../Servlet?submit=ModificarAlumnos&codigo=${listadoA.getSecAlumno()}'><span class="glyphicon glyphicon-pencil"></span></a>
 								<a title="Eliminar Alumnos" data-toggle='modal' data-target='#eliminarAlumno${count.count}'
