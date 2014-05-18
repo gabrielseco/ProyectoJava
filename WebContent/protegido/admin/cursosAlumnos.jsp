@@ -102,7 +102,7 @@
 	</form>
 	<hr>
 	<a  class="btn btn-primary col-sm-5 pull-left" onclick="self.location.href='../../Servlet?submit=VolverCursosAlumnos'">Volver a Cursos</a>
-	<a  class='btn btn-primary col-sm-5 pull-right' onclick="self.location.href='listadoAlumnos.jsp'">Ver Alumnos</a>
+	<a  class='btn btn-primary col-sm-5 pull-right' onclick="self.location.href='../../Servlet?submit=ListadoAlumnos'">Ver Alumnos</a>
 </div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>
 <script type='text/javascript' src='../../bootstrap3/js/bootstrap.js'></script>

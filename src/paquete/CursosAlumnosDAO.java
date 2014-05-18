@@ -72,14 +72,6 @@ public class CursosAlumnosDAO {
 		pintarSelectAlumnosDeUnCurso(comandos, request,sesion);
 		
 		
-		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("selectOpcionPrincipal"));
-			
-		} catch (SQLException e) {
-			System.out.println("ERROR AL PINTAR EL ALUMNO EN CURSOS");
-		}
-		
-		
 		sesion.setAttribute("cursos", cursos);
 		sesion.setAttribute("codigoCurso", codigoCurso);
 		sesion.setAttribute("fechaActual", fechaHoy.getTime());

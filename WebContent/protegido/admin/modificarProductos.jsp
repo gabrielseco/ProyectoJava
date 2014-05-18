@@ -20,8 +20,18 @@
 		<div class='form-group'>
 				<label  class="col-sm-2 control-label" for='codigo'>Codigo:</label>
 				<div class="col-sm-1">
-					<input type="number" class='form-control derechaInput' id='codigo' name="codigo" required="required" value="${sessionScope.modificarProductos.codigo}" />
+					<input type="number" class='form-control derechaInput' id='codigo' name="codigo" required="required" value="${sessionScope.modificarProductos.nombre}" />
 				</div>
+				<label class="col-sm-2 control-label" for="nombre">Nombre:</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="nombre" name="nombre" required="required" placeholder="Introduzca nombre" value="${sessionScope.modificarProductos.codigo}"/>
+				</div>
+				<label class="col-sm-2 control-label" for='descripcion'>Descripcion:</label>
+				<div class="col-sm-3">
+					<textarea name='descripcion' id='descripcion' rows="4" cols="50" required='required' placeholder='Introduce una descripción' class='form-control' >${sessionScope.modificarProductos.descripcion}</textarea>
+				</div>
+			</div>
+			<div class='form-group'>
 				<label class="col-sm-2 control-label"  for="numUnidades">Unidades:</label>
 				<div class="col-sm-1">
 					<input type="number" class='form-control derechaInput' id='numUnidades' name="numUnidades" required="required" value="${sessionScope.modificarProductos.numUnidades}"/>
@@ -30,14 +40,8 @@
 				<div class="col-sm-1">
 					<input type="text"  class='form-control derechaInput' id='precio' name="precio" required="required" value="${sessionScope.modificarProductos.precio}"/>
 				</div>
-			</div>
-			<div class='form-group'>
-				<label class="col-sm-2 control-label" for='descripcion'>Descripcion:</label>
-				<div class="col-sm-3">
-					<textarea name='descripcion' id='descripcion' rows="4" cols="50" required='required' placeholder='Introduce una descripción' class='form-control' >${sessionScope.modificarProductos.descripcion}</textarea>
-				</div>
 				<label class="col-sm-3 control-label" for='imagen'>Imagen:</label>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<input type='file' class='form-control' name='imagen' id='imagen' required='required' value="${sessionScope.modificarProductos.imagen}"/>
 				</div>
 			</div>

@@ -7,7 +7,7 @@ public class ProductosAlumnos {
 	String secAlumno;
 	Date fechaInscripcion;
 	double importe;
-	//String nombre para poner el nombre en el select
+	String nombre; //para poner el nombre en el select
 	public String getSecProducto() {
 		return secProducto;
 	}
@@ -32,6 +32,13 @@ public class ProductosAlumnos {
 	public void setImporte(double importe) {
 		this.importe = importe;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	@Override
 	public String toString() {
 		return "ProductosAlumnos [secProducto=" + secProducto + ", secAlumno="
@@ -45,6 +52,21 @@ public class ProductosAlumnos {
 		this.secAlumno = secAlumno;
 		this.fechaInscripcion = fechaInscripcion;
 		this.importe = importe;
+	}
+	public ProductosAlumnos(String nombre, double importe) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.nombre=nombre;
+		this.importe=importe;
+	}
+	public ProductosAlumnos(String secProducto, String secAlumno,
+			Date fechaInscripcion, double importe, String nombre) {
+		super();
+		this.secProducto = secProducto;
+		this.secAlumno = secAlumno;
+		this.fechaInscripcion = fechaInscripcion;
+		this.importe = importe;
+		this.nombre=nombre;
 	}
 	@Override
 	public int hashCode() {

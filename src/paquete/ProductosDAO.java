@@ -29,6 +29,7 @@ public class ProductosDAO {
 	public int registrar(Properties comandos, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		String codigoProducto=request.getParameter("codigo");
+		String nombre=request.getParameter("nombre");
 		String numUnidades1=request.getParameter("numUnidades");
 		int numUnidades=Integer.parseInt(numUnidades1);
 		String precio1=request.getParameter("precio");
@@ -47,10 +48,11 @@ public class ProductosDAO {
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarProductos"));
 			sentencia.setString(1,codigoProducto);
-			sentencia.setInt(2, numUnidades);
-			sentencia.setDouble(3,precio);
-			sentencia.setString(4, descripcion);
-			sentencia.setBinaryStream(5, (InputStream)inputStream,(int) subirImagen.length());
+			sentencia.setString(2, nombre);
+			sentencia.setInt(3, numUnidades);
+			sentencia.setDouble(4,precio);
+			sentencia.setString(5, descripcion);
+			sentencia.setBinaryStream(6, (InputStream)inputStream,(int) subirImagen.length());
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al insertar "+e.getMessage());
@@ -68,7 +70,7 @@ public class ProductosDAO {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("listarProductos"));
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
-				p=new Productos(resultados.getString(1),resultados.getString(2),resultados.getInt(3),resultados.getDouble(4),resultados.getString(5));
+				p=new Productos(resultados.getString(1),resultados.getString(2),resultados.getString(3),resultados.getInt(4),resultados.getDouble(5));
 				productos.add(p);
 			}
 		} catch (SQLException e) {
@@ -99,11 +101,12 @@ public class ProductosDAO {
 			resultados=sentencia.executeQuery();
 			resultados.next();
 			p.setSecProducto(resultados.getString(1));
-			p.setCodigo(resultados.getString(2));
-			p.setNumUnidades(resultados.getInt(3));
-			p.setPrecio(resultados.getDouble(4));
-			p.setDescripcion(resultados.getString(5));
-			p.setImagen((Blob) resultados.getBlob(6));
+			p.setNombre(resultados.getString(2));
+			p.setCodigo(resultados.getString(3));
+			p.setNumUnidades(resultados.getInt(4));
+			p.setPrecio(resultados.getDouble(5));
+			p.setDescripcion(resultados.getString(6));
+			p.setImagen((Blob) resultados.getBlob(7));
 		} catch (SQLException e) {
 			System.out.println("Error al modificar productos "+e.getMessage()+","+e.getErrorCode());
 		}
@@ -114,6 +117,7 @@ public class ProductosDAO {
 		// TODO Auto-generated method stub
 		String codigo1=request.getParameter("codigoModificar");
 		int codigo=Integer.parseInt(codigo1);
+		String nombre=request.getParameter("nombre");
 		String codigoProducto=request.getParameter("codigo");
 		String numUnidades1=request.getParameter("numUnidades");
 		int numUnidades=Integer.parseInt(numUnidades1);
@@ -133,11 +137,12 @@ public class ProductosDAO {
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductos"));
 			sentencia.setString(1, codigoProducto);
-			sentencia.setInt(2, numUnidades);
-			sentencia.setDouble(3, precio);
-			sentencia.setString(4, descripcion);
-			sentencia.setBinaryStream(5, (InputStream)inputStream,(int) subirImagen.length());
-			sentencia.setInt(6, codigo);
+			sentencia.setString(2, nombre);
+			sentencia.setInt(3, numUnidades);
+			sentencia.setDouble(4, precio);
+			sentencia.setString(5, descripcion);
+			sentencia.setBinaryStream(6, (InputStream)inputStream,(int) subirImagen.length());
+			sentencia.setInt(7, codigo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar "+e.getMessage());

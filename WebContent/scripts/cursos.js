@@ -12,8 +12,6 @@
 			var fechaInicio=$("#fechaInicio").val();
 			var fechaFinal=$("#fechaFinal").val();
 			var fecha=true;
-			var fechaI=fechaInicio.split("-");
-			var fechaF=fechaFinal.split("-");
 			inscritos=parseInt(inscritos);//PASAMOS TANTO LOS INSCRITOS COMO LAS PLAZAS A INTEGER PARA PODER COMPARARLAS
 			plazas=parseInt(plazas);
 			if(inscritos===''){ 

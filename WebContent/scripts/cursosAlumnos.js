@@ -1,5 +1,6 @@
 /**
  * Si el cursor no está sobre la ultima fila de la tabla no se desbloqueara el select
+ * Desplega alerts cuando es conveniente
  */
 $(function(){
 	$("tr:last").hover(function(){

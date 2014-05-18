@@ -35,6 +35,7 @@ public class Servlet extends HttpServlet {
 	ProductosDAO productos;
 	CursosDAO cursos;
 	CursosAlumnosDAO cursosAlumnos;
+	ProductosAlumnosDAO productosAlumnos;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -70,6 +71,7 @@ public class Servlet extends HttpServlet {
 		cursos=new CursosDAO(miConexion,sentencia);
 		productos=new ProductosDAO(miConexion,sentencia);
 		cursosAlumnos=new CursosAlumnosDAO(miConexion,sentencia);
+		productosAlumnos=new ProductosAlumnosDAO(miConexion,sentencia);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -91,13 +93,9 @@ public class Servlet extends HttpServlet {
 			response.sendRedirect("protegido/admin/registroAlumnos.html");
 			break;
 		case "Enviar Registro Alumnos":
-			if(alumnos.registrar(request,comandos)==0){
-				alumnos.consultar(comandos,sesion);
-				response.sendRedirect("protegido/admin/listadoAlumnos.jsp");
-			}
-			else{
-				response.sendRedirect("error.jsp?mensajeError=Este alumno ya existe");
-			}
+			alumnos.registrar(request,comandos);
+			alumnos.consultar(comandos,sesion);
+			response.sendRedirect("protegido/admin/listadoAlumnos.jsp");
 			break;
 		case "ListadoAlumnos":
 			alumnos.consultar(comandos,sesion);
@@ -121,13 +119,9 @@ public class Servlet extends HttpServlet {
 			response.sendRedirect("protegido/admin/registroCursos.html");
 			break;
 		case "Enviar Registro Cursos":
-			if(cursos.registrar(request,comandos)==0){
-				cursos.consultar(sesion, comandos,request);
-				response.sendRedirect("protegido/admin/listadoCursos.jsp");
-			}
-			else{
-				response.sendRedirect("error.jsp?mensajeError=Este curso ya existe");
-			}
+			cursos.registrar(request,comandos);
+			cursos.consultar(sesion, comandos,request);
+			response.sendRedirect("protegido/admin/listadoCursos.jsp");
 			break;
 		case "ListadoCursos":
 			cursos.consultar(sesion,comandos,request);
@@ -147,18 +141,13 @@ public class Servlet extends HttpServlet {
 			cursos.consultar(sesion, comandos,request);
 			response.sendRedirect("protegido/admin/listadoCursos.jsp");
 			break;
-		
 		case "RegistroProductos":
 			response.sendRedirect("protegido/admin/registroProductos.html");
 			break;
 		case "Enviar Registro Productos":
-			if(productos.registrar(comandos,request)==0){
-				productos.consultar(sesion, comandos);
-				response.sendRedirect("protegido/admin/listadoProductos.jsp");
-			}
-			else{
-				response.sendRedirect("error.jsp?mensajeError=Este producto ya existe");
-			}
+			productos.registrar(comandos,request);
+			productos.consultar(sesion, comandos);
+			response.sendRedirect("protegido/admin/listadoProductos.jsp");
 			break;
 		case "ListadoProductos":
 			productos.consultar(sesion,comandos);
@@ -192,6 +181,7 @@ public class Servlet extends HttpServlet {
 		case "Modificar Alumnos":
 			cursosAlumnos.modificar(sesion,comandos,request);
 			cursosAlumnos.consultar(sesion,comandos,request);
+			cursos.consultar(sesion, comandos, request);
 			response.sendRedirect("protegido/admin/cursosAlumnos.jsp");
 			break;
 		case "Eliminar Alumnos":
@@ -207,6 +197,25 @@ public class Servlet extends HttpServlet {
 		case "VerCursosDeAlumnos":
 			cursosAlumnos.consultarAlumnosApuntadosCurso(sesion,comandos,request);
 			response.sendRedirect("protegido/admin/alumnosCursos.jsp");
+			break;
+		case "ProductosAlumnos":
+			productosAlumnos.consultar(request,comandos,sesion);
+			response.sendRedirect("protegido/admin/productosAlumnos.jsp");
+			break;
+		case "Insertar Alumnos Productos":
+			productosAlumnos.insertar(request,comandos,sesion);
+			productosAlumnos.consultar(request, comandos, sesion);
+			response.sendRedirect("protegido/admin/productosAlumnos.jsp");
+			break;
+		case "Modificar Productos":
+			productosAlumnos.modificar(sesion,comandos,request);
+			productosAlumnos.consultar(request, comandos, sesion);
+			response.sendRedirect("protegido/admin/productosAlumnos.jsp");
+			break;
+		case "Eliminar Productos":
+			productosAlumnos.eliminar(sesion, comandos, request);
+			productosAlumnos.consultar(request, comandos, sesion);
+			response.sendRedirect("protegido/admin/productosAlumnos.jsp");
 			break;
 		case "Salir":
 			sesion.invalidate();

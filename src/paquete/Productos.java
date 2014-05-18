@@ -6,6 +6,7 @@ import com.mysql.jdbc.Blob;
 public class Productos {
 
 	String secProducto;
+	String nombre;
 	String codigo;
 	int numUnidades;
 	double precio;
@@ -15,6 +16,15 @@ public class Productos {
 	public Productos() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 
 	public String getSecProducto() {
 		return secProducto;
@@ -79,6 +89,7 @@ public class Productos {
 		result = prime * result
 				+ ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((imagen == null) ? 0 : imagen.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + numUnidades;
 		long temp;
 		temp = Double.doubleToLongBits(precio);
@@ -111,6 +122,11 @@ public class Productos {
 			if (other.imagen != null)
 				return false;
 		} else if (!imagen.equals(other.imagen))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
 			return false;
 		if (numUnidades != other.numUnidades)
 			return false;
@@ -145,6 +161,28 @@ public class Productos {
 		this.numUnidades = numUnidades;
 		this.precio = precio;
 		this.descripcion = descripcion;
+	}
+
+	public Productos(String secProducto, String nombre, String codigo,
+			int numUnidades, double precio, String descripcion, Blob imagen) {
+		super();
+		this.secProducto = secProducto;
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.numUnidades = numUnidades;
+		this.precio = precio;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+	}
+
+	public Productos(String secProducto, String nombre, String codigo,
+			int numUnidades, double precio) {
+		// TODO Auto-generated constructor stub
+		this.secProducto = secProducto;
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.numUnidades = numUnidades;
+		this.precio = precio;
 	}
 	
 	
