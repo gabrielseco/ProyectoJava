@@ -93,9 +93,14 @@ public class Servlet extends HttpServlet {
 			response.sendRedirect("protegido/admin/registroAlumnos.html");
 			break;
 		case "Enviar Registro Alumnos":
-			alumnos.registrar(request,comandos);
+			if(alumnos.registrar(request,comandos)==0){
+				alumnos.consultar(comandos,sesion);
+				response.sendRedirect("protegido/admin/listadoAlumnos.jsp");
+			}
+			else{
+				 response.sendRedirect("protegido/admin/error.jsp?mensajeError=Este alumno ya existe");
+			}
 			alumnos.consultar(comandos,sesion);
-			response.sendRedirect("protegido/admin/listadoAlumnos.jsp");
 			break;
 		case "ListadoAlumnos":
 			alumnos.consultar(comandos,sesion);

@@ -8,7 +8,7 @@
 <title>Pagina de Error</title>
 </head>
 <body>
-<h1>Usuario o Contraseña incorrectos.Tiene que registrarse</h1>
+<% response.sendRedirect("registroAlumnos.html?error='userInDb'"); %>
 
 </body>
 </html>

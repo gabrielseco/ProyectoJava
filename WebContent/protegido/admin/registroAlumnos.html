@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="../../Servlet" method="post" onsubmit='return enviar()'
+		<form action="../../Servlet" id='registro-alumnos' name='registro-alumnos' method="post" onsubmit='return enviar()'
 			class='form-horizontal'>
 			<fieldset>
 				<legend>Formulario de Alta</legend>
@@ -57,13 +57,13 @@
 					<div class='col-sm-3'>
 						<input type="tel" class="form-control" id='telefono'
 							name="telefono" required="required"
-							placeholder="introduce tu telefono" pattern="|^\d{9}$|"
+							placeholder="Inserte su telefono" pattern="|^\d{9}$|"
 							title="Se deben introducir 9 números" />
 					</div>
 					<label class='col-sm-2 control-label' for='email'>Email:</label>
 					<div class='col-sm-3'>
 						<input type="email" class="form-control" id='email' name="email"
-							required="required" placeholder="introduce tu email" />
+							required="required" placeholder="Inserte su email" />
 					</div>
 				</div>
 				<hr />
@@ -72,7 +72,7 @@
 					<label class='col-sm-2 control-label' for='calle'>Calle:</label>
 					<div class='col-sm-4'>
 						<input type="text" id='calle' name="calle" class='form-control'
-							required="required" placeholder="Introduce tu calle" />
+							required="required" placeholder="Inserte su calle" />
 					</div>
 					<label class='col-sm-2 control-label numeroPortal' for='numero'>Número
 						Portal:</label>
@@ -97,33 +97,33 @@
 					<div class='col-sm-2'>
 						<input type="text" class="form-control" id='localidad'
 							name="localidad" required="required"
-							placeholder="Inserta tu localidad" />
+							placeholder="Inserte su localidad" />
 					</div>
 					<label id='provinciaLabel' class='col-sm-2 control-label'
 						for='myselect'>Provincia:</label>
 					<div class='col-sm-3'>
 						<select id="myselect" class="form-control text-center"
 							name="provincia" required="required">
-							<option>Selecciona</option>
-							<option>Andalucia</option>
-							<option>Aragon</option>
-							<option>Asturias</option>
-							<option>Baleares</option>
-							<option>Canarias</option>
-							<option>Cantabria</option>
-							<option>Castilla-La Mancha</option>
-							<option>Castilla y Leon</option>
-							<option>Cataluña</option>
-							<option>Ceuta</option>
-							<option>Extremadura</option>
-							<option>Galicia</option>
-							<option>La Rioja</option>
-							<option>Madrid</option>
-							<option>Melilla</option>
-							<option>Murcia</option>
-							<option>Navarra</option>
-							<option>Pais Vasco</option>
-							<option>Valencia</option>
+							<option value='0'>Selecciona</option>
+							<option value='1'>Andalucia</option>
+							<option value='2'>Aragon</option>
+							<option value='3'>Asturias</option>
+							<option value='4'>Baleares</option>
+							<option value='5'>Canarias</option>
+							<option value='6'>Cantabria</option>
+							<option value='7'>Castilla-La Mancha</option>
+							<option value='8'>Castilla y Leon</option>
+							<option value='9'>Cataluña</option>
+							<option value='10'>Ceuta</option>
+							<option value='11'>Extremadura</option>
+							<option value='12'>Galicia</option>
+							<option value='13'>La Rioja</option>
+							<option value='14'>Madrid</option>
+							<option value='15'>Melilla</option>
+							<option value='16'>Murcia</option>
+							<option value='17'>Navarra</option>
+							<option value='18'>Pais Vasco</option>
+							<option value='19'>Valencia</option>
 						</select>
 					</div>
 				</div>

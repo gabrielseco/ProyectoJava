@@ -41,6 +41,19 @@ public class AlumnosDAO {
 		direccion=calle+","+numero+","+piso+","+codigoPostal+","+localidad+","+provincia;
 		String usuario=request.getParameter("usuario");
 		String password=request.getParameter("password1");
+		
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("seleccionarAlumnoExistente"));
+			resultados=sentencia.executeQuery();
+			while(resultados.next()){
+				if(usuario.equalsIgnoreCase(resultados.getString(1))){
+					return 1;
+				}
+			}
+		} catch (SQLException e1) {
+			System.out.println("Error al listar alumnos para saber si el alumno que vamos a insertar se repite "+e1.getErrorCode()+e1.getMessage());
+		}
+		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarFormulario"));
 			sentencia.setString(1, nombre);

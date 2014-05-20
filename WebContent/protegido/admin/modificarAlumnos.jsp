@@ -54,13 +54,13 @@
 					<div class='col-sm-3'>
 						<input type="tel" class="form-control" id='telefono'
 							name="telefono" required="required"
-							placeholder="introduce tu telefono" pattern="|^\d{9}$|"
+							placeholder="Inserte su telefono" pattern="|^\d{9}$|"
 							title="Se deben introducir 9 números" value="${sessionScope.modificarAlumnos.telefono}" />
 					</div>
 					<label class='col-sm-2 control-label' for='email'>Email:</label>
 					<div class='col-sm-3'>
 						<input type="email" class="form-control" id='email' name="email"
-							required="required" placeholder="introduce tu email" value="${sessionScope.modificarAlumnos.email}" />
+							required="required" placeholder="Inserte su email" value="${sessionScope.modificarAlumnos.email}" />
 					</div>
 				</div>
 				<hr />
@@ -69,7 +69,7 @@
 					<label class='col-sm-2 control-label' for='calle'>Calle:</label>
 					<div class='col-sm-4'>
 						<input type="text" id='calle' name="calle" class='form-control'
-							required="required" placeholder="Introduce tu calle" value="${sessionScope.modificarAlumnos.calle}" />
+							required="required" placeholder="Inserte su calle" value="${sessionScope.modificarAlumnos.calle}" />
 					</div>
 					<label class='col-sm-2 control-label numeroPortal' for='numero'>Número
 						Portal:</label>
@@ -94,7 +94,7 @@
 					<div class='col-sm-2'>
 						<input type="text" class="form-control" id='localidad'
 							name="localidad" required="required"
-							placeholder="Inserta tu localidad" value="${sessionScope.modificarAlumnos.localidad}" />
+							placeholder="Inserte su localidad" value="${sessionScope.modificarAlumnos.localidad}" />
 					</div>
 					<label id='provinciaLabel' class='col-sm-2 control-label'
 						for='myselect'>Provincia:</label>
