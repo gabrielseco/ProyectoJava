@@ -108,7 +108,20 @@ public class AlumnosDAO {
 
 	public void eliminar(Properties comandos, HttpServletRequest request) {
 		String codigoAlumno=request.getParameter("codigo");
-		String nombreAlumno=request.getParameter("nombre");
+		String usuario=request.getParameter("usuario");
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("contarProductosDetalle"));
+			sentencia.setString(1, codigoAlumno);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			if(resultados.getString(1)!="0"){
+				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarLineaProductosAlumnos"));
+				sentencia.setString(1, codigoAlumno);
+				sentencia.executeUpdate();
+			}
+		} catch (SQLException e1) {
+			System.out.println("ERROR AL CONTAR DETALLE DE PRODUCTOS "+e1.getErrorCode()+e1.getMessage());
+		}
 			try {
 				sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnos"));
 				sentencia.setString(1, codigoAlumno);
@@ -116,7 +129,7 @@ public class AlumnosDAO {
 				resultados.next();
 				if(resultados.getString(1)!="0"){
 					try {
-						sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarDetalle"));
+						sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarDetalle"));//elimina el detalle de cursos alumnos
 						sentencia.setString(1, codigoAlumno);
 						sentencia.executeUpdate();
 					} catch (SQLException e1) {
@@ -128,7 +141,7 @@ public class AlumnosDAO {
 			}
 			try {
 				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarUsuariosR"));
-				sentencia.setString(1, nombreAlumno);
+				sentencia.setString(1, usuario);
 				sentencia.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println("Error al eliminar en la tabla users_roles "+e.getMessage());
@@ -147,12 +160,6 @@ public class AlumnosDAO {
 	public void modificar(HttpSession sesion,Properties comandos, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		String codigoAlumno=request.getParameter("codigo");
-		String calle;
-		String numero;
-		String piso;
-		String codigoPostal;
-		String localidad;
-		String provincia;
 		String[]direccion;
 		String nuevaDireccion="";
 		try {

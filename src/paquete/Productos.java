@@ -1,6 +1,5 @@
 package paquete;
 
-import com.mysql.jdbc.Blob;
 
 
 public class Productos {
@@ -11,7 +10,7 @@ public class Productos {
 	int numUnidades;
 	double precio;
 	String descripcion;
-	Blob imagen;
+	String imagen;
 	
 	public Productos() {
 		// TODO Auto-generated constructor stub
@@ -66,11 +65,11 @@ public class Productos {
 		this.descripcion = descripcion;
 	}
 
-	public Blob getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(Blob imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 
@@ -142,7 +141,7 @@ public class Productos {
 	}
 
 	public Productos(String secProducto, String codigo, int numUnidades,
-			double precio, String descripcion, Blob imagen) {
+			double precio, String descripcion, String imagen) {
 		super();
 		this.secProducto = secProducto;
 		this.codigo = codigo;
@@ -164,7 +163,7 @@ public class Productos {
 	}
 
 	public Productos(String secProducto, String nombre, String codigo,
-			int numUnidades, double precio, String descripcion, Blob imagen) {
+			int numUnidades, double precio, String descripcion, String imagen) {
 		super();
 		this.secProducto = secProducto;
 		this.nombre = nombre;

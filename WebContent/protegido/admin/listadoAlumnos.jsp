@@ -22,26 +22,26 @@
 				class="table-striped  table-condensed table-responsive ">
 				<thead>
 					<tr>
+						<th>Usuario</th>
+						<th>Contraseña</th>
 						<th>Nombre</th>
 						<th>Apellidos</th>
 						<th>Telefono</th>
 						<th>Email</th>
 						<th>Direccion</th>
-						<th>Usuario</th>
-						<th>Contraseña</th>
 						<th>Accion</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${listadoAlumnos}" var="listadoA" varStatus='count'>
 						<tr>
+							<td><c:out value="${listadoA.getUsuario()}"></c:out></td>
+							<td><c:out value="${listadoA.getContrasenya()}"></c:out></td>
 							<td><c:out value="${listadoA.getNombre()}"></c:out></td>
 							<td><c:out value="${listadoA.getApellidos()}"></c:out></td>
 							<td><c:out value="${listadoA.getTelefono()}"></c:out></td>
 							<td><c:out value="${listadoA.getEmail()}"></c:out></td>
 							<td><c:out value="${listadoA.getDireccion()}"></c:out></td>
-							<td><c:out value="${listadoA.getUsuario()}"></c:out></td>
-							<td><c:out value="${listadoA.getContrasenya()}"></c:out></td>
 							<td>
 								<a title='Ver Cursos' href='../../Servlet?submit=VerCursosDeAlumnos&codigo=${listadoA.getSecAlumno()}'><span class='glyphicon glyphicon-info-sign'></span></a>
 								<a title='Ver Productos' href="../../Servlet?submit=VerProductosDeAlumnos&codigo=${listadoA.getSecAlumno()}"><span class="glyphicon glyphicon-glass"></span></a>
@@ -61,7 +61,7 @@
 								            </div>
 								            <div class="modal-footer">
 								                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-								                <a href="../../Servlet?submit=EliminarAlumnos&codigo=${listadoA.getSecAlumno()}&nombre=${listadoA.getNombre()}" class="btn btn-danger">Eliminar</a>
+								                <a href="../../Servlet?submit=EliminarAlumnos&codigo=${listadoA.getSecAlumno()}&usuario=${listadoA.getUsuario()}" class="btn btn-danger">Eliminar</a>
 								        </div>
 								    </div>
 								  </div>

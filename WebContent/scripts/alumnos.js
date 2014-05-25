@@ -27,29 +27,29 @@
 		var password1=$("#contraseña1").val();
 		var password2=$("#contraseña2").val();
 		$("#dangerAlert").remove();
-		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><h4>Errores:</h4></div>";
+		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4></div>";
 		$("#principio").append(html);
 		var select = $("#myselect option:selected").text();
 		if(select==="Selecciona"){
 			$("#provinciasIncorrectas").remove();
-			$("#dangerAlert").append("<p id='provinciasIncorrectas'>Selecciona una provincia</p>");
+			$("#dangerAlert").append("<h4 id='provinciasIncorrectas'>Selecciona una provincia</h4>");
 			if(password1.length==0||password2.length==0){
 				$("#contraseñasVacias").remove();
-				$("#dangerAlert").append("<p id='contraseñasVacias'>Las contraseñas están vacías</p>");
+				$("#dangerAlert").append("<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>");
 			}
 			if(password1!==password2){
 				$("#contraseñasVacias").remove();
 				$("#contraseñasIncorrectas").remove();
-				$("#dangerAlert").append("<p id='contraseñasIncorrectas'>Las contraseñas son incorrectas</p>");
+				$("#dangerAlert").append("<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>");
 				$("#contraseña1").val("");
 				$("#contraseña2").val("");
 			}
 			return false;
 		}
-		else if(password1.length==0||password2.length==0){
+		else if(h4assword1.length==0||password2.length==0){
 			$("#provinciasIncorrectas").remove();
 			$("#contraseñasVacias").remove();
-			$("#dangerAlert").append("<p id='contraseñasVacias'>Las contraseñas están vacías</p>");
+			$("#dangerAlert").append("<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>");
 			$("#contraseña1").val("");
 			$("#contraseña2").val("");
 			return false;
@@ -57,7 +57,7 @@
 		else if(password1!==password2){
 			$("#contraseñasVacias").remove();
 			$("#contraseñasIncorrectas").remove();
-			$("#dangerAlert").append("<p id='contraseñasIncorrectas'>Las contraseñas son incorrectas</p>");
+			$("#dangerAlert").append("<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>");
 			$("#contraseña1").val("");
 			$("#contraseña2").val("");
 			return false;
@@ -72,7 +72,7 @@
 	//Si hay un error despliego el formulario con un danger alert informando al usuario
 	var errorUser=getParameterByName('error');
 	if(errorUser>""){
-		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Error: El usuario ya está introducido</h4></div>";
+		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores: El usuario ya está introducido</h4><h4>Introduce las contraseñas de nuevo</h4></div>";
 		$("#principio").append(html);
 		var recuperarAlmacen=localStorage.getItem("almacenUsuario");
 		var formulario=recuperarAlmacen.split(",");

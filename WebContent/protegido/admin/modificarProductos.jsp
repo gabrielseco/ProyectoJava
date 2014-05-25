@@ -42,7 +42,7 @@
 				</div>
 				<label class="col-sm-3 control-label" for='imagen'>Imagen:</label>
 				<div class="col-sm-3">
-					<input type='file' class='form-control' name='imagen' id='imagen' required='required' value="${sessionScope.modificarProductos.imagen}"/>
+					<input type='file' class='form-control' name='imagen' id='imagen' value="${sessionScope.modificarProductos.imagen}"/>
 				</div>
 			</div>
 			<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>

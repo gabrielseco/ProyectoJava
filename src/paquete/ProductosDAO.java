@@ -36,15 +36,6 @@ public class ProductosDAO {
 		double precio=Double.parseDouble(precio1);
 		String descripcion=request.getParameter("descripcion");
 		String imagenDirectorio=request.getParameter("imagen");
-		System.out.println("el directorio es: "+imagenDirectorio);
-		File subirImagen=new File("calculadora.PNG");
-		FileInputStream inputStream=null;
-		try {
-			 inputStream=new FileInputStream(subirImagen);
-		} catch (FileNotFoundException e1) {
-			System.out.println("Fichero no encontrado en registrar "+e1.getMessage());
-		}
-		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarProductos"));
 			sentencia.setString(1,codigoProducto);
@@ -52,7 +43,7 @@ public class ProductosDAO {
 			sentencia.setInt(3, numUnidades);
 			sentencia.setDouble(4,precio);
 			sentencia.setString(5, descripcion);
-			sentencia.setBinaryStream(6, (InputStream)inputStream,(int) subirImagen.length());
+			sentencia.setString(6, "hola");
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al insertar "+e.getMessage());
@@ -81,6 +72,21 @@ public class ProductosDAO {
 	public void eliminar(HttpServletRequest request, Properties comandos) {
 		// TODO Auto-generated method stub
 		String codigo=request.getParameter("codigo");
+		
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("contarProductosDetalle"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			if(resultados.getString(1)!="0"){
+				sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarLineaProductos"));
+				sentencia.setString(1, codigo);
+				sentencia.executeUpdate();
+			}
+		} catch (SQLException e1) {
+			System.out.println("ERROR AL CONTAR DETALLE DE PRODUCTOS "+e1.getErrorCode()+e1.getMessage());
+		}
+		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarProductos"));
 			sentencia.setString(1, codigo);
@@ -106,7 +112,7 @@ public class ProductosDAO {
 			p.setNumUnidades(resultados.getInt(4));
 			p.setPrecio(resultados.getDouble(5));
 			p.setDescripcion(resultados.getString(6));
-			p.setImagen((Blob) resultados.getBlob(7));
+			p.setImagen(resultados.getString(7));
 		} catch (SQLException e) {
 			System.out.println("Error al modificar productos "+e.getMessage()+","+e.getErrorCode());
 		}
@@ -125,14 +131,7 @@ public class ProductosDAO {
 		double precio=Double.parseDouble(precio1);
 		String descripcion=request.getParameter("descripcion");
 		String imagenDirectorio=request.getParameter("imagen");
-		System.out.println("el directorio es: "+imagenDirectorio);
-		File subirImagen=new File(imagenDirectorio);
-		FileInputStream inputStream=null;
-		try {
-			 inputStream=new FileInputStream(subirImagen);
-		} catch (FileNotFoundException e1) {
-			System.out.println("Fichero no encontrado en registrar "+e1.getMessage());
-		}
+		
 		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductos"));
@@ -141,7 +140,7 @@ public class ProductosDAO {
 			sentencia.setInt(3, numUnidades);
 			sentencia.setDouble(4, precio);
 			sentencia.setString(5, descripcion);
-			sentencia.setBinaryStream(6, (InputStream)inputStream,(int) subirImagen.length());
+			sentencia.setString(6, "hola");
 			sentencia.setInt(7, codigo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {

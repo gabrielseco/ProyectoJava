@@ -18,7 +18,7 @@
 				inscritos=0;
 			}
 			if(plazas <= 0 || duracion <=0){
-				var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><h4>Errores:</h4></div>";
+				var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4></div>";
 				$("#dangerAlert").remove();
 				$("#principio").append(html);
 				$("p").remove();
@@ -31,7 +31,7 @@
 				return false;
 			}
 			if(Date.parse(fechaInicio)>=Date.parse(fechaFinal)){
-				var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><h4>Errores:</h4></div>";
+				var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4></div>";
 				$("#dangerAlert").remove();
 				$("#principio").append(html);
 				fecha=false;
