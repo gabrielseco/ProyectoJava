@@ -1,9 +1,7 @@
 package paquete;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,14 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
-import com.mysql.jdbc.Blob;
-@MultipartConfig(maxFileSize = 16177215) // upload file up to 16MB  
 public class ProductosDAO {
-
+	private static final String SAVE_DIR = "productos";
 	Connection miConexion;
 	PreparedStatement sentencia;
 	ResultSet resultados;
@@ -26,7 +23,7 @@ public class ProductosDAO {
 		this.miConexion=miConexion;
 		this.sentencia=sentencia;
 	}
-	public int registrar(Properties comandos, HttpServletRequest request) {
+	public int registrar(Properties comandos, HttpServletRequest request) throws IOException,ServletException {
 		// TODO Auto-generated method stub
 		String codigoProducto=request.getParameter("codigo");
 		String nombre=request.getParameter("nombre");
@@ -35,7 +32,26 @@ public class ProductosDAO {
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
 		String descripcion=request.getParameter("descripcion");
-		String imagenDirectorio=request.getParameter("imagen");
+		String fileName="";
+		// gets absolute path of the web application
+        String appPath = request.getServletContext().getRealPath("");
+        // constructs path of the directory to save uploaded file
+        String savePath = appPath + File.separator + SAVE_DIR;
+         
+        // creates the save directory if it does not exists
+        File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        Part filePart = request.getPart("imagen");
+        if(filePart.getSize()!=0){
+        	 fileName = extractFileName(filePart);
+            String extension=fileName.substring(fileName.indexOf("."),fileName.length());
+            fileName=fileName.substring(0,5)+extension;
+            filePart.write(savePath + File.separator + fileName);
+        }
+        
+ 
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarProductos"));
 			sentencia.setString(1,codigoProducto);
@@ -43,7 +59,7 @@ public class ProductosDAO {
 			sentencia.setInt(3, numUnidades);
 			sentencia.setDouble(4,precio);
 			sentencia.setString(5, descripcion);
-			sentencia.setString(6, "hola");
+			sentencia.setString(6, fileName);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al insertar "+e.getMessage());
@@ -130,7 +146,6 @@ public class ProductosDAO {
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
 		String descripcion=request.getParameter("descripcion");
-		String imagenDirectorio=request.getParameter("imagen");
 		
 		
 		try {
@@ -146,5 +161,15 @@ public class ProductosDAO {
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar "+e.getMessage());
 		}
+	}
+	private String extractFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String[] items = contentDisp.split(";");
+		for (String s : items) {
+			if (s.trim().startsWith("filename")) {
+				return s.substring(s.indexOf("=") + 2, s.length()-1);
+			}
+		}
+		return "";
 	}
 }

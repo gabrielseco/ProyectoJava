@@ -46,7 +46,7 @@ public class AlumnosDAO {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("seleccionarAlumnoExistente"));
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
-				if(usuario.equalsIgnoreCase(resultados.getString(1))){
+				if(usuario.equals(resultados.getString(1))){
 					return 1;
 				}
 			}

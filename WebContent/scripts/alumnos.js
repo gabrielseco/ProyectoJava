@@ -27,44 +27,47 @@
 		var password1=$("#contraseña1").val();
 		var password2=$("#contraseña2").val();
 		$("#dangerAlert").remove();
-		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4></div>";
-		$("#principio").append(html);
+		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
 		var select = $("#myselect option:selected").text();
 		if(select==="Selecciona"){
 			$("#provinciasIncorrectas").remove();
-			$("#dangerAlert").append("<h4 id='provinciasIncorrectas'>Selecciona una provincia</h4>");
+			html+="<h4 id='provinciasIncorrectas'>Selecciona una provincia</h4>";
 			if(password1.length==0||password2.length==0){
 				$("#contraseñasVacias").remove();
-				$("#dangerAlert").append("<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>");
+				html+="<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>";
 			}
 			if(password1!==password2){
 				$("#contraseñasVacias").remove();
 				$("#contraseñasIncorrectas").remove();
-				$("#dangerAlert").append("<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>");
+				html+="<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>";
 				$("#contraseña1").val("");
 				$("#contraseña2").val("");
 			}
+			html+="</div>";
+			$("#principio").append(html);
 			return false;
 		}
-		else if(h4assword1.length==0||password2.length==0){
-			$("#provinciasIncorrectas").remove();
-			$("#contraseñasVacias").remove();
-			$("#dangerAlert").append("<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>");
+		else if(password1.length==0||password2.length==0){
+			$("#dangerAlert").remove();
+			var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
+			html+="<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>";
+			html+="</div>";
+			$("#principio").append(html);
 			$("#contraseña1").val("");
 			$("#contraseña2").val("");
 			return false;
 		}
 		else if(password1!==password2){
-			$("#contraseñasVacias").remove();
-			$("#contraseñasIncorrectas").remove();
-			$("#dangerAlert").append("<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>");
+			$("#dangerAlert").remove();
+			var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
+			html+="<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>";
+			html+="</div>";
+			$("#principio").append(html);
 			$("#contraseña1").val("");
 			$("#contraseña2").val("");
 			return false;
 		}
 		if(select!=="Selecciona"&& password1.length!=0||password2.length!=0 && password1!==password2 ){
-			$("#provinciasIncorrectas").remove();
-			$("#contraseñasVacias").remove();
 			$("#dangerAlert").remove();
 		}
 		
