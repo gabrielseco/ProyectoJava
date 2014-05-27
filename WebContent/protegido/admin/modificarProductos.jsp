@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container">
-	<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar();'>
+	<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar();'enctype="multipart/form-data">
 		<fieldset>
 		<legend>Insertar Productos</legend>
 		<a  id="principio"></a>
@@ -42,12 +42,23 @@
 				</div>
 				<label class="col-sm-3 control-label" for='imagen'>Imagen:</label>
 				<div class="col-sm-3">
-					<input type='file' class='form-control' name='imagen' id='imagen' value="${sessionScope.modificarProductos.imagen}"/>
+					<input type='file' class='form-control' name='imagen' id='imagen' />
 				</div>
 			</div>
-			<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>
-			<input type="button" value="Cancelar" class="btn btn-primary pull-right" onclick="self.location.href='listadoProductos.jsp'"/>
-			<input type="submit" name="submit" class="btn btn-primary pull-right" value="Actualizar Productos"/>
+			<div class="form-group">
+				<label class='col-sm-2 control-label' for='muestra'>Muestra:</label>
+				<div class='col-sm-6 pull-left'>
+					<input type='hidden' name='nombreImagen' id='nombreImagen' value='${sessionScope.modificarProductos.imagen}'/>
+					<img src="../../productos/${sessionScope.modificarProductos.imagen}" class='img-thumbnail'/>
+				</div>
+				<div class='botonesFloat'>
+				<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>
+				<input type="button" value="Cancelar" class="btn btn-primary pull-right  " onclick="self.location.href='listadoProductos.jsp'"/>
+				<input type="submit" name="submit" class="btn btn-primary pull-right " value="Actualizar Productos"/>
+			</div>
+			</div>
+			
+					
 		</fieldset>
 	</form>
 </div>

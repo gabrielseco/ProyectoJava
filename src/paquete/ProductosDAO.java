@@ -2,17 +2,22 @@ package paquete;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.apache.tomcat.util.net.URL;
 
 public class ProductosDAO {
 	private static final String SAVE_DIR = "productos";
@@ -23,6 +28,16 @@ public class ProductosDAO {
 		this.miConexion=miConexion;
 		this.sentencia=sentencia;
 	}
+	
+	
+	//METODO REGISTRAR QUE RECIBE UN FORMULARIO MULTIPART/FORM DATA.
+	//UTILIZO LA COLECCIÓN PART QUE NOS PERMITE RECUPERAR UN FICHERO
+	//CREAMOS UNA CARPETA QUE ALMACENARÁ LAS IMAGENES
+	//COMPROBAMOS QUE SI EL TAMAÑO DE LA COLECCION ES 0 SINO SE SUBE UNA CADENA NULA
+	//SE SUBE UNA CADENA RANDOM DE 5 CARACTERES CON SU EXTENSION
+	
+	
+	
 	public int registrar(Properties comandos, HttpServletRequest request) throws IOException,ServletException {
 		// TODO Auto-generated method stub
 		String codigoProducto=request.getParameter("codigo");
@@ -33,21 +48,28 @@ public class ProductosDAO {
 		double precio=Double.parseDouble(precio1);
 		String descripcion=request.getParameter("descripcion");
 		String fileName="";
-		// gets absolute path of the web application
-        String appPath = request.getServletContext().getRealPath("");
-        // constructs path of the directory to save uploaded file
-        String savePath = appPath + File.separator + SAVE_DIR;
+      
+        String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
          
         // creates the save directory if it does not exists
         File fileSaveDir = new File(savePath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
+            
         }
         Part filePart = request.getPart("imagen");
         if(filePart.getSize()!=0){
-        	 fileName = extractFileName(filePart);
-            String extension=fileName.substring(fileName.indexOf("."),fileName.length());
-            fileName=fileName.substring(0,5)+extension;
+        	fileName = extractFileName(filePart);
+            String extension=fileName.substring(fileName.lastIndexOf("."),fileName.length());
+            char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+            StringBuilder sb = new StringBuilder();
+            Random random = new Random();
+            for (int i = 0; i < 5; i++) {
+                char c = chars[random.nextInt(chars.length)];
+                sb.append(c);
+            }
+            String output = sb.toString();
+            fileName=output+extension;
             filePart.write(savePath + File.separator + fileName);
         }
         
@@ -69,7 +91,11 @@ public class ProductosDAO {
 		}
 		return 0;
 	}
-	public void consultar(HttpSession sesion, Properties comandos) {
+	
+	//METODO CONSULTAR QUE ACUMULAMOS NUESTRO RESULTADOS DEVUELTOS EN UN ARRAYLIST PARA LUEGO MOSTRARLOS EN NUESTRA VISTA (LISTADOPRODUCTOS.JSP)
+	
+	
+	public void consultar(HttpSession sesion, Properties comandos) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		Productos p;
 		ArrayList<Productos>productos=new ArrayList<Productos>();
@@ -85,10 +111,13 @@ public class ProductosDAO {
 		}
 		sesion.setAttribute("listadoProductos", productos);
 	}
+	
+	
+	//METODO QUE ELIMINA PRIMERO LOS DETALLES LUEGO LA IMAGEN SI LA HUBIESE Y FINALMENTE EL PRODUCTO
 	public void eliminar(HttpServletRequest request, Properties comandos) {
 		// TODO Auto-generated method stub
 		String codigo=request.getParameter("codigo");
-		
+		String imagen="";//Variable que almacenara la imagen que recuperamos y vamos a eliminar
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarProductosDetalle"));
 			sentencia.setString(1, codigo);
@@ -102,6 +131,19 @@ public class ProductosDAO {
 		} catch (SQLException e1) {
 			System.out.println("ERROR AL CONTAR DETALLE DE PRODUCTOS "+e1.getErrorCode()+e1.getMessage());
 		}
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("consultarFotoProducto"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			imagen=resultados.getString(1);
+	        String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
+			File fichero=new File(ruta);
+			fichero.delete();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarProductos"));
@@ -112,11 +154,20 @@ public class ProductosDAO {
 		}
 		
 	}
+	
+	
+	//METODO QUE ALMACENA EN UN OBJETO EL RESULTADO DEVUELTO DE UNA SECUENCIA DE PRODUCTO DETERMINADA
+	//RECOGEMOS EL PATH EN EL QUE METEMOS EL PRODUCTO Y LE CONCATENAMOS EL STRING DE LA IMAGEN IGUAL QUE EL MÉTODO ELIMINAR
+	//DESPUES PINTAMOS LA VISTA EN MODIFICARPRODUCTOS.JSP
+	//SI NO HAY IMAGEN PONEMOS UNA IMAGEN PREDEFINIDA
+	
 	public void modificar(HttpSession sesion, Properties comandos,
 			HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		Productos p=new Productos();
 		String codigoProducto=request.getParameter("codigo");
+		
+		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("consultarSecuenciaProducto"));
 			sentencia.setString(1,codigoProducto);
@@ -128,14 +179,20 @@ public class ProductosDAO {
 			p.setNumUnidades(resultados.getInt(4));
 			p.setPrecio(resultados.getDouble(5));
 			p.setDescripcion(resultados.getString(6));
-			p.setImagen(resultados.getString(7));
+			if (resultados.getString(7).equals("") ) {
+				p.setImagen("thumbnail.png");
+			}
+			else{
+				p.setImagen(resultados.getString(7));
+			}
 		} catch (SQLException e) {
 			System.out.println("Error al modificar productos "+e.getMessage()+","+e.getErrorCode());
 		}
+		
 		sesion.setAttribute("modificarProductos", p);
 		
 	}
-	public void actualizar(HttpServletRequest request, Properties comandos) {
+	public void actualizar(HttpServletRequest request, Properties comandos) throws IllegalStateException, IOException, ServletException {
 		// TODO Auto-generated method stub
 		String codigo1=request.getParameter("codigoModificar");
 		int codigo=Integer.parseInt(codigo1);
@@ -146,6 +203,45 @@ public class ProductosDAO {
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
 		String descripcion=request.getParameter("descripcion");
+		String nombreImagen=request.getParameter("nombreImagen");
+        Part filePart = request.getPart("imagen");
+		String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
+		String fileName="";
+		
+		
+        if(filePart.getSize()!=0){//si la imagen ha sido escogida
+        	File fichero=new File(ruta+nombreImagen);
+        	if(fichero.exists()&& !nombreImagen.equals("thumbnail.png")){//y si ya habia una se borra la anterior
+    			fichero.delete();
+    			fileName = extractFileName(filePart);
+                String extension=fileName.substring(fileName.lastIndexOf("."),fileName.length());
+                char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+                StringBuilder sb = new StringBuilder();
+                Random random = new Random();
+                for (int i = 0; i < 5; i++) {
+                    char c = chars[random.nextInt(chars.length)];
+                    sb.append(c);
+                }
+                String output = sb.toString();
+                fileName=output+extension;
+                filePart.write(ruta + File.separator + fileName);
+    		}
+        	else{
+        		fileName = extractFileName(filePart);
+                String extension=fileName.substring(fileName.lastIndexOf("."),fileName.length());
+                char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+                StringBuilder sb = new StringBuilder();
+                Random random = new Random();
+                for (int i = 0; i < 5; i++) {
+                    char c = chars[random.nextInt(chars.length)];
+                    sb.append(c);
+                }
+                String output = sb.toString();
+                fileName=output+extension;
+                filePart.write(ruta + File.separator + fileName);
+        	}
+        }
+		
 		
 		
 		try {
@@ -155,7 +251,8 @@ public class ProductosDAO {
 			sentencia.setInt(3, numUnidades);
 			sentencia.setDouble(4, precio);
 			sentencia.setString(5, descripcion);
-			sentencia.setString(6, "hola");
+			sentencia.setString(6, fileName);
+			System.out.println("archivo "+fileName);
 			sentencia.setInt(7, codigo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
