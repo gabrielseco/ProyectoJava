@@ -19,5 +19,16 @@ $(function(){
 			$("#dangerAlert").remove();
 		}
 	});
+	var i=0;
+	$(".fileImagen").on('click',function(){
+		if(i===0){
+			$("img").slideUp();
+			$(".alert-warning").remove();
+			var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Selecciona una imagen</h4></div>";
+			$("#principio").append(html);
+			i++;
+		}
+		
+	});
 	
 });

@@ -1,5 +1,7 @@
 package paquete;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,11 +11,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 public class CursosDAO {
+	private static final String SAVE_DIR = "cursos";
 	Connection miConexion;
 	PreparedStatement sentencia;
 	ResultSet resultados;
@@ -22,7 +28,7 @@ public class CursosDAO {
 		this.miConexion=miConexion;
 		this.sentencia=sentencia;
 	}
-	public int registrar(HttpServletRequest request, Properties comandos) {
+	public int registrar(HttpServletRequest request, Properties comandos) throws IllegalStateException, IOException, ServletException {
 		String nombreCurso=request.getParameter("nombreCurso");
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String fechaInicio1=request.getParameter("fechaInicio");
@@ -54,6 +60,35 @@ public class CursosDAO {
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
 		String plazas=request.getParameter("plazas");
+		String fileName="";
+	      
+        String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
+         
+        // creates the save directory if it does not exists
+        File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+            
+        }
+        Part filePart = request.getPart("imagen");
+        
+        if(filePart.getSize()!=0){
+        	fileName = extractFileName(filePart);
+            String extension=fileName.substring(fileName.lastIndexOf("."),fileName.length());
+            char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+            StringBuilder sb = new StringBuilder();
+            Random random = new Random();
+            for (int i = 0; i < 5; i++) {
+                char c = chars[random.nextInt(chars.length)];
+                sb.append(c);
+            }
+            String output = sb.toString();
+            fileName=output+extension;
+            filePart.write(savePath + File.separator + fileName);
+        }
+        
+        
+        
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarCursos"));
 			sentencia.setString(1, nombreCurso);
@@ -64,6 +99,7 @@ public class CursosDAO {
 			sentencia.setDouble(6, precio);
 			sentencia.setString(7, plazas);
 			sentencia.setString(8, "0");
+			sentencia.setString(9, fileName);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
             System.out.println("Error al insertar cursos "+e.getMessage());
@@ -111,6 +147,7 @@ public class CursosDAO {
 	}
 	public void eliminar(Properties comandos, HttpServletRequest request){
 		String codigoCurso=request.getParameter("codigo");
+		String imagen="";//Variable que almacenara la imagen que recuperamos y vamos a eliminar
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnosDetalle"));
 			sentencia.setString(1, codigoCurso);
@@ -123,6 +160,20 @@ public class CursosDAO {
 			}
 		} catch (SQLException e1) {
 			System.out.println("ERROR AL CONOCER LOS ALUMNOS VINCULADOS A UN CURSO EN ELIMINAR "+e1.getErrorCode()+e1.getMessage());
+		}
+		
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("consultarFotoCurso"));
+			sentencia.setString(1, codigoCurso);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			imagen=resultados.getString(1);
+	        String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
+			File fichero=new File(ruta);
+			fichero.delete();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("eliminarCursos"));
@@ -152,12 +203,18 @@ public class CursosDAO {
 			c.setPrecio(resultados.getDouble(7));
 			c.setPlazas(resultados.getString(8));
 			c.setInscritos(resultados.getString(9));
+			if (resultados.getString(10).equals("") ) {
+				c.setImagen("thumbnail.png");
+			}
+			else{
+				c.setImagen(resultados.getString(10));
+			}
 		} catch (SQLException e) {
 			System.out.println("Error al modificar "+e.getMessage());
 		}
 		sesion.setAttribute("modificarCursos", c);
 	}
-	public void actualizar(HttpServletRequest request, Properties comandos) {
+	public void actualizar(HttpServletRequest request, Properties comandos) throws IOException, IllegalStateException, ServletException {
 		// TODO Auto-generated method stub
 		String codigoCurso=request.getParameter("codigo");
 		String nombreCurso=request.getParameter("nombreCurso");
@@ -192,6 +249,46 @@ public class CursosDAO {
 		double precio=Double.parseDouble(precio1);
 		String plazas=request.getParameter("plazas");
 		String inscritos=request.getParameter("inscritos");
+		String nombreImagen=request.getParameter("nombreImagen");
+        Part filePart = request.getPart("imagen");
+		String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
+		String fileName="";
+		
+		
+        if(filePart.getSize()!=0){//si la imagen ha sido escogida
+        	File fichero=new File(ruta+nombreImagen);
+        	if(fichero.exists()&& !nombreImagen.equals("thumbnail.png")){//y si ya habia una se borra la anterior
+    			fichero.delete();
+    			fileName = extractFileName(filePart);
+                String extension=fileName.substring(fileName.lastIndexOf("."),fileName.length());
+                char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+                StringBuilder sb = new StringBuilder();
+                Random random = new Random();
+                for (int i = 0; i < 5; i++) {
+                    char c = chars[random.nextInt(chars.length)];
+                    sb.append(c);
+                }
+                String output = sb.toString();
+                fileName=output+extension;
+                filePart.write(ruta + File.separator + fileName);
+    		}
+        	else{
+        		fileName = extractFileName(filePart);
+                String extension=fileName.substring(fileName.lastIndexOf("."),fileName.length());
+                char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+                StringBuilder sb = new StringBuilder();
+                Random random = new Random();
+                for (int i = 0; i < 5; i++) {
+                    char c = chars[random.nextInt(chars.length)];
+                    sb.append(c);
+                }
+                String output = sb.toString();
+                fileName=output+extension;
+                filePart.write(ruta + File.separator + fileName);
+        	}
+        }
+		
+		
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarCursos"));
 			sentencia.setString(1, nombreCurso);
@@ -202,11 +299,24 @@ public class CursosDAO {
 			sentencia.setDouble(6, precio);
 			sentencia.setString(7, plazas);
 			sentencia.setString(8, inscritos);
-			sentencia.setString(9, codigoCurso);
+			sentencia.setString(9, fileName);
+			sentencia.setString(10, codigoCurso);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar en cursos "+e.getMessage());
 		}
 		
 	}
+	//METODO QUE EXTRAE EL NOMBRE DEL ARCHIVO
+	private String extractFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String[] items = contentDisp.split(";");
+		for (String s : items) {
+			if (s.trim().startsWith("filename")) {
+				return s.substring(s.indexOf("=") + 2, s.length()-1);
+			}
+		}
+		return "";
+	}
+	
 }

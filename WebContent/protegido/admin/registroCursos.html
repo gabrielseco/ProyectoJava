@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar()'>
+<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar()' enctype="multipart/form-data">
 <fieldset>
 <legend>Formulario Cursos</legend>
 	<a id="principio"></a>
@@ -50,11 +50,12 @@
 		<div class='col-sm-1'>
 			<input type="number" class='form-control derechaInput' id='plazas' name="plazas"required="required"/>
 		</div>
-		<label for="inscritos" class="col-sm-1 control-label">Inscritos:</label>
-		<div class='col-sm-1'>
-			<input type="number" class='form-control' id='inscritos' name="inscritos"required="required" disabled/>
+		<label class="col-sm-1 control-label" for='imagen'>Imagen:</label>
+		<div class="col-sm-2">
+			<input type='file' class='form-control' name='imagen' id='imagen' size="60"/>
 		</div>
 	</div>
+		
 </fieldset>
 <input type="hidden" value="55" name="oculto"/>
 <div class='pull-right'>

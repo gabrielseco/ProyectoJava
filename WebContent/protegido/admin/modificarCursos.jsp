@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar()'>
+<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar()' enctype="multipart/form-data">
 <fieldset>
 <legend>Formulario Cursos</legend>
 	<a id="principio"></a>
@@ -55,18 +55,24 @@
 		<div class='col-sm-1'>
 			<input type="number" class='form-control derechaInput' id='plazas' name="plazas"required="required" value="${sessionScope.modificarCursos.plazas}"/>
 		</div>
-		<label for="inscritos" class="col-sm-1 control-label">Inscritos:</label>
-		<div class='col-sm-1'>
-			<input type="number" class='form-control' id='inscritos' name="inscritos"required="required" value="${sessionScope.modificarCursos.inscritos}" disabled/>
-		</div>
+		<label class="col-sm-1 control-label" for='imagen'>Imagen:</label>
+			<div class="col-sm-2">
+				<input type='file' class='form-control fileImagen' name='imagen' id='imagen' size="60"/>
+			</div>
+	</div>
+	<div class="form-group">
+				<label class='col-sm-2 control-label' for='muestra'>Muestra:</label>
+				<div class='col-sm-6 pull-left'>
+					<input type='hidden' name='nombreImagen' id='nombreImagen' value='${sessionScope.modificarCursos.imagen}'/>
+					<img src="../../cursos/${sessionScope.modificarCursos.imagen}" class='img-thumbnail'/>
+				</div>
+				<div class='botonesFloat'>
+					<input type="hidden" value="${sessionScope.modificarCursos.secCurso}" name="codigo"/>
+					<input type="submit" name="submit" value="Actualizar Cursos" class="btn btn-primary"/>
+					<input type="button" value="Cancelar" class="btn btn-primary" onclick="self.location.href='listadoCursos.jsp'"/>
+				</div>
 	</div>
 </fieldset>
-<input type="hidden" value="${sessionScope.modificarCursos.secCurso}" name="codigo"/>
-<div class='pull-right'>
-<input type="submit" name="submit" value="Actualizar Cursos" class="btn btn-primary"/>
-<input type="button" value="Cancelar" class="btn btn-primary" onclick="self.location.href='listadoCursos.jsp'"/>
-
-</div>
 </form>
 	</div>
 <script src="../../scripts/jquery.js" type="text/javascript"></script>

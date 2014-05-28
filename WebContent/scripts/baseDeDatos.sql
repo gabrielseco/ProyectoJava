@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cursos` (
   `precio` FLOAT NULL,
   `plazas` INT NULL,
   `inscritos` INT NULL,
+  `imagen` VARCHAR(10) NULL,
   PRIMARY KEY (`secCurso`))
 ENGINE = InnoDB;
 

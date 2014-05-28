@@ -252,7 +252,6 @@ public class ProductosDAO {
 			sentencia.setDouble(4, precio);
 			sentencia.setString(5, descripcion);
 			sentencia.setString(6, fileName);
-			System.out.println("archivo "+fileName);
 			sentencia.setInt(7, codigo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {

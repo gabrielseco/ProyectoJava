@@ -42,7 +42,7 @@
 				</div>
 				<label class="col-sm-3 control-label" for='imagen'>Imagen:</label>
 				<div class="col-sm-3">
-					<input type='file' class='form-control' name='imagen' id='imagen' />
+					<input type='file' class='form-control fileImagen' name='imagen' id='imagen' />
 				</div>
 			</div>
 			<div class="form-group">
@@ -52,10 +52,10 @@
 					<img src="../../productos/${sessionScope.modificarProductos.imagen}" class='img-thumbnail'/>
 				</div>
 				<div class='botonesFloat'>
-				<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>
-				<input type="button" value="Cancelar" class="btn btn-primary pull-right  " onclick="self.location.href='listadoProductos.jsp'"/>
-				<input type="submit" name="submit" class="btn btn-primary pull-right " value="Actualizar Productos"/>
-			</div>
+					<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>
+					<input type="button" value="Cancelar" class="btn btn-primary pull-right  " onclick="self.location.href='listadoProductos.jsp'"/>
+					<input type="submit" name="submit" class="btn btn-primary pull-right " value="Actualizar Productos"/>
+				</div>
 			</div>
 			
 					
