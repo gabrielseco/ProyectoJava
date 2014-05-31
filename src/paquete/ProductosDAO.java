@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -49,14 +50,13 @@ public class ProductosDAO {
 		String descripcion=request.getParameter("descripcion");
 		String fileName="";
       
-        String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
+        //String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
          
         // creates the save directory if it does not exists
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-            
-        }
+        ServletContext servletContext = request.getSession().getServletContext();
+		String relativeWebPath = "productos";
+		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		
         Part filePart = request.getPart("imagen");
         if(filePart.getSize()!=0){
         	fileName = extractFileName(filePart);
@@ -70,7 +70,7 @@ public class ProductosDAO {
             }
             String output = sb.toString();
             fileName=output+extension;
-            filePart.write(savePath + File.separator + fileName);
+            filePart.write(absoluteDiskPath + File.separator + fileName);
         }
         
  
@@ -118,6 +118,9 @@ public class ProductosDAO {
 		// TODO Auto-generated method stub
 		String codigo=request.getParameter("codigo");
 		String imagen="";//Variable que almacenara la imagen que recuperamos y vamos a eliminar
+		 ServletContext servletContext = request.getSession().getServletContext();
+			String relativeWebPath = "productos";
+			String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarProductosDetalle"));
 			sentencia.setString(1, codigo);
@@ -137,8 +140,8 @@ public class ProductosDAO {
 			resultados=sentencia.executeQuery();
 			resultados.next();
 			imagen=resultados.getString(1);
-	        String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
-			File fichero=new File(ruta);
+	        //String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
+			File fichero=new File(absoluteDiskPath+File.separator+imagen);
 			fichero.delete();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -205,12 +208,14 @@ public class ProductosDAO {
 		String descripcion=request.getParameter("descripcion");
 		String nombreImagen=request.getParameter("nombreImagen");
         Part filePart = request.getPart("imagen");
-		String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
+		//String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
 		String fileName="";
-		
+		 ServletContext servletContext = request.getSession().getServletContext();
+			String relativeWebPath = "productos";
+			String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
 		
         if(filePart.getSize()!=0){//si la imagen ha sido escogida
-        	File fichero=new File(ruta+nombreImagen);
+        	File fichero=new File(absoluteDiskPath+File.separator+nombreImagen);
         	if(fichero.exists()&& !nombreImagen.equals("thumbnail.png")){//y si ya habia una se borra la anterior
     			fichero.delete();
     			fileName = extractFileName(filePart);
@@ -224,7 +229,7 @@ public class ProductosDAO {
                 }
                 String output = sb.toString();
                 fileName=output+extension;
-                filePart.write(ruta + File.separator + fileName);
+                filePart.write(absoluteDiskPath + File.separator + fileName);
     		}
         	else{
         		fileName = extractFileName(filePart);
@@ -238,7 +243,7 @@ public class ProductosDAO {
                 }
                 String output = sb.toString();
                 fileName=output+extension;
-                filePart.write(ruta + File.separator + fileName);
+                filePart.write(absoluteDiskPath + File.separator + fileName);
         	}
         }
 		

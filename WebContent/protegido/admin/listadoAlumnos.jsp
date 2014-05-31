@@ -73,12 +73,13 @@
 			</table>
 			<br />
 			<hr />
-			<input type="button" value="Insertar"
-				class="btn btn-primary col-md-5 pull-left"
-				onclick="self.location.href='../../Servlet?submit=RegistroAlumnos'">
 			<input type="button" name="volver" value="Volver al Inicio"
-				class="btn btn-primary col-md-5 pull-right"
+				class="btn btn-primary col-md-5 pull-left"
 				onclick="self.location.href='admin.html'">
+			<input type="button" value="Insertar"
+				class="btn btn-primary col-md-5 pull-right"
+				onclick="self.location.href='../../Servlet?submit=RegistroAlumnos'">
+			
 		</div>
 	</div>
 	<script type="text/javascript" src="../../scripts/jquery.js"></script>

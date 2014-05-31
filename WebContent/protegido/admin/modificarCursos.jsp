@@ -56,7 +56,7 @@
 			<input type="number" class='form-control derechaInput' id='plazas' name="plazas"required="required" value="${sessionScope.modificarCursos.plazas}"/>
 		</div>
 		<label class="col-sm-1 control-label" for='imagen'>Imagen:</label>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<input type='file' class='form-control fileImagen' name='imagen' id='imagen' size="60"/>
 			</div>
 	</div>

@@ -73,12 +73,13 @@
 			</table>
 			<hr>
 			<br> 
-			<input class="btn btn-primary col-md-5 pull-left " type="submit"
+			<input type="button" name="volver" value="Volver al Inicio"
+				class="btn btn-primary col-md-5 pull-left"
+				onclick="self.location.href='admin.html'">
+			<input class="btn btn-primary col-md-5 pull-right " type="submit"
 				value="Insertar" name="submit"
 				onclick="self.location.href='../../Servlet?submit=RegistroCursos'" />
-			<input type="button" name="volver" value="Volver al Inicio"
-				class="btn btn-primary col-md-5 pull-right"
-				onclick="self.location.href='admin.html'">
+			
 		</div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>
 <script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>

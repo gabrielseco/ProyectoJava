@@ -46,6 +46,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Productos` (
   `secProducto` INT NOT NULL AUTO_INCREMENT,
   `codigo` VARCHAR(45) NULL,
+  `nombre` VARCHAR(20) NULL,
   `numUnidades` INT NULL,
   `precio` FLOAT NULL,
   `descripcion` VARCHAR(140) NULL,
@@ -137,7 +138,10 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 INSERT INTO `mydb`.`alumnos` (`secAlumno`, `nombre`, `apellidos`, `telefono`, `email`, `direccion`, `username`, `password`) VALUES ('1', 'gabriel', 'garcia', '654654654', 'ggarciaseco@gmail.com', 'leopoldo alas clarin,10,2,33040,el entrego,Asturias', 'gabriel', 'temporal');
 INSERT INTO `mydb`.`roles` (`rolename`) VALUES ('admin');
 INSERT INTO `mydb`.`roles` (`rolename`) VALUES ('user');
 INSERT INTO `mydb`.`users_roles` (`secAlumno`, `rolename`, `username`) VALUES ('1', 'admin', 'gabriel');
+
+

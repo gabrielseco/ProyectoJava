@@ -69,8 +69,8 @@
 </table>
 <hr>
 <br>
-<input type="submit" name="submit" value="Insertar" class="btn btn-primary col-md-5 pull-left " onclick="self.location.href='../../Servlet?submit=RegistroProductos'"> 
-<input type="button" name="volver" value="Volver al Inicio" class="btn btn-primary col-md-5 pull-right" onclick="self.location.href='admin.html'">
+<input type="submit" name="submit" value="Insertar" class="btn btn-primary col-md-5 pull-right " onclick="self.location.href='../../Servlet?submit=RegistroProductos'"> 
+<input type="button" name="volver" value="Volver al Inicio" class="btn btn-primary col-md-5 pull-left" onclick="self.location.href='admin.html'">
 	</div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>
 <script type="text/javascript" src="../../scripts/jquery.dataTables.js"></script>

@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -62,14 +63,14 @@ public class CursosDAO {
 		String plazas=request.getParameter("plazas");
 		String fileName="";
 	      
-        String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
+		ServletContext servletContext = request.getSession().getServletContext();
+		String relativeWebPath = "cursos";
+		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		
+       // String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
          
         // creates the save directory if it does not exists
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-            
-        }
+        
         Part filePart = request.getPart("imagen");
         
         if(filePart.getSize()!=0){
@@ -84,7 +85,7 @@ public class CursosDAO {
             }
             String output = sb.toString();
             fileName=output+extension;
-            filePart.write(savePath + File.separator + fileName);
+            filePart.write(absoluteDiskPath + File.separator + fileName);
         }
         
         
@@ -148,6 +149,9 @@ public class CursosDAO {
 	public void eliminar(Properties comandos, HttpServletRequest request){
 		String codigoCurso=request.getParameter("codigo");
 		String imagen="";//Variable que almacenara la imagen que recuperamos y vamos a eliminar
+		ServletContext servletContext = request.getSession().getServletContext();
+		String relativeWebPath = "cursos";
+		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnosDetalle"));
 			sentencia.setString(1, codigoCurso);
@@ -168,8 +172,8 @@ public class CursosDAO {
 			resultados=sentencia.executeQuery();
 			resultados.next();
 			imagen=resultados.getString(1);
-	        String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
-			File fichero=new File(ruta);
+	        //String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
+			File fichero=new File(absoluteDiskPath+File.separator+imagen);
 			fichero.delete();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -253,10 +257,13 @@ public class CursosDAO {
         Part filePart = request.getPart("imagen");
 		String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
 		String fileName="";
+		ServletContext servletContext = request.getSession().getServletContext();
+		String relativeWebPath = "cursos";
+		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
 		
 		
         if(filePart.getSize()!=0){//si la imagen ha sido escogida
-        	File fichero=new File(ruta+nombreImagen);
+        	File fichero=new File(absoluteDiskPath+File.separator+nombreImagen);
         	if(fichero.exists()&& !nombreImagen.equals("thumbnail.png")){//y si ya habia una se borra la anterior
     			fichero.delete();
     			fileName = extractFileName(filePart);
@@ -270,7 +277,7 @@ public class CursosDAO {
                 }
                 String output = sb.toString();
                 fileName=output+extension;
-                filePart.write(ruta + File.separator + fileName);
+                filePart.write(absoluteDiskPath + File.separator + fileName);
     		}
         	else{
         		fileName = extractFileName(filePart);
@@ -284,7 +291,7 @@ public class CursosDAO {
                 }
                 String output = sb.toString();
                 fileName=output+extension;
-                filePart.write(ruta + File.separator + fileName);
+                filePart.write(absoluteDiskPath + File.separator + fileName);
         	}
         }
 		

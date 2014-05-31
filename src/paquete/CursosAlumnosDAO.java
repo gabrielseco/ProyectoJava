@@ -226,8 +226,27 @@ public class CursosAlumnosDAO {
 		} catch (SQLException e) {
 			System.out.println("ERROR AL SACAR EL NOMBRE DEL ALUMNO "+e.getErrorCode()+e.getMessage());
 		}
+			
+		
 		sesion.setAttribute("alumnosApuntados", cursos);
 		sesion.setAttribute("nombre", nombre);
+	}
+	public void actualizarInscritos(HttpSession sesion, Properties comandos,
+			HttpServletRequest request) {//ACTUALIZAMOS LOS INSCRITOS
+		String codigo=request.getParameter("codigo");
+		try {
+			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnosDetalle"));
+			sentencia.setString(1, codigo);
+			resultados=sentencia.executeQuery();
+			resultados.next();
+			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarInscritos"));
+			sentencia.setString(1, resultados.getString(1));
+			sentencia.setString(2, codigo);
+			sentencia.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("ERROR AL ACTUALIZAR INSCRITOS "+e.getMessage()+e.getErrorCode());
+		}
+	
 	}
 	
 }
