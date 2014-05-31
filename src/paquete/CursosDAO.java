@@ -64,12 +64,8 @@ public class CursosDAO {
 		String fileName="";
 	      
 		ServletContext servletContext = request.getSession().getServletContext();
-		String relativeWebPath = "cursos";
-		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		String absoluteDiskPath = servletContext.getRealPath(SAVE_DIR);
 		
-       // String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
-         
-        // creates the save directory if it does not exists
         
         Part filePart = request.getPart("imagen");
         
@@ -114,44 +110,23 @@ public class CursosDAO {
 		// TODO Auto-generated method stub
 		Cursos c;
 		ArrayList<Cursos>cursos=new ArrayList<Cursos>();
-		String codigoCurso=request.getParameter("codigo");
-		String inscritos="";
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("listarCursos"));
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
 				c=new Cursos(resultados.getString(1),resultados.getString(2),resultados.getDate(3),resultados.getDate(4),resultados.getString(5),resultados.getDouble(6),resultados.getDouble(7),resultados.getString(8),resultados.getString(9));
 				cursos.add(c);
-				codigoCurso=resultados.getString(1);
 			}
 		} catch (SQLException e) {
 			System.out.println("Error al consultar cursos "+e.getMessage());
 		}
-		//INSCRITOS A PARTIR DEL NUMERO  EXISTENTES EN LA TABLA CURSOSALUMNOS DE ESE CURSO
-		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnos"));
-			sentencia.setString(1, codigoCurso);
-			resultados=sentencia.executeQuery();
-			while(resultados.next()){
-				inscritos=resultados.getString(1);
-				sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarInscritos"));
-				sentencia.setString(1, inscritos);
-				sentencia.setString(2, codigoCurso);
-				sentencia.executeUpdate();
-			}
-		} catch (SQLException e) {
-			System.out.println("ERROR AL CONTAR LOS REGISTROS DE LOS ALUMNOS : "+e.getMessage()+e.getErrorCode());
-		}
-		
 		sesion.setAttribute("listadoCursos", cursos);
-		sesion.setAttribute("inscritos", inscritos);
 	}
 	public void eliminar(Properties comandos, HttpServletRequest request){
 		String codigoCurso=request.getParameter("codigo");
 		String imagen="";//Variable que almacenara la imagen que recuperamos y vamos a eliminar
 		ServletContext servletContext = request.getSession().getServletContext();
-		String relativeWebPath = "cursos";
-		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		String absoluteDiskPath = servletContext.getRealPath(SAVE_DIR);
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarAlumnosDetalle"));
 			sentencia.setString(1, codigoCurso);
@@ -172,7 +147,6 @@ public class CursosDAO {
 			resultados=sentencia.executeQuery();
 			resultados.next();
 			imagen=resultados.getString(1);
-	        //String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator+imagen;
 			File fichero=new File(absoluteDiskPath+File.separator+imagen);
 			fichero.delete();
 		} catch (SQLException e) {
@@ -252,14 +226,11 @@ public class CursosDAO {
 		String precio1=request.getParameter("precio");
 		double precio=Double.parseDouble(precio1);
 		String plazas=request.getParameter("plazas");
-		String inscritos=request.getParameter("inscritos");
 		String nombreImagen=request.getParameter("nombreImagen");
         Part filePart = request.getPart("imagen");
-		String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
-		String fileName="";
+        String fileName="";
 		ServletContext servletContext = request.getSession().getServletContext();
-		String relativeWebPath = "cursos";
-		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		String absoluteDiskPath = servletContext.getRealPath(SAVE_DIR);
 		
 		
         if(filePart.getSize()!=0){//si la imagen ha sido escogida
@@ -295,23 +266,40 @@ public class CursosDAO {
         	}
         }
 		
-		
-		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarCursos"));
-			sentencia.setString(1, nombreCurso);
-			sentencia.setDate(2, fechaInicio);
-			sentencia.setDate(3, fechaFinal);
-			sentencia.setString(4, horario);
-			sentencia.setDouble(5, duracion);
-			sentencia.setDouble(6, precio);
-			sentencia.setString(7, plazas);
-			sentencia.setString(8, inscritos);
-			sentencia.setString(9, fileName);
-			sentencia.setString(10, codigoCurso);
-			sentencia.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("Error al actualizar en cursos "+e.getMessage());
+		if(filePart.getSize()!=0){
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarCursos"));
+				sentencia.setString(1, nombreCurso);
+				sentencia.setDate(2, fechaInicio);
+				sentencia.setDate(3, fechaFinal);
+				sentencia.setString(4, horario);
+				sentencia.setDouble(5, duracion);
+				sentencia.setDouble(6, precio);
+				sentencia.setString(7, plazas);
+				sentencia.setString(8, fileName);
+				sentencia.setString(9, codigoCurso);
+				sentencia.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("Error al actualizar en cursos "+e.getMessage());
+			}
 		}
+		else{
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarCursosSinImagen"));
+				sentencia.setString(1, nombreCurso);
+				sentencia.setDate(2, fechaInicio);
+				sentencia.setDate(3, fechaFinal);
+				sentencia.setString(4, horario);
+				sentencia.setDouble(5, duracion);
+				sentencia.setDouble(6, precio);
+				sentencia.setString(7, plazas);
+				sentencia.setString(8, codigoCurso);
+				sentencia.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("Error al actualizar en cursos "+e.getMessage());
+			}
+		}
+		
 		
 	}
 	//METODO QUE EXTRAE EL NOMBRE DEL ARCHIVO

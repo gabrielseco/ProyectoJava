@@ -17,6 +17,7 @@
 </head>
 <body>
 	<div class="container">
+		&nbsp;
 			<table id="tabla" class="table-striped ">
 				<thead>
 					<tr>

@@ -68,8 +68,8 @@
 				</div>
 				<div class='botonesFloat'>
 					<input type="hidden" value="${sessionScope.modificarCursos.secCurso}" name="codigo"/>
-					<input type="submit" name="submit" value="Actualizar Cursos" class="btn btn-primary"/>
 					<input type="button" value="Cancelar" class="btn btn-primary" onclick="self.location.href='listadoCursos.jsp'"/>
+					<input type="submit" name="submit" value="Actualizar Cursos" class="btn btn-primary"/>
 				</div>
 	</div>
 </fieldset>

@@ -100,7 +100,7 @@ public class Servlet extends HttpServlet {
 				response.sendRedirect("protegido/admin/listadoAlumnos.jsp");
 			}
 			else{
-				 response.sendRedirect("protegido/admin/error.jsp?mensajeError=Este alumno ya existe");
+				 response.sendRedirect("protegido/admin/errorRegistro.jsp?mensajeError=Este alumno ya existe");
 			}
 			alumnos.consultar(comandos,sesion);
 			break;

@@ -3,7 +3,6 @@ package paquete;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import org.apache.tomcat.util.net.URL;
 
 public class ProductosDAO {
 	private static final String SAVE_DIR = "productos";
@@ -50,12 +48,8 @@ public class ProductosDAO {
 		String descripcion=request.getParameter("descripcion");
 		String fileName="";
       
-        //String savePath = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR;
-         
-        // creates the save directory if it does not exists
         ServletContext servletContext = request.getSession().getServletContext();
-		String relativeWebPath = "productos";
-		String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		String absoluteDiskPath = servletContext.getRealPath(SAVE_DIR);
 		
         Part filePart = request.getPart("imagen");
         if(filePart.getSize()!=0){
@@ -119,8 +113,7 @@ public class ProductosDAO {
 		String codigo=request.getParameter("codigo");
 		String imagen="";//Variable que almacenara la imagen que recuperamos y vamos a eliminar
 		 ServletContext servletContext = request.getSession().getServletContext();
-			String relativeWebPath = "productos";
-			String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+			String absoluteDiskPath = servletContext.getRealPath(SAVE_DIR);
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("contarProductosDetalle"));
 			sentencia.setString(1, codigo);
@@ -208,11 +201,9 @@ public class ProductosDAO {
 		String descripcion=request.getParameter("descripcion");
 		String nombreImagen=request.getParameter("nombreImagen");
         Part filePart = request.getPart("imagen");
-		//String ruta = "C:"+File.separator+File.separator+"Users"+File.separator+"Gabriel"+File.separator+"Desktop"+File.separator+"FP  SEGUNDO AÑO"+File.separator+"PROYECTO"+File.separator+"Proyecto"+File.separator+"WebContent"+File.separator+SAVE_DIR+File.separator;
 		String fileName="";
-		 ServletContext servletContext = request.getSession().getServletContext();
-			String relativeWebPath = "productos";
-			String absoluteDiskPath = servletContext.getRealPath(relativeWebPath);
+		ServletContext servletContext = request.getSession().getServletContext();
+		String absoluteDiskPath = servletContext.getRealPath(SAVE_DIR);
 		
         if(filePart.getSize()!=0){//si la imagen ha sido escogida
         	File fichero=new File(absoluteDiskPath+File.separator+nombreImagen);
@@ -247,21 +238,37 @@ public class ProductosDAO {
         	}
         }
 		
-		
-		
-		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductos"));
-			sentencia.setString(1, codigoProducto);
-			sentencia.setString(2, nombre);
-			sentencia.setInt(3, numUnidades);
-			sentencia.setDouble(4, precio);
-			sentencia.setString(5, descripcion);
-			sentencia.setString(6, fileName);
-			sentencia.setInt(7, codigo);
-			sentencia.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("Error al actualizar "+e.getMessage());
+		if(filePart.getSize()!=0){
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductos"));
+				sentencia.setString(1, codigoProducto);
+				sentencia.setString(2, nombre);
+				sentencia.setInt(3, numUnidades);
+				sentencia.setDouble(4, precio);
+				sentencia.setString(5, descripcion);
+				sentencia.setString(6, fileName);
+				sentencia.setInt(7, codigo);
+				sentencia.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("Error al actualizar "+e.getMessage());
+			}
 		}
+		else{
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductosSinImagen"));
+				sentencia.setString(1, codigoProducto);
+				sentencia.setString(2, nombre);
+				sentencia.setInt(3, numUnidades);
+				sentencia.setDouble(4, precio);
+				sentencia.setString(5, descripcion);
+				sentencia.setInt(6, codigo);
+				sentencia.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("Error al actualizar "+e.getMessage());
+			}
+		}
+		
+		
 	}
 	private String extractFileName(Part part) {
 		String contentDisp = part.getHeader("content-disposition");

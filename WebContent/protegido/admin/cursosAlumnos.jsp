@@ -22,7 +22,7 @@
 		<c:set var="nombreCurso" value="${listadoC.getNombreCurso()}"></c:set>
 		<c:set var="importe" value="${listadoC.getPrecio()}"></c:set>
 		<c:set var="plazas" value="${listadoC.getPlazas()}"></c:set>
-		<c:set var="inscritos" value="${sessionScope.inscritos}"></c:set>
+		<c:set var="inscritos" value="${listadoC.inscritos}"></c:set>
 	</c:forEach>
 	<h1 class='text-center subrayar'>Curso de ${nombreCurso}</h1>
 	<a id="principio"></a>
