@@ -38,6 +38,7 @@ public class Servlet extends HttpServlet {
 	CursosDAO cursos;
 	CursosAlumnosDAO cursosAlumnos;
 	ProductosAlumnosDAO productosAlumnos;
+	ContactoDAO contacto;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -74,6 +75,7 @@ public class Servlet extends HttpServlet {
 		productos=new ProductosDAO(miConexion,sentencia);
 		cursosAlumnos=new CursosAlumnosDAO(miConexion,sentencia);
 		productosAlumnos=new ProductosAlumnosDAO(miConexion,sentencia);
+		contacto=new ContactoDAO();
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -226,6 +228,11 @@ public class Servlet extends HttpServlet {
 		case "VerProductosDeAlumnos":
 			productosAlumnos.consultarProductosCompradosPorCurso(sesion,comandos,request);
 			response.sendRedirect("protegido/admin/alumnosProductos.jsp");
+			break;
+		//FRONT-END 
+		case "Contacto":
+			contacto.enviarCorreo(request);
+			response.sendRedirect("index.html");
 			break;
 		case "Salir":
 			sesion.invalidate();

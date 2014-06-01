@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=500, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel='stylesheet' type='text/css' href='../../bootstrap3/css/bootstrap.css' />
 <link rel="stylesheet" type="text/css" href="../../css/admin.css">
 <title>Modificar Productos</title>

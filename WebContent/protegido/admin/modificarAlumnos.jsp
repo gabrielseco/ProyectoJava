@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=500, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel='stylesheet' type='text/css' href='../../bootstrap3/css/bootstrap.css' />
 <link rel="stylesheet" type="text/css" href="../../css/admin.css">
 <title>Modificar Alumnos</title>
@@ -246,8 +246,8 @@
 				</div>      
     <input type="hidden" name="codigo" value="${sessionScope.modificarAlumnos.secAlumno}"/>
     <div class='pull-right'>
-    	<input type="submit" value="Actualizar Alumnos" name="submit" class="btn btn-primary" />
     	<input type="button" value="Cancelar" onclick="self.location.href='listadoAlumnos.jsp'" class="btn btn-primary" />
+    	<input type="submit" value="Actualizar Alumnos" name="submit" class="btn btn-primary" />
     </div> 
 </fieldset>
 </form>

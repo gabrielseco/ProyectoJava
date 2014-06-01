@@ -120,37 +120,36 @@
 			</div>
 		</div>
 	</div>
-	
 	<div class="modal slideup" id="contacto">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="contacto.jsp" method="post" class="form-horizontal">
+				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
 					<div class="modal-header">
 						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-					    	<label for="nombre" class="col-sm-2 control-label">Nombre Completo:</label>
+					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
 					    	<div class="col-sm-10">
-					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo">
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
    				 			</div>
    				 		</div>
    				 		<div class="form-group">
 					    	<label for="asunto" class="col-sm-2 control-label">Asunto:</label>
 					   	 	<div class="col-sm-10">
-					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto">
+					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" required="required">
    				 			</div>
    				 		</div>
 						<div class="form-group">
 					    	<label for="email" class="col-sm-2 control-label">Email:</label>
 					   	 	<div class="col-sm-10">
-					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email">
+					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
    				 			</div>
    				 		</div>
    				 		<div class="form-group">
 					    	<label for="mensaje" class="col-sm-2 control-label">Mensaje:</label>
 					   	 	<div class="col-sm-10">
-					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje"></textarea>
+					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje" required="required"></textarea>
    				 			</div>
    				 		</div>
 					</div>

@@ -9,7 +9,7 @@
                 "sZeroRecords": "Nada encontrado - Lo siento",
                 "sInfo": "Mostrando _START_ de _END_ hasta _TOTAL_ registros",
                 "sInfoEmpty": "Mostrado 0 resultados",
-                "sInfoFiltered": "(filtered from _MAX_ total records)",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
     			"sSearch":"Búsqueda",
     			"oPaginate": {
     		        "sFirst": "Primera Pág",
