@@ -53,12 +53,10 @@
 				</div>
 				<div class='botonesFloat'>
 					<input type="hidden" name="codigoModificar" value="${sessionScope.modificarProductos.secProducto}"/>
-					<input type="submit" name="submit" class="btn btn-primary pull-right " value="Actualizar Productos"/>
 					<input type="button" value="Cancelar" class="btn btn-primary pull-right  " onclick="self.location.href='listadoProductos.jsp'"/>
+					<input type="submit" name="submit" class="btn btn-primary pull-right " value="Actualizar Productos"/>
 				</div>
 			</div>
-			
-					
 		</fieldset>
 	</form>
 </div>

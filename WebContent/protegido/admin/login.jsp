@@ -28,8 +28,8 @@
 		  		<input id='contraseña' type="password" class="form-control" name="j_password" placeholder='Password'/>
 		  	</div>
 		  </div>
-		    <input type="submit" value="Iniciar Sesion" class="btn btn-primary  pull-right"/>
-		  	<input type="button" value="Cancelar" class="btn  btn-primary  pull-right"  onclick="self.location.href='admin.html'"/>			
+		  	<input type="button" value="Cancelar" class="btn  btn-primary  pull-right"  onclick="self.location.href='admin.html'"/>	
+		  	<input type="submit" value="Iniciar Sesion" class="btn btn-primary  pull-right"/>		
 		</fieldset>
 	</form>																							
 </div>

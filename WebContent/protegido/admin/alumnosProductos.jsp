@@ -44,8 +44,8 @@
 			</table>
 		</div>
 		<hr>
-		<a  class="btn btn-primary col-sm-5" onclick="self.location.href='listadoAlumnos.jsp'">Volver a Alumnos</a>
-		<a  class="btn btn-primary col-sm-5 pull-right" onclick="self.location.href='../../Servlet?submit=ListadoProductos'">Ir a Productos</a>
+		<a  class="btn btn-primary col-sm-5 pull-right" onclick="self.location.href='listadoAlumnos.jsp'">Volver a Alumnos</a>
+		<a  class="btn btn-primary col-sm-5 pull-left" onclick="self.location.href='../../Servlet?submit=ListadoProductos'">Ir a Productos</a>
 		
 </div>
 <script type="text/javascript" src="../../scripts/jquery.js"></script>

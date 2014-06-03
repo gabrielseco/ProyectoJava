@@ -15,13 +15,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="/" class="navbar-brand">Vetusta</a>
+			<a href="index.html" class="navbar-brand">Vetusta</a>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Servicios</a></li>
-					<li><a href="#">Cursos</a></li>
-					<li><a href="#">Productos</a></li>
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
+					<li><a href="protegido/usuarioRegistrado/cursos">Cursos</a></li>
+					<li><a href="protegido/usuarioRegistrado/productos">Productos</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacto<b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -52,43 +52,47 @@
 			<h3>Bienvenido a Tienda Vetusta,donde encontrarás los productos informáticos al mejor precio y nuestros últimos cursos.</h3>
 		</div>
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="content-header">
-					<h4><a href="#">Cursos</a></h4>
-				</div>
-				<div class="content">
-					<p>Presencial en Madrid. 320+ horas de instrucción. Aprende a desarrollar aplicaciones móviles para iOS con Objective-C, Cocoa Touch y Xcode.</p>
-					<a href="#" class="btn btn-primary col-md-4">Conoce más</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="content-header">
-					<h4><a href="#">Productos</a></h4>
-				</div>
-				<div class="content">
-					<p>Presencial en Madrid. 320+ horas de instrucción. Aprende a desarrollar aplicaciones móviles para iOS con Objective-C, Cocoa Touch y Xcode.</p>
-					<a href="#" class="btn btn-primary col-md-4">Conoce más</a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="content-header">
-					<h4><a href="#">Servicios</a></h4>
-				</div>
-				<div class="content">
-					<p>Presencial en Madrid. 320+ horas de instrucción. Aprende a desarrollar aplicaciones móviles para iOS con Objective-C, Cocoa Touch y Xcode.</p>
-					<a href="#" class="btn btn-primary col-md-4">Conoce más</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="navbar navbar-default navbar-fixed-bottom">
-		<div class="container">
-			<p class="navvbar-text lead pull-left">Sitio hecho por Gabriel</p>
-			<a  href="#" class="navbar-button btn btn-danger pull-right">Subscríbete en YouTube</a>
-		</div>
-	</div>
+	<div class='container'>
+			<div class='row' id='features'>
+				<div class='col-sm-4 feature'>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>Cursos</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img src='img/courses.jpg' alt='Cursos' id='cursos'></img>
+							<p>Nuestros últimos cursos de programación más demandados por las empresas</p>
+							<a href="/protegido/usuarioRegistrado/cursos.html" target="_blank" class='btn btn-warning btn-block'>Ven a aprender</a>
+						</div><!--panel-body-->
+					</div><!--panel-->
+				</div><!--feature-->
+					<div class='col-sm-4 feature'>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>Productos</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img src='img/LP-0-LEAN-PRODUCTS.png' alt='Productos' id='productos'></img>
+							<p>Tenemos  los últimos productos del mercado a precios asequibles y las últimas novedades</p>
+							<a href="/protegido/usuarioRegistrado/productos.html" target="_blank" class='btn btn-danger btn-block'>Compra nuestros productos</a>
+						</div><!--panel-body-->
+					</div><!--panel-->
+				</div><!--feature-->
+					<div class='col-sm-4 feature'>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>Servicios</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img src='img/icon_services.jpg' id="servicios" alt='Servicios'></img>
+							<p>Conoce el conjunto de servicios disponibles tales como páginas web a medida,servicio técnico...</p>
+							<a href="servicios.html" target="_blank" class='btn btn-info btn-block'>Más Información</a>
+						</div>	
+					</div><!--panel-->
+				</div><!--feature-->
+			</div><!--FEATURES-->
+		</div><!--Container-->
+	
 
 
 	<div class="modal fade" id="inicio">
@@ -161,6 +165,41 @@
 			</div>
 		</div>
 	</div>
+	<br/>
+	<br/>
+	<br/>
+	<footer>
+		<div class="container">
+			<div class="col-sm-4">
+				<strong>Sobre Nosotros</strong>
+				<p>
+					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
+					de productos electrónicos.
+				</p>
+			</div><!--col-sm-4-->
+			<div class="col-sm-2">
+				<strong>Navegación</strong>
+				<ul class='unstyled'>
+					<li><a href="index.html">Vetusta</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
+					<li><a href="protegido/usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="protegido/usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
+				</ul>
+			</div><!--col-sm-2-->
+			<div class="col-sm-4">
+				<strong>Redes sociales</strong>
+				<ul class='unstyled'>
+					<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+					<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+				</ul>
+				
+			</div><!--col-sm-4-->
+			<div class="col-md-3 col-md-offset-8">
+				<h5 class='crafted'>Handcrafted with <span class='glyphicon glyphicon-heart'></span></h5>
+			</div>
+		</div><!--container-->
+	</footer>
 <script src="scripts/jquery.js"></script>
 <script src="bootstrap3/js/bootstrap.js"></script>
 </body>

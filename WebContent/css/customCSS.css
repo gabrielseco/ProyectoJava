@@ -1,35 +1,85 @@
 body{
-	margin-bottom:80px;
 }
 .boton{
 	width:100%;
+	margin-top:5%;
 	margin-left:1.5%;
 }
 .centrar{
 	text-align:center;
 }
-/*ORDENADOR MARGEN BOTON REGISTRO*/
-@media only screen 
-and (min-width : 1224px) { 
-	.boton{
- 		margin-top:5%;
- 	}
-/*ORDENADOR LARGO*/
-@media only screen 
-and (min-width : 1824px) {
-	.boton{
- 		margin-top:5%;
- 	}
+
+ul.unstyled{
+	list-style: none;
+	padding:0;
 }
-/*SMARTPHONES*/
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-	
-.navbar-brand {
-	margin-left: auto;
-    margin-right: auto;
-    width: 60px;
-    float: right;
+
+
+footer{
+		background: #333;
+		color:#eee;
+		font-size: 1.2em;
+		padding:20px;
+}
+
+footer a{
+	color:#fff;
+	text-decoration:none;
+	line-height: 1.35rem;
+	margin-bottom: 1.5rem;
+}
+footer a:hover{
+	color:#0073ff;
+	text-decoration:none;
+}
+
+footer strong{
+	display:block;
+	text-transform:uppercase;
+	margin-bottom:0.75rem;
+}
+
+.panel-heading{
+	text-align:center;
+}
+.panel-body{
+	text-align:center;
+}
+#cursos{
+	margin-bottom:0.8em;
+	max-width:280px;
+	height:120px;
+	border-radius:10em;
+	/*border-top-left-radius: 6em;
+	border-top-right-radius: 5em;
+	border-bottom-left-radius: 5em;
+	border-bottom-right-radius: 5em;*/
+}
+
+#productos{
+	max-width:133px;
+}
+
+#servicios{
+	max-width:130px;
+	max-height:125px;
+	margin-bottom:0.8em;
+}
+.crafted{
+		text-align:right;
+		margin-top:0.4rem;
 	}
+
+@media (max-width: 480px){
+	.crafted{
+		text-align:left;
+	}
+}
+/*LANDSCAPE PHONE TO PORTRAIT TABLE*/
+@media (max-width: 768px){
+	
+}
+/*LARGE DESKTOP*/
+@media (max-width: 1200px){
+	
 }

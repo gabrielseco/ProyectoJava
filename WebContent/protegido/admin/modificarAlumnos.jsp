@@ -246,8 +246,8 @@
 				</div>      
     <input type="hidden" name="codigo" value="${sessionScope.modificarAlumnos.secAlumno}"/>
     <div class='pull-right'>
-    	<input type="button" value="Cancelar" onclick="self.location.href='listadoAlumnos.jsp'" class="btn btn-primary" />
     	<input type="submit" value="Actualizar Alumnos" name="submit" class="btn btn-primary" />
+    	<input type="button" value="Cancelar" onclick="self.location.href='listadoAlumnos.jsp'" class="btn btn-primary" />
     </div> 
 </fieldset>
 </form>

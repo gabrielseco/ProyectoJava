@@ -229,15 +229,16 @@ public class Servlet extends HttpServlet {
 			productosAlumnos.consultarProductosCompradosPorCurso(sesion,comandos,request);
 			response.sendRedirect("protegido/admin/alumnosProductos.jsp");
 			break;
+		case "Salir":
+			sesion.invalidate();
+			response.sendRedirect("protegido/admin/admin.html");
+			break;
 		//FRONT-END 
 		case "Contacto":
 			contacto.enviarCorreo(request);
 			response.sendRedirect("index.html");
 			break;
-		case "Salir":
-			sesion.invalidate();
-			response.sendRedirect("protegido/admin/admin.html");
-			break;
+		
 		}
 	}
 }
