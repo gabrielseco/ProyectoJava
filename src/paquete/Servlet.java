@@ -39,6 +39,7 @@ public class Servlet extends HttpServlet {
 	CursosAlumnosDAO cursosAlumnos;
 	ProductosAlumnosDAO productosAlumnos;
 	ContactoDAO contacto;
+	LoginDAO login;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -76,6 +77,7 @@ public class Servlet extends HttpServlet {
 		cursosAlumnos=new CursosAlumnosDAO(miConexion,sentencia);
 		productosAlumnos=new ProductosAlumnosDAO(miConexion,sentencia);
 		contacto=new ContactoDAO();
+		login=new LoginDAO(miConexion,sentencia);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -239,10 +241,16 @@ public class Servlet extends HttpServlet {
 			response.sendRedirect("index.html");
 			break;
 		case "LogIn":
+			if(login.acceso(request,comandos)==0){
+				response.sendRedirect("usuarioRegistrado/index.html");
+			}
+			else{
+				response.sendRedirect("login.html?error=LoginErroneo");
+			}
 			break;
 		case "RegistroAlumnosFront":
 			if(alumnos.registrar(request,comandos)==0){
-				response.sendRedirect("usuarioRegistrado/indexUsuario.html");
+				response.sendRedirect("usuarioRegistrado/index.html");
 			}
 			else{
 				 response.sendRedirect("errorRegistro.jsp?mensajeError=Este alumno ya existe");

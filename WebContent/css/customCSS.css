@@ -49,6 +49,11 @@ footer strong{
 	margin-bottom:0.75rem;
 }
 
+.center-form {
+  width: 330px;
+  margin: 10% auto;
+}
+
 .panel-heading{
 	text-align:center;
 }

@@ -32,14 +32,18 @@
 		$("#localidad").val(formulario[9]);
 		$("#myselect").val(formulario[10]);
 	}
+	function random_character() {
+	    var chars = "0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
+	    return chars.substr( Math.floor(Math.random() * 62), 1);
+	}
 
 	$("#enviar").click(function(){
-		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-	    for( var i=0; i < 5; i++ ){
-	        text += possible.charAt(Math.floor(Math.random() * possible.length));
+		var str = "";
+	    for (var i = 0; i < 32; i++){
+	        str += random_character();
 	    }
-		localStorage.setItem("clave", text);
+	   
+		localStorage.setItem("clave", str);
 		var almacenar="";
 		almacenar+=$("#usuario").val();
 		almacenar+=","+$("#nombre").val();

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Bienvenido a Vetusta</title>
+<link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
+<link rel="stylesheet" href="../css/customCSS.css"/>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-static-top" data-security='user'>
+	<div class="container">
+			<button class="navbar-toggle pull-left " data-toggle="collapse" data-target=".navHeaderCollapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand">Vetusta</a>
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="../servicios.html">Servicios</a></li>
+					<li><a href="cursos.html">Cursos</a></li>
+					<li><a href="productos.html">Productos</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacto<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+							<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+							<li class="divider"></li>
+							<li><a href="#contacto" data-toggle="modal">Contacto</a></li>
+						</ul>
+					</li>
+				</ul>
+				 <ul class='nav navbar-nav navbar-right'>
+						<li class='dropdown'>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-user'></span> Mi Cuenta<b class="caret"></b></a>
+							<ul class='dropdown-menu'>
+								<li>
+								<a href="#" class='cerrarSesion'><span class='glyphicon glyphicon-off'></span> Cerrar Sesión</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!---end navbar right-->
+   				</div>
+			</div>
+	</div><!-- END NAVBAR -->
+	<div class="container">
+		<div class="jumbotron">
+			<h3>Bienvenido a Tienda Vetusta,donde encontrarás los productos informáticos al mejor precio y nuestros últimos cursos.</h3>
+		</div>
+	</div>
+	<div class='container'>
+			<div class='row' id='features'>
+				<div class='col-sm-4 feature'>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>Cursos</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img src='../img/OUR COURSES.png' alt='Cursos' id='cursos'></img>
+							<p>Nuestros últimos cursos de programación más demandados por las empresas</p>
+							<a href="cursos.html" target="_blank" class='btn btn-warning btn-block'>Ven a aprender</a>
+						</div><!--panel-body-->
+					</div><!--panel-->
+				</div><!--feature-->
+					<div class='col-sm-4 feature'>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>Productos</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img src='../img/LP-0-LEAN-PRODUCTS.png' alt='Productos' id='productos'></img>
+							<p>Tenemos  los últimos productos del mercado a precios asequibles y las últimas novedades</p>
+							<a href="productos.html" target="_blank" class='btn btn-danger btn-block'>Compra nuestros productos</a>
+						</div><!--panel-body-->
+					</div><!--panel-->
+				</div><!--feature-->
+					<div class='col-sm-4 feature'>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>Servicios</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img src='../img/icon_services.jpg' id="servicios" alt='Servicios'></img>
+							<p>Conoce el conjunto de servicios disponibles tales como páginas web a medida,servicio técnico...</p>
+							<a href="../servicios.html" target="_blank" class='btn btn-info btn-block'>Más Información</a>
+						</div>	
+					</div><!--panel-->
+				</div><!--feature-->
+			</div><!--FEATURES-->
+		</div><!--Container-->
+	
+	<div class="modal slideup" id="contacto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+					    	<div class="col-sm-10">
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="asunto" class="col-sm-2 control-label">Asunto:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" required="required">
+   				 			</div>
+   				 		</div>
+						<div class="form-group">
+					    	<label for="email" class="col-sm-2 control-label">Email:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="mensaje" class="col-sm-2 control-label">Mensaje:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje" required="required"></textarea>
+   				 			</div>
+   				 		</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success" type="submit">Enviar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<br/>
+	<footer>
+		<div class="container">
+			<div class="col-sm-4">
+				<strong>Sobre Nosotros</strong>
+				<p>
+					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
+					de productos electrónicos.
+				</p>
+				<p>
+					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+							src="https://maps.google.es/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=oviedo&amp;aq=&amp;sll=41.649956,-0.810585&amp;sspn=0.078116,0.169086&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Oviedo,+Asturias,+Principado+de+Asturias&amp;ll=43.361914,-5.849389&amp;spn=0.00475,0.010568&amp;z=14&amp;output=embed"></iframe><br />
+				</p>
+			</div><!--col-sm-4-->
+			<div class="col-sm-2">
+				<strong>Navegación</strong>
+				<ul class='unstyled'>
+					<li><a href="index.html">Vetusta</a></li>
+					<li><a href="../servicios.html">Servicios</a></li>
+					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
+				</ul>
+			</div><!--col-sm-2-->
+			<div class="col-sm-4">
+				<strong>Redes sociales</strong>
+				<ul class='unstyled'>
+					<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+					<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h5 class='crafted'>Handcrafted with <span class='glyphicon glyphicon-heart'></span></h5>
+			</div>				
+		</div><!--container-->
+	</footer>
+<script src="../scripts/jquery.js"></script>
+<script src="../bootstrap3/js/bootstrap.js"></script>
+<script src="../scripts/seguridad.js"></script>
+</body>
+</html>
