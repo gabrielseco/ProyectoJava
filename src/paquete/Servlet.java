@@ -104,7 +104,7 @@ public class Servlet extends HttpServlet {
 			else{
 				 response.sendRedirect("protegido/admin/errorRegistro.jsp?mensajeError=Este alumno ya existe");
 			}
-			alumnos.consultar(comandos,sesion);
+			//alumnos.consultar(comandos,sesion);
 			break;
 		case "ListadoAlumnos":
 			alumnos.consultar(comandos,sesion);
@@ -238,7 +238,16 @@ public class Servlet extends HttpServlet {
 			contacto.enviarCorreo(request);
 			response.sendRedirect("index.html");
 			break;
-		
+		case "LogIn":
+			break;
+		case "RegistroAlumnosFront":
+			if(alumnos.registrar(request,comandos)==0){
+				response.sendRedirect("usuarioRegistrado/indexUsuario.html");
+			}
+			else{
+				 response.sendRedirect("errorRegistro.jsp?mensajeError=Este alumno ya existe");
+			}
+			break;
 		}
 	}
 }

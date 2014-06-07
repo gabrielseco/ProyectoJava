@@ -8,9 +8,38 @@
  * LOS DATOS DEL FORMULARIO AL ENVIAR LOS GUARDO EN EL NAVEGADOR POR SI AL DAR ERROR EN EL USUARIO QUE APAREZCAN POBLADOS LOS CAMPOS
  */
 	
-
+	var url=location.href.split("/");
+	if(url[url.length-1] === 'registroAlumnos.html'){
+		localStorage.removeItem("almacenUsuario");
+		localStorage.removeItem("erroresFormulario");
+	}
+	if(localStorage.getItem("erroresFormulario")!==null){
+		var errores=localStorage.getItem("erroresFormulario");
+		$("#principio").append(errores);
+	}
+	if(localStorage.getItem("almacenUsuario")!==null){
+		var recuperarAlmacen=localStorage.getItem("almacenUsuario");
+		var formulario=recuperarAlmacen.split(",");
+		$("#usuario").val(formulario[0]);
+		$("#nombre").val(formulario[1]);
+		$("#apellidos").val(formulario[2]);
+		$("#telefono").val(formulario[3]);
+		$("#email").val(formulario[4]);
+		$("#calle").val(formulario[5]);
+		$("#numero").val(formulario[6]);
+		$("#piso").val(formulario[7]);
+		$("#codigoP").val(formulario[8]);
+		$("#localidad").val(formulario[9]);
+		$("#myselect").val(formulario[10]);
+	}
 
 	$("#enviar").click(function(){
+		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	    for( var i=0; i < 5; i++ ){
+	        text += possible.charAt(Math.floor(Math.random() * possible.length));
+	    }
+		localStorage.setItem("clave", text);
 		var almacenar="";
 		almacenar+=$("#usuario").val();
 		almacenar+=","+$("#nombre").val();
@@ -27,7 +56,7 @@
 		var password1=$("#contraseña1").val();
 		var password2=$("#contraseña2").val();
 		$("#dangerAlert").remove();
-		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
+		var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
 		var select = $("#myselect option:selected").text();
 		if(select==="Selecciona"){
 			$("#provinciasIncorrectas").remove();
@@ -49,7 +78,7 @@
 		}
 		else if(password1.length==0||password2.length==0){
 			$("#dangerAlert").remove();
-			var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
+			var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
 			html+="<h4 id='contraseñasVacias'>Las contraseñas están vacías</h4>";
 			html+="</div>";
 			$("#principio").append(html);
@@ -59,7 +88,7 @@
 		}
 		else if(password1!==password2){
 			$("#dangerAlert").remove();
-			var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
+			var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores:</h4>";
 			html+="<h4 id='contraseñasIncorrectas'>Las contraseñas son incorrectas</h4>";
 			html+="</div>";
 			$("#principio").append(html);
@@ -74,8 +103,9 @@
 	});
 	//Si hay un error despliego el formulario con un danger alert informando al usuario
 	var errorUser=getParameterByName('error');
-	if(errorUser>""){
-		var html="<div class='alert alert-danger alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores: El usuario ya está introducido</h4><h4>Introduce las contraseñas de nuevo</h4></div>";
+	if(errorUser > ""){
+		var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Errores: El usuario ya está introducido</h4><h4>Introduce las contraseñas de nuevo</h4></div>";
+		$(".alert").remove();
 		$("#principio").append(html);
 		var recuperarAlmacen=localStorage.getItem("almacenUsuario");
 		var formulario=recuperarAlmacen.split(",");

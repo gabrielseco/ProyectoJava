@@ -1,4 +1,5 @@
 body{
+	background-color:#ccc;
 }
 .boton{
 	width:100%;
@@ -12,6 +13,15 @@ body{
 ul.unstyled{
 	list-style: none;
 	padding:0;
+}
+
+.ajustarSpanIniciarSesion{
+	margin-top:0.6em;
+	padding-left:0.3em;
+}
+
+.derechaInput{
+	text-align:right;
 }
 
 
@@ -50,10 +60,6 @@ footer strong{
 	max-width:280px;
 	height:120px;
 	border-radius:10em;
-	/*border-top-left-radius: 6em;
-	border-top-right-radius: 5em;
-	border-bottom-left-radius: 5em;
-	border-bottom-right-radius: 5em;*/
 }
 
 #productos{

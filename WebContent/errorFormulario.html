@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Errores en el formulario</title>
+<link rel="stylesheet" href="bootstrap3/css/bootstrap.css"/>
+<link rel="stylesheet" href="css/customCSS.css"/>
+<style>
+body{
+	background-color:#ecf5b2;
+}
+</style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-static-top">
+	<div class="container">
+			<button class="navbar-toggle pull-left " data-toggle="collapse" data-target=".navHeaderCollapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand">Vetusta</a>
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
+					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="/usuarioRegistrado/productos.html">Productos</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacto<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+							<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+							<li class="divider"></li>
+							<li><a href="#contacto" data-toggle="modal">Contacto</a></li>
+						</ul>
+					</li>
+				</ul>
+				 <ul class="nav navbar-nav navbar-right">
+				      <li>
+				      <a href="#inicio" data-toggle="modal"  >
+				         Iniciar Sesion
+				      </a>
+				      </li>
+				      <li>
+				      	<button href='#registro' data-toggle='modal' class="btn btn-primary boton">
+				         	Registrarse
+				      	</button>
+				      </li>
+				 </ul>
+   				</div>
+			</div>
+	</div><!-- END NAVBAR -->
+	
+	
+	<article>
+		<div class="container">
+			<a href="#principio">
+			</a>
+			
+			<form action="Servlet?submit=RegistroAlumnosFront" id='registro-alumnos' name='registro-alumnos' method="post" onsubmit='return enviar()'
+			class='form-horizontal'>
+			<fieldset>
+				<legend>Formulario de Alta</legend>
+				<a id='principio'></a>
+				<div class='form-group'>
+					<label class='col-sm-2 control-label' for='usuario'>Usuario:</label>
+					<div class='col-sm-3'>
+						<input type="text" class="form-control" id='usuario'
+							name="usuario" required
+							placeholder="Inserte su nombre de usuario" />
+					</div>
+				</div>
+				<div id="passwords">
+					<div class='form-group'>
+						<label class='col-sm-2 control-label' for='constraseña1'>Contraseña:</label>
+						<div class='col-sm-3'>
+							<input type="password" class="form-control" name="password1"
+								required placeholder="Inserte su contraseña" id="contraseña1" />
+						</div>
+						<label class='col-sm-2 control-label' for='contraseña2'>Repite
+							tu contraseña:</label>
+						<div class='col-sm-3'>
+							<input type="password" class="form-control" name="password2"
+								required placeholder="Inserte su contraseña de nuevo"
+								id="contraseña2" />
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='col-sm-2 control-label' for='nombre'>Nombre:</label>
+					<div class='col-sm-3'>
+						<input type="text" class="form-control" id='nombre' name="nombre"
+							required="required" placeholder="Inserte su nombre" />
+					</div>
+					<label class='col-sm-2 control-label' for='apellidos'>Apellidos:</label>
+					<div class='col-sm-3'>
+						<input type="text" class="form-control" id='apellidos'
+							name="apellidos" required="required"
+							placeholder="Inserte sus apellidos" />
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='col-sm-2 control-label' for='telefono'>Telefono:</label>
+					<div class='col-sm-3'>
+						<input type="tel" class="form-control" id='telefono'
+							name="telefono" required="required"
+							placeholder="Inserte su telefono" pattern="|^\d{9}$|"
+							title="Se deben introducir 9 números" />
+					</div>
+					<label class='col-sm-2 control-label' for='email'>Email:</label>
+					<div class='col-sm-3'>
+						<input type="email" class="form-control" id='email' name="email"
+							required="required" placeholder="Inserte su email" />
+					</div>
+				</div>
+				<hr />
+				<h3>Datos Domiciliarios</h3>
+				<div class='form-group'>
+					<label class='col-sm-2 control-label' for='calle'>Calle:</label>
+					<div class='col-sm-4'>
+						<input type="text" id='calle' name="calle" class='form-control'
+							required="required" placeholder="Inserte su calle" />
+					</div>
+					<label class='col-sm-2 control-label numeroPortal' for='numero'>Número
+						Portal:</label>
+					<div class='col-sm-1'>
+						<input type="number" class='form-control derechaInput' id='numero'
+							required="required" name="numero" />
+					</div>
+					<label class='col-sm-1 control-label' for='piso'>Piso:</label>
+					<div class='col-sm-1'>
+						<input type="text" class='form-control derechaInput' required="required"
+							id='piso' name="piso" />
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='col-sm-2 control-label' for='codigoP'>CP:</label>
+					<div class='col-sm-1'>
+						<input type="text" class='form-control derechaInput' name="codigoPostal"
+							id="codigoP" required="required" pattern="^[0-9]{5}$"
+							title="Se deben introducir 5 números" />
+					</div>
+					<label class='col-sm-1 control-label' for='localidad'>Localidad:</label>
+					<div class='col-sm-2'>
+						<input type="text" class="form-control" id='localidad'
+							name="localidad" required="required"
+							placeholder="Inserte su localidad" />
+					</div>
+					<label id='provinciaLabel' class='col-sm-2 control-label'
+						for='myselect'>Provincia:</label>
+					<div class='col-sm-3'>
+						<select id="myselect" class="form-control text-center"
+							name="provincia" required="required">
+							<option>Selecciona</option>
+							<option>Andalucia</option>
+							<option>Aragon</option>
+							<option>Asturias</option>
+							<option>Baleares</option>
+							<option>Canarias</option>
+							<option>Cantabria</option>
+							<option>Castilla-La Mancha</option>
+							<option>Castilla y Leon</option>
+							<option>Cataluña</option>
+							<option>Ceuta</option>
+							<option>Extremadura</option>
+							<option>Galicia</option>
+							<option>La Rioja</option>
+							<option>Madrid</option>
+							<option>Melilla</option>
+							<option>Murcia</option>
+							<option>Navarra</option>
+							<option>Pais Vasco</option>
+							<option>Valencia</option>
+						</select>
+					</div>
+				</div>
+				<br> <br> 
+				<div class='pull-right'>
+					<input type="submit" name="submit" id="enviar"
+					class="btn btn-warning  "
+					value="Enviar Registro Alumnos" />
+				</div>
+			</fieldset>
+		</form>
+			
+		</div>
+	</article>
+	<br/>
+	<footer>
+		<div class="container">
+			<div class="col-sm-4">
+				<strong>Sobre Nosotros</strong>
+				<p>
+					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
+					de productos electrónicos.
+				</p>
+				<p>
+					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+							src="https://maps.google.es/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=oviedo&amp;aq=&amp;sll=41.649956,-0.810585&amp;sspn=0.078116,0.169086&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Oviedo,+Asturias,+Principado+de+Asturias&amp;ll=43.361914,-5.849389&amp;spn=0.00475,0.010568&amp;z=14&amp;output=embed"></iframe><br />
+				</p>
+			</div><!--col-sm-4-->
+			<div class="col-sm-2">
+				<strong>Navegación</strong>
+				<ul class='unstyled'>
+					<li><a href="index.html">Vetusta</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
+					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
+				</ul>
+			</div><!--col-sm-2-->
+			<div class="col-sm-4">
+				<strong>Redes sociales</strong>
+				<ul class='unstyled'>
+					<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+					<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h5 class='crafted'>Handcrafted with <span class='glyphicon glyphicon-heart'></span></h5>
+			</div>				
+		</div><!--container-->
+	</footer>
+	
+	<div class="modal slideup" id="contacto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+					    	<div class="col-sm-10">
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="asunto" class="col-sm-2 control-label">Asunto:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" required="required">
+   				 			</div>
+   				 		</div>
+						<div class="form-group">
+					    	<label for="email" class="col-sm-2 control-label">Email:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="mensaje" class="col-sm-2 control-label">Mensaje:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje" required="required"></textarea>
+   				 			</div>
+   				 		</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success" type="submit">Enviar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="inicio">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=LogIn" method="post" class="form-horizontal" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h4 class="centrar">Inicio de Sesión</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+					    <label for="j_username" class="col-sm-2 control-label">Usuario</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="j_username" name="j_username" placeholder="Usuario">
+   				 		</div>
+   				 	</div>
+					<div class="form-group">
+					    <label for="j_password" class="col-sm-2 control-label">Contraseña</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="j_password" name="j_password" placeholder="Contraseña">
+   				 		</div>
+   				 	</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#registro" data-toggle="modal" class="btn btn-primary pull-left">Registrate</a>
+					<strong><span class="pull-left ajustarSpanIniciarSesion">Todavía no tienes una cuenta?</span></strong>
+					<button class="btn btn-success" type="submit">Iniciar Sesión</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+<script src="scripts/jquery.js"></script>
+<script src="bootstrap3/js/bootstrap.js"></script>
+<script src="scripts/alumnos.js"></script>
+</body>
+</html>
