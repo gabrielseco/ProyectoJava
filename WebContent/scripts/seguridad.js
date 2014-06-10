@@ -3,10 +3,9 @@
  */
 if($(".navbar").attr('data-security','user')){
 	if(localStorage.getItem("clave")==null && sessionStorage.getItem("clave")==null){
-		location.href='login.html';
+		location.href='../login.html';
 	}
-	
-	if(localStorage.getItem("clave")!=null){
+	else if(localStorage.getItem("clave")!=null){
 		var clave=localStorage.getItem("clave");
 		localStorage.removeItem("clave");
 		sessionStorage.setItem("clave", clave);

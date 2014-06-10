@@ -1,10 +1,325 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Servicios-Vetusta</title>
+<meta charset="UTF-8">
+<title>Servicios</title>
+<link rel="stylesheet" href="bootstrap3/css/bootstrap.css"/>
+<link rel="stylesheet" href="css/customCSS.css"/>
+<style>
+body{
+	background-color:#fff;
+}
+</style>
 </head>
 <body>
+<div class="navbar navbar-inverse navbar-static-top">
+	<div class="container">
+			<button class="navbar-toggle pull-left " data-toggle="collapse" data-target=".navHeaderCollapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand">Vetusta</a>
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="servicios.html">Servicios</a></li>
+					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacto<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+							<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+							<li class="divider"></li>
+							<li><a href="#contacto" data-toggle="modal">Contacto</a></li>
+						</ul>
+					</li>
+				</ul>
+				 <ul class="nav navbar-nav navbar-right">
+				      <li>
+				      <a href="#inicio" data-toggle="modal"  >
+				         Iniciar Sesion
+				      </a>
+				      </li>
+				      <li>
+				      	<button href='#registro' data-toggle='modal' class="btn btn-primary boton">
+				         	Registrarse
+				      	</button>
+				      </li>
+				 </ul>
+   				</div>
+			</div>
+	</div><!-- END NAVBAR -->
+	
+	<div id="article">
+		<div class="container">
+			<div class="col-sm-4">
+				<div class="titular">
+					<h3>Tiendas Online</h3>
+				</div>
+				<div class="tienda-body">
+					<p>Le ayudamos a crear un escaparate para su empresa abierto 24 horas, 
+						para que pueda seguir vendiendo incluso los fines de semana, vacaciones.
+						Sea pyme o gran empresa, tenemos la solución que necesita, desde los catálogos informativos más sencillos 
+						hasta aquellas soluciones más complejas, con carritos de la compra avanzados, 
+						interconexión con sus sistemas informáticos actuales… siempre con un diseño bonito y elegante
+						orientado a la venta y acorde con la imagen de su empresa.</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="titular">
+					<h3>Cursos</h3>
+				</div>
+				<div class="cursos-body">
+				<p>
+					Le ayuduamos a aumentar sus conocimientos web para que lo pueda utilizar en su día a día.
+					Estamos actualizados en la enseñanza de nuevas tecnologías web como HTML5,CSS3 y Javascript.
+					También damos cursos orientados a la creación de Apps orientadas al móvil para dispositivos Apple y Android.
+					Podrá llegar a tener un conocimiento que antes usted consideraba lejano.
+				</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="titular">
+					<h3>Productos</h3>
+				</div>
+				<div class="productos-body">
+					<p>
+						Tenemos una amplia gama de consumibles electrónicos,los cuales vendemos a un precio asequible para todos nuestos clientes.
+						Estos productos pueden ser desde ordenadores de la última gama hasta móviles Low Cost.
+						Puede pagar a través de su cuenta PayPal,su tarjeta de crédito o la tarjeta de compra del Corte Inglés.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 
+
+	<div class="modal fade" id="inicio">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=LogIn" method="post" class="form-horizontal" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h4 class="centrar">Inicio de Sesión</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+					    <label for="Usuario" class="col-sm-2 control-label">Usuario</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="Usuario" name="usuario" placeholder="Usuario">
+   				 		</div>
+   				 	</div>
+					<div class="form-group">
+					    <label for="Password" class="col-sm-2 control-label">Contraseña</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="Password" name="password" placeholder="Contraseña">
+   				 		</div>
+   				 	</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#registro" data-toggle="modal" class="btn btn-primary pull-left">Registrate</a>
+					<strong><span class="pull-left ajustarSpanIniciarSesion">Todavía no tienes una cuenta?</span></strong>
+					<button id='iniciarSesion' class="btn btn-success" type="submit">Iniciar Sesión</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal slideup" id="contacto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+					    	<div class="col-sm-10">
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="asunto" class="col-sm-2 control-label">Asunto:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" required="required">
+   				 			</div>
+   				 		</div>
+						<div class="form-group">
+					    	<label for="email" class="col-sm-2 control-label">Email:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="mensaje" class="col-sm-2 control-label">Mensaje:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje" required="required"></textarea>
+   				 			</div>
+   				 		</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success" type="submit">Enviar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<br/>
+	<footer>
+		<div class="container">
+			<div class="col-sm-4">
+				<strong>Sobre Nosotros</strong>
+				<p>
+					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
+					de productos electrónicos.
+				</p>
+				<p>
+					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+							src="https://maps.google.es/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=oviedo&amp;aq=&amp;sll=41.649956,-0.810585&amp;sspn=0.078116,0.169086&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Oviedo,+Asturias,+Principado+de+Asturias&amp;ll=43.361914,-5.849389&amp;spn=0.00475,0.010568&amp;z=14&amp;output=embed"></iframe><br />
+				</p>
+			</div><!--col-sm-4-->
+			<div class="col-sm-2">
+				<strong>Navegación</strong>
+				<ul class='unstyled'>
+					<li><a href="index.html">Vetusta</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
+					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
+				</ul>
+			</div><!--col-sm-2-->
+			<div class="col-sm-4">
+				<strong>Redes sociales</strong>
+				<ul class='unstyled'>
+					<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+					<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h5 class='crafted'>Handcrafted with <span class='glyphicon glyphicon-heart'></span></h5>
+			</div>				
+		</div><!--container-->
+	</footer>
+	<div class="modal fade" id="registro">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=RegistroAlumnosFront" method="post" class="form-horizontal" onsubmit="" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h4 class="centrar">Registro</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+					    <label for="usuario" class="col-sm-2 control-label">Usuario:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required="required">
+   				 		</div>
+   				 	</div>
+					<div class="form-group">
+					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
+					    <div class="col-sm-4">
+					      <input type="password" class="form-control" id="password1" name="password1" placeholder="Contraseña" required="required">
+   				 		</div>
+   				 		<label for="password2" class="col-sm-2 control-label">Contraseña:</label>
+					    <div class="col-sm-4">
+					      <input type="password" class="form-control" id="password2" name="password2" placeholder="Repetir Contraseña" required="required">
+   				 		</div>
+   				 	</div>
+   				 	<div class="form-group">
+					    <label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="Nombre" name="nombre" placeholder="Nombre" required="required">
+   				 		</div>
+   				 	</div>
+   				 	<div class="form-group">
+					    <label for="apellidos" class="col-sm-2 control-label">Apellidos:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required="required">
+   				 		</div>
+   				 	</div>
+   				 	<div class="form-group">
+					    <label for="telefono" class="col-sm-2 control-label">TÉL:</label>
+					    <div class="col-sm-10">
+					      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required="required">
+   				 		</div>
+   				 	</div>
+   				 	<div class="form-group">
+					   <label for="email" class="col-sm-2 control-label">Email:</label>
+					    <div class="col-sm-10">
+					      <input type="email" class="form-control" id="Email" name="email" placeholder="Email" required="required">
+   				 		</div> 
+   				 	</div>
+   				 	<div class="form-group">
+   				 		<label for='calle' class="col-sm-2 control-label">Calle:</label>
+   				 		<div class="col-sm-10">
+   				 			<input type="text" class="form-control" id="calle" name="calle" placeholder="Calle" required="required"/>
+   				 		</div>
+   				 	</div>
+   				 	<div class="form-group">
+   				 		<label for="numero" class="col-sm-2 control-label">Portal:</label>
+   				 		<div class="col-sm-2">
+   				 			<input type="number" class="form-control derechaInput" id="numero" name="numero" required="required"> 
+   				 		</div>
+   				 		<label for="piso" class="col-sm-2 control-label">Piso:</label>
+   				 		<div class="col-sm-2">
+   				 			<input type="number" class="form-control derechaInput" id="piso" name="piso" required="required"/>
+   				 		</div>
+   				 		<label for="codigoPostal" class="col-sm-2 control-label">CP:</label>
+   				 		<div class="col-sm-2">
+   				 			<input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required="required" pattern="^[0-9]{5}$"/>
+   				 		</div>
+   				 	</div>
+   				 	<div class="form-group">
+   				 		<label class="col-sm-2 control-label" for="localidad">Localidad:</label>
+   				 		<div class="col-sm-4">
+   				 			<input type="text" class="form-control" id='localidad' name="localidad" placeholder="Localidad" required="required"/>
+   				 		</div>
+   				 		<label id='provinciaLabel' class='col-sm-2 control-label'
+						for='myselect'>Provincia:</label>
+					<div class='col-sm-4'>
+						<select id="myselect" class="form-control text-center"
+							name="provincia" required="required">
+							<option>Selecciona</option>
+							<option>Andalucia</option>
+							<option>Aragon</option>
+							<option>Asturias</option>
+							<option>Baleares</option>
+							<option>Canarias</option>
+							<option>Cantabria</option>
+							<option>Castilla-La Mancha</option>
+							<option>Castilla y Leon</option>
+							<option>Cataluña</option>
+							<option>Ceuta</option>
+							<option>Extremadura</option>
+							<option>Galicia</option>
+							<option>La Rioja</option>
+							<option>Madrid</option>
+							<option>Melilla</option>
+							<option>Murcia</option>
+							<option>Navarra</option>
+							<option>Pais Vasco</option>
+							<option>Valencia</option>
+						</select>
+					</div>
+   				 	</div>
+				</div>
+				<div class="modal-footer">
+					<input class="btn btn-success" id='enviar' type="submit" value="Registrarse" />
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<script src="scripts/jquery.js"></script>
+<script src="bootstrap3/js/bootstrap.js"></script>
+<script src="scripts/alumnosFront.js"></script>
+<script src="scripts/login.js"></script>
 </body>
 </html>

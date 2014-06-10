@@ -40,6 +40,8 @@ public class Servlet extends HttpServlet {
 	ProductosAlumnosDAO productosAlumnos;
 	ContactoDAO contacto;
 	LoginDAO login;
+	ProductosJSON jsonProductos;
+	CursosJSON jsonCursos;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -78,6 +80,8 @@ public class Servlet extends HttpServlet {
 		productosAlumnos=new ProductosAlumnosDAO(miConexion,sentencia);
 		contacto=new ContactoDAO();
 		login=new LoginDAO(miConexion,sentencia);
+		jsonProductos =new ProductosJSON(miConexion,sentencia);
+		jsonCursos = new CursosJSON(miConexion,sentencia);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -255,6 +259,14 @@ public class Servlet extends HttpServlet {
 			else{
 				 response.sendRedirect("errorRegistro.jsp?mensajeError=Este alumno ya existe");
 			}
+			break;
+		case "ProductosJSON":
+			jsonProductos.consultar(request,comandos,sesion);
+			response.sendRedirect("api/productos/productos.jsp");
+			break;
+		case "CursosJSON":
+			jsonCursos.consultar(request,comandos,sesion);
+			response.sendRedirect("api/cursos/cursos.jsp");
 			break;
 		}
 	}

@@ -24,6 +24,34 @@ ul.unstyled{
 	text-align:right;
 }
 
+.underline{
+	border-bottom:1px solid black;
+	width:100%;
+}
+
+.article-body{
+	width:80%;
+	color:white;
+}
+
+#article{
+	padding:1.8rem;
+}
+#article p{
+	padding:0.6rem;
+	font-family:'Medula One',cursive;
+	font-size:1.4rem;
+	
+}
+
+.titular{
+	display:block;
+	padding:1.85rem;
+	color:white;
+	line-height:25px;
+	text-align:center;
+	background-image:url(../img/courses.jpg);
+}
 
 footer{
 		background: #333;
