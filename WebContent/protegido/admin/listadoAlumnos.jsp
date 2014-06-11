@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<br />
-			<table id="tabla"
+			<table id="tabla" 
 				class="table-striped  table-condensed table-responsive ">
 				<thead>
 					<tr>

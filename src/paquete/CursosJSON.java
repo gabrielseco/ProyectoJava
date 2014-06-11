@@ -41,7 +41,7 @@ public class CursosJSON {
 				cadena += "\"precio\":\""+resultados.getDouble(7)+"\",\n";
 				cadena += "\"plazas\":\""+resultados.getInt(8)+"\",\n";
 				cadena += "\"inscritos\":\""+resultados.getInt(9)+"\",\n";
-				cadena += "\"imagen\":\"../../cursos/"+resultados.getString(10)+"\"\n";
+				cadena += "\"imagen\":\"../cursos/"+resultados.getString(10)+"\"\n";
 				cadena += "},\n";
 			}
 		} catch (SQLException e) {

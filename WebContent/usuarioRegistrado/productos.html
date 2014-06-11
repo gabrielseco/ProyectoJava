@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
 <link rel="stylesheet" href="../css/customCSS.css"/></head>
 </head>
-<body>
+<body ng-app="myApp">
 <div class="navbar navbar-inverse navbar-static-top" data-security='user'>
 	<div class="container">
 			<button class="navbar-toggle pull-left " data-toggle="collapse" data-target=".navHeaderCollapse">
@@ -44,8 +44,109 @@
    				</div>
 			</div>
 	</div><!-- END NAVBAR -->
+	
+	<div ng-controller="MainCtrl" class="article">
+		<div class="container">
+			<div class="col-md-10">
+				<ul class="productos">
+		          <li ng-repeat="producto in productos | filter:query | orderBy:orderProp" class="thumbnail">
+		            <a href="#/productos/{{producto.secProducto}}" class="thumb"><img ng-src="{{producto.imagen}}"></a>
+		            <a href="#/productos/{{producto.secProducto}}" class="nombreProducto">{{producto.nombre}}</a>
+		            <p>{{producto.descripcion}}</p>
+		          </li>
+        		</ul>
+			</div>
+			<div class="col-md-2">
+				Búsqueda: <input class="form-control" ng-model="query">
+        		Ordenado por:
+		        <select class="form-control" ng-model="orderProp">
+		          <option value="nombre">Alfabético</option>
+		          <option value="edad">Nuevo</option>
+		        </select>
+			</div>
+		</div>
+	</div>
+	
+	<footer>
+		<div class="container">
+			<div class="col-sm-4">
+				<strong>Sobre Nosotros</strong>
+				<p>
+					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
+					de productos electrónicos.
+				</p>
+				<p>
+					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+							src="https://maps.google.es/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=oviedo&amp;aq=&amp;sll=41.649956,-0.810585&amp;sspn=0.078116,0.169086&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Oviedo,+Asturias,+Principado+de+Asturias&amp;ll=43.361914,-5.849389&amp;spn=0.00475,0.010568&amp;z=14&amp;output=embed"></iframe><br />
+				</p>
+			</div><!--col-sm-4-->
+			<div class="col-sm-2">
+				<strong>Navegación</strong>
+				<ul class='unstyled'>
+					<li><a href="index.html">Vetusta</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
+					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
+					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
+				</ul>
+			</div><!--col-sm-2-->
+			<div class="col-sm-4">
+				<strong>Redes sociales</strong>
+				<ul class='unstyled'>
+					<li><a href="http://twitter.com/VetustaInfor">Twitter</a></li>
+					<li><a href="http://www.facebook.com/VetustaInfor">Facebook</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h5 class='crafted'>Handcrafted with <span class='glyphicon glyphicon-heart'></span></h5>
+			</div>				
+		</div><!--container-->
+	</footer>
+	<div class="modal slideup" id="contacto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+					    	<div class="col-sm-10">
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="asunto" class="col-sm-2 control-label">Asunto:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" required="required">
+   				 			</div>
+   				 		</div>
+						<div class="form-group">
+					    	<label for="email" class="col-sm-2 control-label">Email:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="mensaje" class="col-sm-2 control-label">Mensaje:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje" required="required"></textarea>
+   				 			</div>
+   				 		</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success" type="submit">Enviar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 <script src="../scripts/jquery.js"></script>
 <script src="../bootstrap3/js/bootstrap.js"></script>
 <script src="../scripts/seguridad.js"></script>
+<script src="../scripts/angular.js"></script>
+<script src="../scripts/mainProductos.js"></script>
 </body>
 </html>
