@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Cursos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
@@ -37,7 +37,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-user'></span> Mi Cuenta<b class="caret"></b></a>
 							<ul class='dropdown-menu'>
 								<li>
-								<a href="#" class='cerrarSesion'><span class='glyphicon glyphicon-off'></span> Cerrar Sesión</a>
+								<a href="#" class='cerrarSesion'><span class='glyphicon glyphicon-off'></span> Cerrar SesiÃ³n</a>
 								</li>
 							</ul>
 						</li>
@@ -46,23 +46,7 @@
 			</div>
 	</div><!-- END NAVBAR -->
 	
-	
-	<div ng-controller="MainCtrl" class="article">
-		<div class="container">
-			<div class="col-md-2">
-				Búsqueda: <input class="form-control" ng-model="query">
-			</div>
-			<div class="col-md-10">
-				<ul class="productos">
-		          <li ng-repeat="curso in cursos |orderBy:'nombre'|filter:query" class="thumbnail">
-		            <a href="#/cursos/{{curso.secCurso}}" class="thumb"><img ng-src="{{curso.imagen}}"></a>
-		            <a href="#/cursos/{{curso.secCurso}}" class="nombreCurso">{{curso.nombre}}</a>
-		            <p><a href="/inscribirse">Inscribirse</a></p>
-		          </li>
-        		</ul>
-			</div>
-		</div>
-	</div>
+	<cursos-listado class="article"></cursos-listado>
 	
 	
 	<footer>
@@ -70,8 +54,8 @@
 			<div class="col-sm-4">
 				<strong>Sobre Nosotros</strong>
 				<p>
-					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
-					de productos electrónicos.
+					Somos una tienda situada en el norte de EspaÃ±a,Oviedo.Estamos especializados en la formaciÃ³n de cursos en InformÃ¡tica a la vez que vendemos una serie
+					de productos electrÃ³nicos.
 				</p>
 				<p>
 					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
@@ -79,7 +63,7 @@
 				</p>
 			</div><!--col-sm-4-->
 			<div class="col-sm-2">
-				<strong>Navegación</strong>
+				<strong>NavegaciÃ³n</strong>
 				<ul class='unstyled'>
 					<li><a href="index.html">Vetusta</a></li>
 					<li><a href="servicios.html">Servicios</a></li>
@@ -105,7 +89,7 @@
 			<div class="modal-content">
 				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">×</button>
+						<button type="button" class="close" data-dismiss="modal">Ã—</button>
 						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
 					</div>
 					<div class="modal-body">

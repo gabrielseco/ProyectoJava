@@ -79,7 +79,7 @@ public class Servlet extends HttpServlet {
 		productos=new ProductosDAO(miConexion,sentencia);
 		cursosAlumnos=new CursosAlumnosDAO(miConexion,sentencia);
 		productosAlumnos=new ProductosAlumnosDAO(miConexion,sentencia);
-		contacto=new ContactoDAO();
+		contacto=new ContactoDAO(miConexion,sentencia);
 		login=new LoginDAO(miConexion,sentencia);
 		jsonProductos =new ProductosJSON(miConexion,sentencia);
 		jsonCursos = new CursosJSON(miConexion,sentencia);
@@ -270,6 +270,16 @@ public class Servlet extends HttpServlet {
 		case "CursosJSON":
 			jsonCursos.consultar(request,comandos,sesion);
 			response.sendRedirect("api/cursos/cursos.jsp");
+			break;
+		case "InscribirseCurso":
+			int inscripcion = cursosAlumnos.inscripcion(request,comandos,sesion);
+			if(inscripcion == 0){
+				contacto.enviarConfirmacion(request,comandos);
+				response.sendRedirect("usuarioRegistrado/cursos.html?confirmacion=YES");
+			}
+			else{
+				response.sendRedirect("usuarioRegistrado/cursos.html?confirmacion=NO");
+			}
 			break;
 		}
 	}

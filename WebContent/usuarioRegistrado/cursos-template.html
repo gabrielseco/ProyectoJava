@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<div class="container">
+			<div ng-repeat="curso in cursos |orderBy:'nombre'" class="col-md-4">
+				<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class='panel-title'>{{curso.nombre}}</h3>
+						</div><!--panel-heading-->
+						<div class='panel-body'>
+							<img ng-src="{{curso.imagen}}" alt="{{curso.nombre}}">
+							<p><strong>Horario:</strong>{{curso.horario}}</p>
+							<div class="label label-success price"><span class='glyphicon glyphicon-tag'></span>{{curso.precio+"0"}}<sup> €</sup></div>
+							<a ng-click="inscribirseCurso(curso.secCurso,curso.precio)" class="btn btn-primary btn-block">Apúntate</a>
+						</div><!--panel-body-->
+					</div><!--panel-->
+			</div>
+</div>

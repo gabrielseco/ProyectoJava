@@ -249,4 +249,55 @@ public class CursosAlumnosDAO {
 	
 	}
 	
+	
+	//METODO QUE INSCRIBE EN USUARIOS DESDE usuarioRegistrado/cursos.html
+	public int inscripcion(HttpServletRequest request, Properties comandos,
+			HttpSession sesion) {
+		// TODO Auto-generated method stub
+		String idCurso = request.getParameter("id");
+		String idUsuario = request.getParameter("idUs");
+		String precio = request.getParameter("precio");
+		Double importe  = Double.parseDouble(precio);
+		Date fechaJava=new Date();
+		java.sql.Date fecha=new java.sql.Date(fechaJava.getTime());
+		String inscritos1 = "";
+		int inscritos = 0;
+		
+		try {
+			sentencia = miConexion.prepareStatement(comandos.getProperty("insertarCursosAlumnos"));
+			sentencia.setString(1, idCurso);
+			sentencia.setString(2, idUsuario);
+			sentencia.setDate(3, fecha);
+			sentencia.setDouble(4, importe);
+			sentencia.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Error al inscribirse en el curso "+e.getMessage()+e.getErrorCode());
+			return -1;
+		}
+		
+			
+			try {
+				sentencia = miConexion.prepareStatement(comandos.getProperty("inscritosCurso"));
+				sentencia.setString(1, idCurso);
+				resultados = sentencia.executeQuery();
+				resultados.next();
+				inscritos1 = resultados.getString(1);
+				inscritos = Integer.parseInt(inscritos1);
+				inscritos +=1;
+			} catch (SQLException e1) {
+				System.out.println("Error al devolver inscritos inscritos "+e1.getMessage()+e1.getErrorCode());
+			}
+			
+			
+		try {
+			sentencia = miConexion.prepareStatement(comandos.getProperty("actualizarInscritos"));
+			sentencia.setInt(1, inscritos);
+			sentencia.setString(2, idCurso);
+			sentencia.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("ERROR AL ACTUALIZAR INSCRITOS "+e.getMessage()+e.getErrorCode());
+		}
+		return 0;
+	}
+	
 }

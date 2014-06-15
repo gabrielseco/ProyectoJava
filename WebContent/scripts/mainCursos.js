@@ -6,8 +6,17 @@
 
 	var myApp = angular.module("myApp", []);
 	
-        myApp.controller("MainCtrl", function($scope, $http) {
-        	$http.get('../Servlet?submit=CursosJSON').success(function(data) {
-                $scope.cursos= data;
-              });            
-        } );
+	myApp.directive('cursosListado',function(){
+		return{
+			restrict:'E',
+			templateUrl:'cursos-template.html',
+			controller:function($http,$scope){
+				$http.get('../Servlet?submit=CursosJSON').success(function(data) {
+	                $scope.cursos= data;
+	              });
+	        	$scope.inscribirseCurso=function(secCurso,precio){
+	        		location.href='../Servlet?submit=InscribirseCurso&id='+secCurso+"&precio="+precio+"&idUs="+sessionStorage.getItem("idUsuario");
+	        	};
+			}
+		};
+	});

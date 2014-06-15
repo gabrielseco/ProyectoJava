@@ -28,7 +28,7 @@ public class CursosJSON {
 		String cadena = "[\n";
 
 		try {
-			sentencia=miConexion.prepareStatement(comandos.getProperty("listarCursos"));
+			sentencia=miConexion.prepareStatement(comandos.getProperty("listarCursosJSON"));
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
 				cadena += "{\n";

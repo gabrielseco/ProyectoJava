@@ -7,6 +7,24 @@ img{
 	
 }
 
+.price{
+	font-size:1.6em;
+	position: absolute;
+	top:0px;
+	right: -10px;
+	padding: 10px;
+}
+ .price sup{
+	font-weight: normal;
+	font-size: 1em;
+	position:relative;
+	top:1px;
+}
+ span.glyphicon{
+	margin-right: 10px;
+}
+
+
 #logo{
 	width:200px;
 	height:50px;

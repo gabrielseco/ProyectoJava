@@ -29,6 +29,19 @@ var url = location.href;
 
 url = url.split("/");
 
+var error = getParameterByName("confirmacion");
+
+if(error === "YES"){
+	var html="<div class='alert alert-warning alert-block fade in container' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Se ha inscrito correctamente en el curso.Le hemos enviado un correo</h4>";
+	$("#dangerAlert").remove();
+	$(".article").prepend(html);
+}
+else if(error ==="NO"){
+	var html="<div class='alert alert-warning alert-block fade in container' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Ya está inscrito en este curso.</h4>";
+	$("#dangerAlert").remove();
+	$(".article").prepend(html);
+
+}
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
