@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cursos` (
   `plazas` INT NULL,
   `inscritos` INT NULL,
   `imagen` VARCHAR(10) NULL,
+  `antiguedad` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`secCurso`))
 ENGINE = InnoDB;
 
@@ -51,6 +53,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Productos` (
   `precio` FLOAT NULL,
   `descripcion` VARCHAR(140) NULL,
   `imagen` VARCHAR(10) NULL,
+  `antiguedad` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`secProducto`))
 ENGINE = InnoDB;
 
@@ -143,5 +147,8 @@ INSERT INTO `mydb`.`alumnos` (`secAlumno`, `nombre`, `apellidos`, `telefono`, `e
 INSERT INTO `mydb`.`roles` (`rolename`) VALUES ('admin');
 INSERT INTO `mydb`.`roles` (`rolename`) VALUES ('user');
 INSERT INTO `mydb`.`users_roles` (`secAlumno`, `rolename`, `username`) VALUES ('1', 'admin', 'gabriel');
+
+
+
 
 

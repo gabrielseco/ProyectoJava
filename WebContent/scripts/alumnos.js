@@ -7,7 +7,10 @@
  * AÑADO UN DIV ALERT PARA CUANDO NO HAY USUARIOS
  * LOS DATOS DEL FORMULARIO AL ENVIAR LOS GUARDO EN EL NAVEGADOR POR SI AL DAR ERROR EN EL USUARIO QUE APAREZCAN POBLADOS LOS CAMPOS
  */
-	
+	$("#codigoPostal").focus(function(){
+	$(this).attr("type","text");
+	$(this).attr("maxlength","5");
+});
 	var url=location.href.split("/");
 	if(url[url.length-1] === 'registroAlumnos.html'){
 		localStorage.removeItem("almacenUsuario");

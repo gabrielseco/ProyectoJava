@@ -3,10 +3,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Cursos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
 <link rel="stylesheet" href="../css/customCSS.css"/></head>
 </head>
-<body>
+<body ng-app="myApp">
 <div class="navbar navbar-inverse navbar-static-top" data-security='user'>
 	<div class="container">
 			<button class="navbar-toggle pull-left " data-toggle="collapse" data-target=".navHeaderCollapse">
@@ -14,11 +15,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand">Vetusta</a>
+			<a href="index.html" class="navbar-brand"><img href="index.html" id='logo' src="../img/vetustalogo.png"></img></a>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-left">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="../servicios.html">Servicios</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
 					<li class="active"><a href="cursos.html">Cursos</a></li>
 					<li><a href="productos.html">Productos</a></li>
 					<li class="dropdown">
@@ -44,6 +45,26 @@
    				</div>
 			</div>
 	</div><!-- END NAVBAR -->
+	
+	
+	<div ng-controller="MainCtrl" class="article">
+		<div class="container">
+			<div class="col-md-2">
+				Búsqueda: <input class="form-control" ng-model="query">
+			</div>
+			<div class="col-md-10">
+				<ul class="productos">
+		          <li ng-repeat="curso in cursos |orderBy:'nombre'|filter:query" class="thumbnail">
+		            <a href="#/cursos/{{curso.secCurso}}" class="thumb"><img ng-src="{{curso.imagen}}"></a>
+		            <a href="#/cursos/{{curso.secCurso}}" class="nombreCurso">{{curso.nombre}}</a>
+		            <p><a href="/inscribirse">Inscribirse</a></p>
+		          </li>
+        		</ul>
+			</div>
+		</div>
+	</div>
+	
+	
 	<footer>
 		<div class="container">
 			<div class="col-sm-4">
@@ -62,8 +83,8 @@
 				<ul class='unstyled'>
 					<li><a href="index.html">Vetusta</a></li>
 					<li><a href="servicios.html">Servicios</a></li>
-					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
-					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="cursos.html">Cursos</a></li>
+					<li><a href="productos.html">Productos</a></li>
 					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
 				</ul>
 			</div><!--col-sm-2-->
@@ -123,5 +144,7 @@
 <script src="../scripts/jquery.js"></script>
 <script src="../bootstrap3/js/bootstrap.js"></script>
 <script src="../scripts/seguridad.js"></script>
+<script src="../scripts/angular.js"></script>
+<script src="../scripts/mainCursos.js"></script>
 </body>
 </html>

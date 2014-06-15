@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Random;
@@ -76,6 +77,8 @@ public class ProductosDAO {
 			sentencia.setDouble(4,precio);
 			sentencia.setString(5, descripcion);
 			sentencia.setString(6, fileName);
+			java.util.Date fecha = new java.util.Date();
+			sentencia.setTimestamp(7,new Timestamp(fecha.getTime()));
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al insertar "+e.getMessage());
@@ -247,7 +250,9 @@ public class ProductosDAO {
 				sentencia.setDouble(4, precio);
 				sentencia.setString(5, descripcion);
 				sentencia.setString(6, fileName);
-				sentencia.setInt(7, codigo);
+				java.util.Date fecha = new java.util.Date();
+				sentencia.setTimestamp(7, new Timestamp(fecha.getTime()));
+				sentencia.setInt(8, codigo);
 				sentencia.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println("Error al actualizar "+e.getMessage());
@@ -261,7 +266,9 @@ public class ProductosDAO {
 				sentencia.setInt(3, numUnidades);
 				sentencia.setDouble(4, precio);
 				sentencia.setString(5, descripcion);
-				sentencia.setInt(6, codigo);
+				java.util.Date fecha = new java.util.Date();
+				sentencia.setTimestamp(6, new Timestamp(fecha.getTime()));
+				sentencia.setInt(7, codigo);
 				sentencia.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println("Error al actualizar "+e.getMessage());

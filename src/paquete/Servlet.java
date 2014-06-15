@@ -42,6 +42,7 @@ public class Servlet extends HttpServlet {
 	LoginDAO login;
 	ProductosJSON jsonProductos;
 	CursosJSON jsonCursos;
+	int idUsuario;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -103,7 +104,7 @@ public class Servlet extends HttpServlet {
 			response.sendRedirect("protegido/admin/registroAlumnos.html");
 			break;
 		case "Enviar Registro Alumnos":
-			if(alumnos.registrar(request,comandos)==0){
+			if(alumnos.registrar(request,comandos)!=-1){
 				alumnos.consultar(comandos,sesion);
 				response.sendRedirect("protegido/admin/listadoAlumnos.jsp");
 			}
@@ -245,16 +246,18 @@ public class Servlet extends HttpServlet {
 			response.sendRedirect("index.html");
 			break;
 		case "LogIn":
-			if(login.acceso(request,comandos)==0){
-				response.sendRedirect("usuarioRegistrado/index.html");
-			}
-			else{
-				response.sendRedirect("login.html?error=LoginErroneo");
-			}
+					 idUsuario = login.acceso(request, comandos,sesion);
+					if(idUsuario !=0 && idUsuario!=-1){	
+					response.sendRedirect("usuarioRegistrado/index.html?idUs="+idUsuario);
+				}
+				else{
+					response.sendRedirect("login.html?error=LoginErroneo");
+				}
 			break;
 		case "RegistroAlumnosFront":
-			if(alumnos.registrar(request,comandos)==0){
-				response.sendRedirect("usuarioRegistrado/index.html");
+			 idUsuario = alumnos.registrar(request, comandos);
+			if(idUsuario != 0 &&  idUsuario!=-1){
+				response.sendRedirect("usuarioRegistrado/index.html?idUs="+idUsuario);
 			}
 			else{
 				 response.sendRedirect("errorRegistro.jsp?mensajeError=Este alumno ya existe");

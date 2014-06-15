@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<title>Servicios</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Página Principal</title>
-<link rel="stylesheet" href="bootstrap3/css/bootstrap.css"/>
-<link rel="stylesheet" href="css/customCSS.css"/>
-<link rel="icon" type="image/png" href="img/favicon.png"/>
-
+<link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
+<link rel="stylesheet" href="../css/customCSS.css"/>
+<style>
+body{
+	background-color:#fff;
+}
+</style>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top">
@@ -17,13 +20,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand"><img href="index.html" id='logo' src="img/vetustalogo.png"></img></a>
+			<a href="index.html" class="navbar-brand"><img href="index.html" id='logo' src="../img/vetustalogo.png"></img></a>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="servicios.html">Servicios</a></li>
-					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
-					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="servicios.html">Servicios</a></li>
+					<li><a href="cursos.html">Cursos</a></li>
+					<li><a href="productos.html">Productos</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacto<b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -49,51 +52,49 @@
    				</div>
 			</div>
 	</div><!-- END NAVBAR -->
-	<div class="container">
-		<div class="jumbotron">
-			<h3>Bienvenido a Tienda Vetusta,donde encontrarás los productos informáticos al mejor precio y nuestros últimos cursos.</h3>
+	
+	<div id="article">
+		<div class="container">
+			<div class="col-sm-4">
+				<div class="titular">
+					<h3>Tiendas Online</h3>
+				</div>
+				<div class="tienda-body">
+					<p>Le ayudamos a crear un escaparate para su empresa abierto 24 horas, 
+						para que pueda seguir vendiendo incluso los fines de semana, vacaciones.
+						Sea pyme o gran empresa, tenemos la soluciÃ³n que necesita, desde los catÃ¡logos informativos mÃ¡s sencillos 
+						hasta aquellas soluciones mÃ¡s complejas, con carritos de la compra avanzados, 
+						interconexiÃ³n con sus sistemas informÃ¡ticos actualesâ€¦ siempre con un diseÃ±o bonito y elegante
+						orientado a la venta y acorde con la imagen de su empresa.</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="titular">
+					<h3>Cursos</h3>
+				</div>
+				<div class="cursos-body">
+				<p>
+					Le ayuduamos a aumentar sus conocimientos web para que lo pueda utilizar en su dÃ­a a dÃ­a.
+					Estamos actualizados en la enseÃ±anza de nuevas tecnologÃ­as web como HTML5,CSS3 y Javascript.
+					TambiÃ©n damos cursos orientados a la creaciÃ³n de Apps orientadas al mÃ³vil para dispositivos Apple y Android.
+					PodrÃ¡ llegar a tener un conocimiento que antes usted consideraba lejano.
+				</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="titular">
+					<h3>Productos</h3>
+				</div>
+				<div class="productos-body">
+					<p>
+						Tenemos una amplia gama de consumibles electrÃ³nicos,los cuales vendemos a un precio asequible para todos nuestos clientes.
+						Estos productos pueden ser desde ordenadores de la Ãºltima gama hasta mÃ³viles Low Cost.
+						Puede pagar a travÃ©s de su cuenta PayPal,su tarjeta de crÃ©dito o la tarjeta de compra del Corte InglÃ©s.
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class='container'>
-			<div class='row' id='features'>
-				<div class='col-sm-4 feature'>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class='panel-title'>Cursos</h3>
-						</div><!--panel-heading-->
-						<div class='panel-body'>
-							<img src='img/OUR COURSES.png' alt='Cursos' id='cursos'></img>
-							<p>Nuestros últimos cursos de programación más demandados por las empresas</p>
-							<a href="usuarioRegistrado/cursos.html" target="_blank" class='btn btn-warning btn-block'>Ven a aprender</a>
-						</div><!--panel-body-->
-					</div><!--panel-->
-				</div><!--feature-->
-					<div class='col-sm-4 feature'>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class='panel-title'>Productos</h3>
-						</div><!--panel-heading-->
-						<div class='panel-body'>
-							<img src='img/LP-0-LEAN-PRODUCTS.png' alt='Productos' id='productos'></img>
-							<p>Tenemos  los últimos productos del mercado a precios asequibles y las últimas novedades</p>
-							<a href="usuarioRegistrado/productos.html" target="_blank" class='btn btn-danger btn-block'>Compra nuestros productos</a>
-						</div><!--panel-body-->
-					</div><!--panel-->
-				</div><!--feature-->
-					<div class='col-sm-4 feature'>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class='panel-title'>Servicios</h3>
-						</div><!--panel-heading-->
-						<div class='panel-body'>
-							<img src='img/icon_services.jpg' id="servicios" alt='Servicios'></img>
-							<p>Conoce el conjunto de servicios disponibles tales como páginas web a medida,servicio técnico...</p>
-							<a href="servicios.html" target="_blank" class='btn btn-info btn-block'>Más Información</a>
-						</div>	
-					</div><!--panel-->
-				</div><!--feature-->
-			</div><!--FEATURES-->
-		</div><!--Container-->
 	
 
 
@@ -102,27 +103,27 @@
 			<div class="modal-content">
 				<form action="Servlet?submit=LogIn" method="post" class="form-horizontal" >
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<h4 class="centrar">Inicio de Sesión</h4>
+					<button type="button" class="close" data-dismiss="modal">Ã—</button>
+					<h4 class="centrar">Inicio de SesiÃ³n</h4>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
 					    <label for="Usuario" class="col-sm-2 control-label">Usuario</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="Usuario" name="usuario" placeholder="Usuario" autofocus>
+					      <input type="text" class="form-control" id="Usuario" name="usuario" placeholder="Usuario">
    				 		</div>
    				 	</div>
 					<div class="form-group">
-					    <label for="Password" class="col-sm-2 control-label">Contraseña</label>
+					    <label for="Password" class="col-sm-2 control-label">ContraseÃ±a</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="Password" name="password" placeholder="Contraseña">
+					      <input type="password" class="form-control" id="Password" name="password" placeholder="ContraseÃ±a">
    				 		</div>
    				 	</div>
 				</div>
 				<div class="modal-footer">
 					<a href="#registro" data-toggle="modal" class="btn btn-primary pull-left">Registrate</a>
-					<strong><span class="pull-left ajustarSpanIniciarSesion">Todavía no tienes una cuenta?</span></strong>
-					<button id='iniciarSesion' class="btn btn-success" type="submit">Iniciar Sesión</button>
+					<strong><span class="pull-left ajustarSpanIniciarSesion">TodavÃ­a no tienes una cuenta?</span></strong>
+					<button id='iniciarSesion' class="btn btn-success" type="submit">Iniciar SesiÃ³n</button>
 				</div>
 				</form>
 			</div>
@@ -133,14 +134,14 @@
 			<div class="modal-content">
 				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">×</button>
+						<button type="button" class="close" data-dismiss="modal">Ã—</button>
 						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
 					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
 					    	<div class="col-sm-10">
-					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required" autofocus>
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
    				 			</div>
    				 		</div>
    				 		<div class="form-group">
@@ -177,8 +178,8 @@
 			<div class="col-sm-4">
 				<strong>Sobre Nosotros</strong>
 				<p>
-					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
-					de productos electrónicos.
+					Somos una tienda situada en el norte de EspaÃ±a,Oviedo.Estamos especializados en la formaciÃ³n de cursos en InformÃ¡tica a la vez que vendemos una serie
+					de productos electrÃ³nicos.
 				</p>
 				<p>
 					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
@@ -186,12 +187,12 @@
 				</p>
 			</div><!--col-sm-4-->
 			<div class="col-sm-2">
-				<strong>Navegación</strong>
+				<strong>NavegaciÃ³n</strong>
 				<ul class='unstyled'>
 					<li><a href="index.html">Vetusta</a></li>
 					<li><a href="servicios.html">Servicios</a></li>
-					<li><a href="usuarioRegistrado/cursos.html">Cursos</a></li>
-					<li><a href="usuarioRegistrado/productos.html">Productos</a></li>
+					<li><a href="cursos.html">Cursos</a></li>
+					<li><a href="productos.html">Productos</a></li>
 					<li><a href="#contacto" data-toggle='modal'>Contacto</a></li>
 				</ul>
 			</div><!--col-sm-2-->
@@ -212,24 +213,24 @@
 			<div class="modal-content">
 				<form action="Servlet?submit=RegistroAlumnosFront" method="post" class="form-horizontal" onsubmit="" >
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
+					<button type="button" class="close" data-dismiss="modal">Ã—</button>
 					<h4 class="centrar">Registro</h4>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
 					    <label for="usuario" class="col-sm-2 control-label">Usuario:</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required="required" autofocus>
+					      <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required="required">
    				 		</div>
    				 	</div>
 					<div class="form-group">
-					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
+					    <label for="password" class="col-sm-2 control-label">ContraseÃ±a:</label>
 					    <div class="col-sm-4">
-					      <input type="password" class="form-control" id="password1" name="password1" placeholder="Contraseña" required="required">
+					      <input type="password" class="form-control" id="password1" name="password1" placeholder="ContraseÃ±a" required="required">
    				 		</div>
-   				 		<label for="password2" class="col-sm-2 control-label">Contraseña:</label>
+   				 		<label for="password2" class="col-sm-2 control-label">ContraseÃ±a:</label>
 					    <div class="col-sm-4">
-					      <input type="password" class="form-control" id="password2" name="password2" placeholder="Repetir Contraseña" required="required">
+					      <input type="password" class="form-control" id="password2" name="password2" placeholder="Repetir ContraseÃ±a" required="required">
    				 		</div>
    				 	</div>
    				 	<div class="form-group">
@@ -245,9 +246,9 @@
    				 		</div>
    				 	</div>
    				 	<div class="form-group">
-					    <label for="telefono" class="col-sm-2 control-label">TÉL:</label>
+					    <label for="telefono" class="col-sm-2 control-label">TÃ‰L:</label>
 					    <div class="col-sm-10">
-					      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required="required">
+					      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="TelÃ©fono" required="required">
    				 		</div>
    				 	</div>
    				 	<div class="form-group">
@@ -295,7 +296,7 @@
 							<option>Cantabria</option>
 							<option>Castilla-La Mancha</option>
 							<option>Castilla y Leon</option>
-							<option>Cataluña</option>
+							<option>CataluÃ±a</option>
 							<option>Ceuta</option>
 							<option>Extremadura</option>
 							<option>Galicia</option>
@@ -317,9 +318,9 @@
 			</div>
 		</div>
 	</div>
-<script src="scripts/jquery.js"></script>
-<script src="bootstrap3/js/bootstrap.js"></script>
-<script src="scripts/alumnosFront.js"></script>
-<script src="scripts/login.js"></script>
+<script src="../scripts/jquery.js"></script>
+<script src="../bootstrap3/js/bootstrap.js"></script>
+<script src="../scripts/alumnosFront.js"></script>
+<script src="../scripts/login.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="">
 <title>Productos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
 <link rel="stylesheet" href="../css/customCSS.css"/></head>
 </head>
@@ -14,11 +15,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand">Vetusta</a>
+			<a href="index.html" class="navbar-brand"><img href="index.html" id='logo' src="../img/vetustalogo.png"></img></a>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="../servicios.html">Servicios</a></li>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="servicios.html">Servicios</a></li>
 					<li><a href="cursos.html">Cursos</a></li>
 					<li class="active"><a href="productos.html">Productos</a></li>
 					<li class="dropdown">
@@ -47,23 +48,25 @@
 	
 	<div ng-controller="MainCtrl" class="article">
 		<div class="container">
+			<div class="col-md-2 busqueda">
+				Búsqueda: <input class="form-control " ng-model="query"><br/>
+			</div>
+			<br/>
 			<div class="col-md-10">
+				<span class="carrito pull-right glyphicon glyphicon-shopping-cart"><a href="finalizarCarrito.html">0.00€</a></span>
+				<br/>
 				<ul class="productos">
-		          <li ng-repeat="producto in productos | filter:query | orderBy:orderProp" class="thumbnail">
+		          <li ng-repeat="producto in productos |filter:query|orderBy:'nombre'" class="thumbnail">
 		            <a href="#/productos/{{producto.secProducto}}" class="thumb"><img ng-src="{{producto.imagen}}"></a>
 		            <a href="#/productos/{{producto.secProducto}}" class="nombreProducto">{{producto.nombre}}</a>
 		            <p>{{producto.descripcion}}</p>
+		            <p>{{producto.precio| currency:currencySymbol }}</p>
+		            <p><a class="btn btn-primary btn-block" id='añadirCarrito' href="/addCart">Añadir al carrito</a></p>
+		            <input type="hidden" id="secProducto" name="secProducto" value="{{producto.secProducto}}"/>
 		          </li>
         		</ul>
 			</div>
-			<div class="col-md-2">
-				Búsqueda: <input class="form-control" ng-model="query">
-        		Ordenado por:
-		        <select class="form-control" ng-model="orderProp">
-		          <option value="nombre">Alfabético</option>
-		          <option value="edad">Nuevo</option>
-		        </select>
-			</div>
+			
 		</div>
 	</div>
 	

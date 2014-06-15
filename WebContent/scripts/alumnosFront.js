@@ -5,7 +5,10 @@ function random_character() {
 	    var chars = "0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
 	    return chars.substr( Math.floor(Math.random() * 62), 1);
 	}
-
+$("#codigoPostal").focus(function(){
+	$(this).attr("type","text");
+	$(this).attr("maxlength","5");
+});
 $("#enviar").click(function(){
 
 	var str = "";

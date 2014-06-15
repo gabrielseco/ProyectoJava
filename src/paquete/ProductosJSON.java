@@ -34,7 +34,8 @@ public class ProductosJSON {
 				cadena += "\"numUnidades\":\""+resultados.getInt(4)+"\",\n";
 				cadena += "\"precio\":\""+resultados.getDouble(5)+"\",\n";
 				cadena += "\"descripcion\":\""+resultados.getString(6)+"\",\n";
-				cadena += "\"imagen\":\"../productos/"+resultados.getString(7)+"\"\n";
+				cadena += "\"imagen\":\"../productos/"+resultados.getString(7)+"\",\n";
+				cadena += "\"antiguedad\":\""+resultados.getTimestamp(8)+"\"\n";
 				cadena += "},\n";
 			}
 		} catch (SQLException e) {

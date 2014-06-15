@@ -7,6 +7,15 @@ img{
 	
 }
 
+#logo{
+	width:200px;
+	height:50px;
+	margin-top:-13px;
+}
+.busqueda{
+	float:right;
+}
+
 .productos li{
 	padding:0.9em;
 }
@@ -135,16 +144,28 @@ footer strong{
 		margin-top:0.4rem;
 	}
 
-@media (max-width: 480px){
+@media (max-width: 360px)  {
 	.crafted{
 		text-align:left;
 	}
 	.productos p{
 		padding-left:0px;
 	}
+	#logo{
+		position:relative;
+	}
+	img{
+		width:7em;
+	}
+	
+	#añadirCarrito{
+	position:relative;
+	left:0%;
+	}
+	
 }
 /*LANDSCAPE PHONE TO PORTRAIT TABLE*/
-@media (max-width: 768px){
+@media (min-width: 768px){
 	
 }
 /*LARGE DESKTOP*/

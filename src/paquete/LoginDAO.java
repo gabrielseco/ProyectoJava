@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class LoginDAO {
 
@@ -20,7 +21,7 @@ public class LoginDAO {
 		this.sentencia=sentencia;
 	}
 
-	public int acceso(HttpServletRequest request, Properties comandos) {
+	public int acceso(HttpServletRequest request, Properties comandos, HttpSession sesion) {
 		// TODO Auto-generated method stub
 		String usuario=request.getParameter("usuario");
 		String password=request.getParameter("password");
@@ -30,19 +31,17 @@ public class LoginDAO {
 			sentencia.setString(1,usuario);
 			sentencia.setString(2, password);
 			resultados=sentencia.executeQuery();
+			resultados.next();
 			if(resultados!=null){
-				resultados.last();  
-				size = resultados.getRow(); 
-				if(size == 0){
-					return 1;
-				}
+				return Integer.parseInt(resultados.getString(1));
+
 			}
 			
 		} catch (SQLException e) {
 			System.out.println("Error al hacer login "+e.getErrorCode()+e.getMessage());
-			return 1;
+			return -1;
 		}
-			return 0;
+		return -1;
 	}
 	
 	

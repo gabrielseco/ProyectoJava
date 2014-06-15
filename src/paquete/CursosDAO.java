@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class CursosDAO {
         }
         
         
-        
+        java.util.Date fecha = new Date();
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("insertarCursos"));
 			sentencia.setString(1, nombreCurso);
@@ -97,6 +98,7 @@ public class CursosDAO {
 			sentencia.setString(7, plazas);
 			sentencia.setString(8, "0");
 			sentencia.setString(9, fileName);
+			sentencia.setTimestamp(10, new Timestamp(fecha.getTime()));
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
             System.out.println("Error al insertar cursos "+e.getMessage());
@@ -277,7 +279,9 @@ public class CursosDAO {
 				sentencia.setDouble(6, precio);
 				sentencia.setString(7, plazas);
 				sentencia.setString(8, fileName);
-				sentencia.setString(9, codigoCurso);
+				java.util.Date fecha = new Date();
+				sentencia.setTimestamp(9, new Timestamp(fecha.getTime()));
+				sentencia.setString(10, codigoCurso);
 				sentencia.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println("Error al actualizar en cursos "+e.getMessage());
@@ -293,7 +297,9 @@ public class CursosDAO {
 				sentencia.setDouble(5, duracion);
 				sentencia.setDouble(6, precio);
 				sentencia.setString(7, plazas);
-				sentencia.setString(8, codigoCurso);
+				java.util.Date fecha = new Date();
+				sentencia.setTimestamp(8, new Timestamp(fecha.getTime()));
+				sentencia.setString(9, codigoCurso);
 				sentencia.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println("Error al actualizar en cursos "+e.getMessage());

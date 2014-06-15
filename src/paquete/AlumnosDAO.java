@@ -47,7 +47,7 @@ public class AlumnosDAO {
 			resultados=sentencia.executeQuery();
 			while(resultados.next()){
 				if(usuario.equals(resultados.getString(1))){
-					return 1;
+					return -1;
 				}
 			}
 		} catch (SQLException e1) {
@@ -68,7 +68,7 @@ public class AlumnosDAO {
 		} catch (SQLException e) {
 			System.out.println("Se ha productido un error al registrar los alumnos "+e.getMessage()+e.getErrorCode());
 			if(e.getErrorCode()==0001){
-				return 1;
+				return -1;
 			}
 		}
 		try {
@@ -79,9 +79,17 @@ public class AlumnosDAO {
 		} catch (SQLException e) {
 			System.out.println("Ha habido un error al insertar los usuarios-roles "+e.getMessage()+e.getErrorCode());
 			if(e.getErrorCode()==0001){
-			return 1;
+			return -1;
 			}
 		}
+			try {
+				sentencia=miConexion.prepareStatement(comandos.getProperty("lastIdAlumno"));
+				resultados=sentencia.executeQuery();
+				resultados.next();
+				return Integer.parseInt(resultados.getString(1));
+			} catch (SQLException e) {
+				System.out.println("ERROR AL SACAR EL ID DEL USUARIO "+e.getErrorCode()+e.getMessage());
+			}
 		
 		return 0;
 }
