@@ -25,7 +25,6 @@ public class LoginDAO {
 		// TODO Auto-generated method stub
 		String usuario=request.getParameter("usuario");
 		String password=request.getParameter("password");
-		int size;
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("login"));
 			sentencia.setString(1,usuario);

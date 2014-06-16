@@ -160,6 +160,7 @@ public class CursosAlumnosDAO {
 			HttpServletRequest request) {
 		String codigoCurso=request.getParameter("codigo");
 		String codigoAlumno=request.getParameter("codigoA");
+		String codigoAntiguo=request.getParameter("codigoAntiguo");
 		String importe2=request.getParameter(("importe"));
 		double importe=Double.parseDouble(importe2);
 		Date fechaJava=new Date();
@@ -171,6 +172,7 @@ public class CursosAlumnosDAO {
 			sentencia.setDate(3, fecha);
 			sentencia.setDouble(4, importe);
 			sentencia.setString(5, codigoCurso);
+			sentencia.setString(6, codigoAntiguo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar los alumnos en insertarAlumnosEnCursos "+e.getMessage()+e.getErrorCode());

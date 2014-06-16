@@ -165,10 +165,13 @@ public class ProductosAlumnosDAO {
 			HttpServletRequest request) {
 		String codigoProducto=request.getParameter("codigoProducto");
 		String codigoAlumno=request.getParameter("codigoAlumno");
+		String codigoAntiguo = request.getParameter("codigoAntiguo");
 		String importe2=request.getParameter(("importe"));
 		double importe=Double.parseDouble(importe2);
 		Date fechaJava=new Date();
 		java.sql.Date fecha=new java.sql.Date(fechaJava.getTime());
+		System.out.println("EL CODIGO ANTIGUO ES: "+codigoAntiguo+"y codigoAlumno="+codigoAlumno+"codigoProducto"+codigoProducto+","+importe+","+fecha);
+
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductosAlumnos"));
 			sentencia.setString(1, codigoProducto);
@@ -176,6 +179,7 @@ public class ProductosAlumnosDAO {
 			sentencia.setDate(3, fecha);
 			sentencia.setDouble(4, importe);
 			sentencia.setString(5, codigoProducto);
+			sentencia.setString(6, codigoAntiguo);
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error al actualizar los alumnos en insertarAlumnosEnCursos "+e.getMessage()+e.getErrorCode());

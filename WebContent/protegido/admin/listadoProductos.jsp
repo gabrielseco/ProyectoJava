@@ -59,7 +59,6 @@
 								                <h3>¿Estás seguro de eliminar el producto y los alumnos asociados a él?</h3>
 								            </div>
 								            <div class="modal-footer">
-								                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 								                <a href="../../Servlet?submit=EliminarProductos&codigo=${listadoP.getSecProducto()}" class="btn btn-danger">Eliminar</a>
 								        </div>
 								    </div>

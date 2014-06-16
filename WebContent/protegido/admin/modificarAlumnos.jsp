@@ -17,7 +17,7 @@
 <div class="container">
 <form action="../../Servlet" method="post" class='form-horizontal'>
 <fieldset>
-   <legend>Formulario de Alta</legend>
+   <legend>Formulario de Modificación</legend>
       <a id="principio"></a>
       <input type="hidden" name="nombreUsuario" value="${sessionScope.modificarAlumnos.usuario}"></input>
       <div class='form-group'>

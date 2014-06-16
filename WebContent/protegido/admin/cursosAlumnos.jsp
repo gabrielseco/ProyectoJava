@@ -47,6 +47,7 @@
 				   <input type="hidden" name="codigoAlumnoEliminar" value="${listadoCurAl.getSecCurso()}"/>
 							<tr>
 								<td>
+									<input type="hidden" id="codigoAntiguo_${count.count}" value="${listadoCurAl.getSecCurso()}"/>
 									<select name='codigoAlumno' id='alumnoModificar' class='form-control'>
 										<option value="${listadoCurAl.getSecCurso()}">${listadoCurAl.getNombre()}</option>
 										<c:forEach items="${alumnos}" var="listadoA">
@@ -60,7 +61,7 @@
 										type="date" dateStyle="full"/></td>
 								<td>${listadoCurAl.getImporte()}</td>
 								<td>
-									<a title='Modificar Alumno'  id='actualizar'><span class='glyphicon glyphicon-pencil'></span></a>
+									<a title='Modificar Alumno'   id='actualizar'><span class='glyphicon glyphicon-pencil'></span><input type="hidden" id="numero" value="${count.count}"/></a>
 									<a title='Eliminar Alumno' data-toggle='modal' data-target='#eliminarAlumno${count.count}'><span class='glyphicon glyphicon-remove'></span></a>
 									<div class="modal fade" id="eliminarAlumno${count.count}" tabindex="-1" >
 								    <div class="modal-dialog">
@@ -73,7 +74,6 @@
 								                <h3>¿Estás seguro de eliminar el alumno del curso?</h3>
 								            </div>
 								            <div class="modal-footer">
-								                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 								                <a href="../../Servlet?submit=Eliminar Alumnos&codigoAlumnoEliminar=${listadoCurAl.getSecCurso()}&codigo=${codigoCurso}" class="btn btn-danger">Eliminar</a>
 								        </div>
 								    </div>

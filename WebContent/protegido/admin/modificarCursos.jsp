@@ -17,7 +17,7 @@
 <div class="container">
 <form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar()' enctype="multipart/form-data">
 <fieldset>
-<legend>Formulario Cursos</legend>
+<legend>Modificar Cursos</legend>
 	<a id="principio"></a>
 	<div class='form-group'>
 		<label class='col-sm-2 control-label' for='nombreCurso'>Nombre Curso:</label>
