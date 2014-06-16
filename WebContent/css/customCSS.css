@@ -24,6 +24,26 @@ img{
 	margin-right: 10px;
 }
 
+.imgProducto{
+	width:5em;
+}
+
+
+.thumbnail .precio{
+	font-size:1.6em;
+	position: relative;
+	left:87%;
+	top:-90px;
+	padding: 10px;
+}
+.thumbnail .precio sup{
+	font-weight: normal;
+	font-size: 1em;
+	position:relative;
+	top:1px;
+}
+ 
+
 
 #logo{
 	width:200px;
@@ -36,6 +56,7 @@ img{
 
 .productos li{
 	padding:0.9em;
+	
 }
 
 .nombreProducto{
@@ -43,6 +64,7 @@ img{
 	font-size:1.4em;
 	color:black;
 	text-transform:uppercase;
+	padding-left:0.5em;
 }
 .nombreProducto:hover{
 	color:black;
@@ -50,7 +72,7 @@ img{
 }
 
 .productos p{
-	padding-left:215px;
+	padding-left:10%
 	
 }
 

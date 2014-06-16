@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../../css/admin.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/jquery.dataTables.css">
+<link rel="icon" type="image/png" href="../../img/favicon.png" />
 </head>
 <body>
 <c:set var="codigoProducto" value="${sessionScope.codigoProducto}"></c:set>

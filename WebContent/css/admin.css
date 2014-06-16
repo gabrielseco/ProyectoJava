@@ -18,6 +18,12 @@ input[type='number'] {
 .border{
 	border-color:red;
 }
+
+.center-form {
+  width: 330px;
+  margin: 10% auto;
+}
+
 a:hover, a:focus{
 	text-decoration:none;
 }

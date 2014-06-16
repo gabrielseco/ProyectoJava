@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="../bootstrap3/css/bootstrap.css"/>
 <link rel="stylesheet" href="../css/customCSS.css"/></head>
+<link rel="icon" type="image/png" href="../img/favicon.png" />
 </head>
 <body ng-app="myApp">
 <div class="navbar navbar-inverse navbar-static-top" data-security='user'>
@@ -56,12 +57,13 @@
 			<div class="col-md-10">
 				<span class="carrito pull-right glyphicon glyphicon-shopping-cart"><a href="finalizarCarrito.html">0.00€</a></span>
 				<br/>
+				<br/>
 				<ul class="productos">
 		          <li ng-repeat="producto in productos |filter:query|orderBy:'nombre'" class="thumbnail">
-		            <a href="#/productos/{{producto.secProducto}}" class="thumb"><img ng-src="{{producto.imagen}}"></a>
-		            <a href="#/productos/{{producto.secProducto}}" class="nombreProducto">{{producto.nombre}}</a>
+		            <a href="#/productos/{{producto.secProducto}}" class="thumb"><img class="imgProducto" ng-src="{{producto.imagen}}"></a>
+		            <a  href="#/productos/{{producto.secProducto}}" class="nombreProducto">{{producto.nombre}}</a>
 		            <p>{{producto.descripcion}}</p>
-		            <p>{{producto.precio| currency:currencySymbol }}</p>
+		           	<div class="label label-success precio"><span class='glyphicon glyphicon-tag'></span>{{producto.precio+"0"}}<sup> €</sup></div>
 		            <p><a class="btn btn-primary btn-block" id='añadirCarrito' href="/addCart">Añadir al carrito</a></p>
 		            <input type="hidden" id="secProducto" name="secProducto" value="{{producto.secProducto}}"/>
 		          </li>

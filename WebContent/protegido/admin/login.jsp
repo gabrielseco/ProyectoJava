@@ -8,31 +8,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="../../bootstrap3/css/bootstrap.css"> 
 <link rel="stylesheet" type="text/css" href="../../css/admin.css"> 
+<link rel="icon" type="image/png" href="../../img/favicon.png" />
+<style>
+	body{
+	background-color:#ccc;
+	}
+</style>
 </head>
 <body>
 <div class="container">
-	<form class='form-horizontal' action="j_security_check" method="post">
-		<fieldset>
-		<legend>Iniciar Sesion</legend>
-		  <div class="form-group">
-		  	<label for='nombre' class="col-sm-2 control-label">Usuario:</label>
-		  	<div class="col-sm-10 left-inner-addon">
-		  		<i class='glyphicon glyphicon-user'></i>
-				<input id='nombre' type="text" class="form-control" name="j_username" placeholder='Usuario' autofocus/>
-			</div>
-		  </div>
-		  <div class='form-group'>
-		  	<label id='contraseña' class='col-sm-2 control-label'>Password:</label>
-		  	<div class='col-sm-10 left-inner-addon'>
-		  		<i class='glyphicon glyphicon-lock'></i>
-		  		<input id='contraseña' type="password" class="form-control" name="j_password" placeholder='Password'/>
-		  	</div>
-		  </div>
-		  	<input type="button" value="Cancelar" class="btn  btn-primary  pull-right"  onclick="self.location.href='admin.html'"/>	
-		  	<input type="submit" value="Iniciar Sesion" class="btn btn-primary  pull-right"/>		
-		</fieldset>
-	</form>																							
-</div>
+  <div class="row">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center">Acceso a Admin</h2>
+		<br/>
+        <form action="j_security_check" method="post">
+          <div class="form-group">
+            <input class="form-control input-lg" type="text" name="j_username"
+                    placeholder="Usuario" required autofocus>
+          </div>
+
+          <div class="form-group">
+            <input class="form-control input-lg" type="password" name="j_password"
+                    placeholder="Contraseña" required>
+          </div>
+
+          <button type="submit" id='iniciarSesion'
+                  class="btn btn-lg btn-block btn-success">Iniciar Sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>														
 <script type="text/javascript" src='../../scripts/jquery.js'></script>
 <script type="text/javascript" src="../../bootstrap3/js/bootstrap.js"></script>
 </body>
