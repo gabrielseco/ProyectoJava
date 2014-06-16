@@ -16,7 +16,7 @@
 <div class="container">
 	<form action="../../Servlet" method="post" class='form-horizontal' onsubmit='return enviar();'enctype="multipart/form-data">
 		<fieldset>
-		<legend>Insertar Productos</legend>
+		<legend>Modificar Productos</legend>
 		<a  id="principio"></a>
 		<div class='form-group'>
 				<label  class="col-sm-2 control-label" for='codigo'>Codigo:</label>

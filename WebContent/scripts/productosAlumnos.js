@@ -30,7 +30,6 @@ $(function(){
 	$("a[title='Modificar Alumno']").on('click',function(){
 		var numero = $(this).find("input").val();
 		var codigoAntiguo=$("#codigoAntiguo_"+numero).val();
-		alert(numero+","+codigoAntiguo);
 		window.location.href='../../Servlet?submit=Modificar Productos&codigoProducto='+codigoProducto+"&codigoAlumno="+codigoAlumno+"&importe="+importe+"&codigoAntiguo="+codigoAntiguo;
 		return false;
 	});

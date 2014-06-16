@@ -170,7 +170,6 @@ public class ProductosAlumnosDAO {
 		double importe=Double.parseDouble(importe2);
 		Date fechaJava=new Date();
 		java.sql.Date fecha=new java.sql.Date(fechaJava.getTime());
-		System.out.println("EL CODIGO ANTIGUO ES: "+codigoAntiguo+"y codigoAlumno="+codigoAlumno+"codigoProducto"+codigoProducto+","+importe+","+fecha);
 
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("actualizarProductosAlumnos"));
