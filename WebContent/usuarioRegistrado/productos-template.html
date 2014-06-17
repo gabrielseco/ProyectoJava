@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+<div class="article">
+		<div class="container">
+			<div class="col-md-2 busqueda">
+				Búsqueda: <input class="form-control " ng-model="query">
+				<a class="pull-right carrito" id="finalizarCarrito" href="finalizarCarrito.html"><span class="glyphicon glyphicon-shopping-cart"></span>{{carrito+".00€"}}</a>
+				<br/>
+			</div>
+			<br/>
+			<br/>
+			<div class="col-md-10">
+				<br/>
+				<br/>
+				<br/>
+				<ul class="productos">
+		          <li ng-repeat="producto in productos |filter:query|orderBy:'nombre'" class="thumbnail">
+		            <a href="#/productos/{{producto.secProducto}}" class="thumb"><img class="imgProducto" ng-src="{{producto.imagen}}"></a>
+		            <a  href="#/productos/{{producto.secProducto}}" class="nombreProducto">{{producto.nombre}}</a>
+		            <p>{{producto.descripcion}}</p>
+		           	<div class="label label-success precio"><span class='glyphicon glyphicon-tag'></span>{{producto.precio+"0"}}<sup> €</sup></div>
+		            <p><a ng-click="add(producto.secProducto,producto.precio,producto.nombre)" class="btn btn-primary btn-block" id='añadirCarrito'>Añadir al carrito</a></p>
+		          </li>
+        		</ul>
+			</div>
+			
+		</div>
+	</div>

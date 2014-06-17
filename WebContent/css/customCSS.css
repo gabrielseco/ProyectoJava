@@ -7,6 +7,10 @@ img{
 	
 }
 
+#finalizarCarrito{
+	font-size:2rem;
+}
+
 .price{
 	font-size:1.6em;
 	position: absolute;
@@ -202,8 +206,6 @@ footer strong{
 	position:relative;
 	left:0%;
 	}
-	
-}
 /*LANDSCAPE PHONE TO PORTRAIT TABLE*/
 @media (min-width: 768px){
 	

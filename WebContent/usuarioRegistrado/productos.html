@@ -46,32 +46,8 @@
    				</div>
 			</div>
 	</div><!-- END NAVBAR -->
+	<producto-listado></producto-listado>
 	
-	<div ng-controller="MainCtrl" class="article">
-		<div class="container">
-			<div class="col-md-2 busqueda">
-				Búsqueda: <input class="form-control " ng-model="query"><br/>
-			</div>
-			<br/>
-			<br/>
-			<div class="col-md-10">
-				<span class="carrito pull-right glyphicon glyphicon-shopping-cart"><a href="finalizarCarrito.html">0.00€</a></span>
-				<br/>
-				<br/>
-				<ul class="productos">
-		          <li ng-repeat="producto in productos |filter:query|orderBy:'nombre'" class="thumbnail">
-		            <a href="#/productos/{{producto.secProducto}}" class="thumb"><img class="imgProducto" ng-src="{{producto.imagen}}"></a>
-		            <a  href="#/productos/{{producto.secProducto}}" class="nombreProducto">{{producto.nombre}}</a>
-		            <p>{{producto.descripcion}}</p>
-		           	<div class="label label-success precio"><span class='glyphicon glyphicon-tag'></span>{{producto.precio+"0"}}<sup> €</sup></div>
-		            <p><a class="btn btn-primary btn-block" id='añadirCarrito' href="/addCart">Añadir al carrito</a></p>
-		            <input type="hidden" id="secProducto" name="secProducto" value="{{producto.secProducto}}"/>
-		          </li>
-        		</ul>
-			</div>
-			
-		</div>
-	</div>
 	
 	<footer>
 		<div class="container">
@@ -111,7 +87,7 @@
 	<div class="modal slideup" id="contacto">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
+				<form action="../Servlet?submit=Contacto" method="post" class="form-horizontal">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">×</button>
 						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>

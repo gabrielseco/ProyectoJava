@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Acceso a Vetusta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="bootstrap3/css/bootstrap.css"/>
@@ -62,11 +62,11 @@
 
           <div class="form-group">
             <input class="form-control input-lg" type="password" name="password"
-                    placeholder="Contraseña" required>
+                    placeholder="ContraseÃ±a" required>
           </div>
 
           <button type="submit" id='iniciarSesion'
-                  class="btn btn-lg btn-block btn-success">Iniciar Sesión
+                  class="btn btn-lg btn-block btn-success">Iniciar SesiÃ³n
           </button>
         </form>
       </div>
@@ -78,8 +78,8 @@
 			<div class="col-sm-4">
 				<strong>Sobre Nosotros</strong>
 				<p>
-					Somos una tienda situada en el norte de España,Oviedo.Estamos especializados en la formación de cursos en Informática a la vez que vendemos una serie
-					de productos electrónicos.
+					Somos una tienda situada en el norte de EspaÃ±a,Oviedo.Estamos especializados en la formaciÃ³n de cursos en InformÃ¡tica a la vez que vendemos una serie
+					de productos electrÃ³nicos.
 				</p>
 				<p>
 					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
@@ -87,7 +87,7 @@
 				</p>
 			</div><!--col-sm-4-->
 			<div class="col-sm-2">
-				<strong>Navegación</strong>
+				<strong>NavegaciÃ³n</strong>
 				<ul class='unstyled'>
 					<li><a href="index.html">Vetusta</a></li>
 					<li><a href="../servicios.html">Servicios</a></li>
@@ -113,7 +113,7 @@
 			<div class="modal-content">
 				<form action="Servlet?submit=RegistroAlumnosFront" method="post" class="form-horizontal" onsubmit="" >
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
+					<button type="button" class="close" data-dismiss="modal">Ã—</button>
 					<h4 class="centrar">Registro</h4>
 				</div>
 				<div class="modal-body">
@@ -124,13 +124,13 @@
    				 		</div>
    				 	</div>
 					<div class="form-group">
-					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
+					    <label for="password" class="col-sm-2 control-label">ContraseÃ±a:</label>
 					    <div class="col-sm-4">
-					      <input type="password" class="form-control" id="password1" name="password1" placeholder="Contraseña" required="required">
+					      <input type="password" class="form-control" id="password1" name="password1" placeholder="ContraseÃ±a" required="required">
    				 		</div>
-   				 		<label for="password2" class="col-sm-2 control-label">Contraseña:</label>
+   				 		<label for="password2" class="col-sm-2 control-label">ContraseÃ±a:</label>
 					    <div class="col-sm-4">
-					      <input type="password" class="form-control" id="password2" name="password2" placeholder="Repetir Contraseña" required="required">
+					      <input type="password" class="form-control" id="password2" name="password2" placeholder="Repetir ContraseÃ±a" required="required">
    				 		</div>
    				 	</div>
    				 	<div class="form-group">
@@ -146,9 +146,9 @@
    				 		</div>
    				 	</div>
    				 	<div class="form-group">
-					    <label for="telefono" class="col-sm-2 control-label">TÉL:</label>
+					    <label for="telefono" class="col-sm-2 control-label">TÃ‰L:</label>
 					    <div class="col-sm-10">
-					      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required="required">
+					      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="TelÃ©fono" required="required">
    				 		</div>
    				 	</div>
    				 	<div class="form-group">
@@ -196,7 +196,7 @@
 							<option>Cantabria</option>
 							<option>Castilla-La Mancha</option>
 							<option>Castilla y Leon</option>
-							<option>Cataluña</option>
+							<option>CataluÃ±a</option>
 							<option>Ceuta</option>
 							<option>Extremadura</option>
 							<option>Galicia</option>
@@ -214,6 +214,47 @@
 				<div class="modal-footer">
 					<input class="btn btn-success" id='enviar' type="submit" value="Registrarse" />
 				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal slideup" id="contacto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="Servlet?submit=Contacto" method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">Ã—</button>
+						<h4 class="centrar">Ponte en Contacto con Nosotros</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+					    	<label for="nombre" class="col-sm-2 control-label">Nombre:</label>
+					    	<div class="col-sm-10">
+					      		<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required" autofocus>
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="asunto" class="col-sm-2 control-label">Asunto:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" required="required">
+   				 			</div>
+   				 		</div>
+						<div class="form-group">
+					    	<label for="email" class="col-sm-2 control-label">Email:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
+   				 			</div>
+   				 		</div>
+   				 		<div class="form-group">
+					    	<label for="mensaje" class="col-sm-2 control-label">Mensaje:</label>
+					   	 	<div class="col-sm-10">
+					     	 	<textarea  class="form-control" rows="8" id="mensaje" name="mensaje" placeholder="Rellena tu mensaje" required="required"></textarea>
+   				 			</div>
+   				 		</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success" type="submit">Enviar</button>
+					</div>
 				</form>
 			</div>
 		</div>

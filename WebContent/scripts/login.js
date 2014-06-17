@@ -25,7 +25,7 @@ $("#iniciarSesion").on('click',function(){
 
 var errorUser=getParameterByName('error');
 if(errorUser > ""){
-	var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>El usuario o la contraseña son incorrectos</h4></div>";
+	var html="<div class='alert alert-warning alert-block fade in' id='dangerAlert'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>El usuario o la password son incorrectos</h4></div>";
 	$(".alert").remove();
 	$("h2").before(html);
 }
