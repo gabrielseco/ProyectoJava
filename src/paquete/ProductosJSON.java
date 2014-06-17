@@ -22,7 +22,7 @@ public class ProductosJSON {
 	}
 	public void consultar(HttpServletRequest request, Properties comandos, HttpSession sesion) {
 		String cadena = "[\n";
-
+		String vacio ="thumbnail"+"."+"png";
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("listarProductos"));
 			resultados=sentencia.executeQuery();
@@ -34,7 +34,12 @@ public class ProductosJSON {
 				cadena += "\"numUnidades\":\""+resultados.getInt(4)+"\",\n";
 				cadena += "\"precio\":\""+resultados.getDouble(5)+"\",\n";
 				cadena += "\"descripcion\":\""+resultados.getString(6)+"\",\n";
-				cadena += "\"imagen\":\""+request.getContextPath()+"/productos/"+resultados.getString(7)+"\",\n";
+				if(resultados.getString(7).equals("")){
+					cadena += "\"imagen\":\""+request.getContextPath()+"/productos/"+vacio+"\",\n";
+				}
+				else{
+					cadena += "\"imagen\":\""+request.getContextPath()+"/productos/"+resultados.getString(7)+"\",\n";
+				}
 				//cadena += "\"imagen\":\""+request.getContextPath()+"/productos/"+resultados.getString(7)+"\",\n";
 
 				cadena += "\"antiguedad\":\""+resultados.getTimestamp(8)+"\"\n";

@@ -15,6 +15,9 @@
 	                $scope.productos = data;
 	              });
 	            $rootScope.carrito = 0.00;
+	            $scope.cambiar=function(){
+	            	alert(this.value);
+	            };
 	            $scope.add=function(secProducto,precio,nombre){
 	            	
 	            	var pedido = localStorage.getItem("pedido");

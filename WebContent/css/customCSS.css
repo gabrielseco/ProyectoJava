@@ -206,6 +206,13 @@ footer strong{
 	position:relative;
 	left:0%;
 	}
+	.thumbnail .precio{
+	font-size:1.6em;
+	position: relative;
+	left:83%;
+	top:-120px;
+	padding: 10px;
+}
 /*LANDSCAPE PHONE TO PORTRAIT TABLE*/
 @media (min-width: 768px){
 	

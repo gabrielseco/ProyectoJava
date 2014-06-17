@@ -26,7 +26,7 @@ public class CursosJSON {
 			HttpSession sesion) {
 		
 		String cadena = "[\n";
-
+		String vacio ="thumbnail"+"."+"png";
 		try {
 			sentencia=miConexion.prepareStatement(comandos.getProperty("listarCursosJSON"));
 			resultados=sentencia.executeQuery();
@@ -42,7 +42,12 @@ public class CursosJSON {
 				cadena += "\"plazas\":\""+resultados.getInt(8)+"\",\n";
 				cadena += "\"inscritos\":\""+resultados.getInt(9)+"\",\n";
 				//cadena += "\"imagen\":\"../cursos/"+resultados.getString(10)+"\",\n";
-				cadena += "\"imagen\":\""+request.getContextPath()+"/cursos/"+resultados.getString(10)+"\",\n";
+				if(resultados.getString(10).equals("")){
+					cadena += "\"imagen\":\""+request.getContextPath()+"/cursos/"+vacio+"\",\n";
+				}
+				else{
+					cadena += "\"imagen\":\""+request.getContextPath()+"/cursos/"+resultados.getString(10)+"\",\n";
+				}
 
 				cadena += "\"antiguedad\":\""+resultados.getTimestamp(11)+"\"\n";
 				cadena += "},\n";
